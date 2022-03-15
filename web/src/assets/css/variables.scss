@@ -10,7 +10,7 @@
   --border-width: 0.12em;
 
   // colors
-  --color-orange: #066e32;
+  --color-main: #066e32;
   --color-blue: #1e1253;
   --color-black: #111;
   --color-white: #fff;
@@ -19,7 +19,14 @@
 body {
   --color-background: var(--color-white);
   --color-text: var(--color-black);
-  --color-highlight: var(--color-orange);
+  --color-highlight: var(--color-main);
+}
+
+// dark theme
+body[data-theme="dark"] {
+  --color-background: var(--color-black);
+  --color-text: var(--color-white);
+  --color-highlight: var(--color-main);
 }
 
 @media (max-width: 800px) {

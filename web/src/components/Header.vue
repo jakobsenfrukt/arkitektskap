@@ -9,6 +9,7 @@
         <li>
           <span class="nav-link" @click="toAnchor('#kontakt')">Kontakt</span>
         </li>
+        <li><ToggleTheme /></li>
       </ul>
     </nav>
   </header>
@@ -16,10 +17,12 @@
 
 <script>
 import Logo from "~/components/Logo.vue";
+import ToggleTheme from "~/components/tools/ToggleTheme.vue";
 
 export default {
   components: {
     Logo,
+    ToggleTheme,
   },
   data() {
     return {
@@ -60,6 +63,7 @@ export default {
   }
 }
 .nav-link {
+  color: var(--color-text);
   margin-right: 1rem;
   &:hover {
     cursor: pointer;

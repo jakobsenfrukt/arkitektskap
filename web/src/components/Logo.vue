@@ -14,7 +14,7 @@ export default {
 
 <style lang="scss" scoped>
 .logo {
-  color: var(--color-black);
+  color: currentColor;
   width: 100%;
 
   img {
