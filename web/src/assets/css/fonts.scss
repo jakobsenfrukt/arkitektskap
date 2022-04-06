@@ -1,4 +1,3 @@
-/* Regular */
 @font-face {
   font-family: "Triptych";
   src: url("../fonts/triptych/Triptych-Roman.woff2")
@@ -6,5 +5,35 @@
       url("../fonts/triptych/Triptych-Roman.woff")
       format("woff");
   font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "STK Gerhard";
+  src: url("../fonts/stkgerhard/STKGerhard-Standard.woff2")
+      format("woff2"),
+      url("../fonts/stkgerhard/STKGerhard-Standard.woff")
+      format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "STK Gerhard";
+  src: url("../fonts/stkgerhard/STKGerhard-Medium.woff2")
+      format("woff2"),
+      url("../fonts/stkgerhard/STKGerhard-Medium.woff")
+      format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "STK Gerhard";
+  src: url("../fonts/stkgerhard/STKGerhard-Bold.woff2")
+      format("woff2"),
+      url("../fonts/stkgerhard/STKGerhard-Bold.woff")
+      format("woff");
+  font-weight: 700;
   font-style: normal;
 }

@@ -11,7 +11,8 @@
       :alt="project.mainImage.alt"
       class="project-image"
     />
-    <h2>{{ project.title }}</h2>
+    <h2 class="project-title">{{ project.title }}</h2>
+    <p class="project-meta">Prosjekttype &amp; detaljer</p>
     <!--<BlockContent :blocks="project._rawBio" v-if="project._rawBio" />-->
     <g-link class="project-link" :to="`/prosjekter/${project.slug.current}`"
       >Link</g-link
@@ -46,6 +47,13 @@ export default {
 <style lang="scss" scoped>
 .project {
   position: relative;
+  &-title {
+    font-size: 2rem;
+  }
+  &-meta {
+    font-family: var(--font-mono);
+    font-weight: 500;
+  }
   &-link {
     position: absolute;
     top: 0;
