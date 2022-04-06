@@ -17,6 +17,10 @@ export default {
   color: currentColor;
   width: 100%;
 
+  font-family: var(--font-mono);
+  font-weight: 500;
+  text-transform: lowercase;
+
   img {
     display: block;
     height: 100%;
