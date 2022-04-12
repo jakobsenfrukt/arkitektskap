@@ -61,3 +61,10 @@ strong {
   font-family: var(--font-mono);
   font-weight: 700;
 }
+
+.intro {
+  grid-column: 2 / span 10;
+  font-size: var(--font-size-l);
+  max-width: 20em;
+  margin: 4rem auto 5rem;
+}

@@ -36,8 +36,10 @@ export default {
 }
 
 .site-main {
-  padding: var(--spacing-sitepadding);
   min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--spacing-sitepadding);
 }
 
 .fade-enter-active {

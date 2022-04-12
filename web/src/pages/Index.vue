@@ -1,6 +1,7 @@
 <template>
   <Layout>
-    <p>{{ $page.frontpage.intro }}</p>
+    <p class="intro">{{ $page.frontpage.intro }}</p>
+    <Filtering />
     <ProjectGrid :projects="$page.projects" />
   </Layout>
 </template>
@@ -38,10 +39,12 @@ query {
 
 <script>
 import ProjectGrid from "~/components/ProjectGrid";
+import Filtering from "~/components/Filter";
 
 export default {
   components: {
     ProjectGrid,
+    Filtering,
   },
   metaInfo: {
     title: "Forside",
@@ -56,8 +59,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-h1 {
-  color: var(--color-highlight);
-}
-</style>
+<style lang="scss" scoped></style>

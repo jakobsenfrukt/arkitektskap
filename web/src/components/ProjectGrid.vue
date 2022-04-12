@@ -5,6 +5,31 @@
         v-for="(project, index) in projects.edges"
         :key="index"
         :project="project.node"
+        priority="top"
+      />
+      <ProjectItem
+        v-for="(project, index) in projects.edges"
+        :key="index"
+        :project="project.node"
+        priority="top"
+      />
+      <ProjectItem
+        v-for="(project, index) in projects.edges"
+        :key="index"
+        :project="project.node"
+        priority="medium"
+      />
+      <ProjectItem
+        v-for="(project, index) in projects.edges"
+        :key="index"
+        :project="project.node"
+        priority="low"
+      />
+      <ProjectItem
+        v-for="(project, index) in projects.edges"
+        :key="index"
+        :project="project.node"
+        priority="low"
       />
     </ul>
   </div>
@@ -24,12 +49,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.projects {
+  padding: var(--spacing-sitepadding);
+  grid-column: 1 / span 12;
+}
 .project-list {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: var(--spacing-sitepadding);
 }
 </style>

@@ -1,6 +1,10 @@
 <template>
   <Layout>
     <div class="project">
+      <p class="intro project-intro">
+        En kort intro til prosjektet som kommer før bildene og mer detaljert
+        informasjon.
+      </p>
       <img
         v-if="$page.project.mainImage"
         :src="
