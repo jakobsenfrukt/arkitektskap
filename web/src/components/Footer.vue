@@ -77,6 +77,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-family: var(--font-mono);
 }
 h1 {
   margin-bottom: 2rem;

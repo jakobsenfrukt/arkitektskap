@@ -50,7 +50,6 @@ export default {
 
 <style lang="scss" scoped>
 .projects {
-  padding: var(--spacing-sitepadding);
   grid-column: 1 / span 12;
 }
 .project-list {
@@ -58,7 +57,7 @@ export default {
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(12, 1fr);
   gap: var(--spacing-sitepadding);
 }
 </style>

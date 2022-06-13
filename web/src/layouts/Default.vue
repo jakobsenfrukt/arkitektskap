@@ -40,10 +40,11 @@ export default {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: var(--spacing-sitepadding);
+  padding: var(--spacing-sitepadding);
 }
 
 .fade-enter-active {
-  transition: opacity 0.8s;
+  transition: opacity 1.2s;
 }
 
 .fade-enter {

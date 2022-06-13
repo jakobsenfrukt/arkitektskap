@@ -3,7 +3,9 @@
     <!--<g-link class="logo" to="/"><Logo /></g-link>-->
     <nav class="site-nav">
       <ul>
-        <li><g-link class="nav-link" to="/om">Arkitektskap</g-link></li>
+        <li>
+          <g-link class="nav-link logo" to="/om">Arkitektskap</g-link>
+        </li>
         <li><g-link class="nav-link" to="/folk">Folk</g-link></li>
         <li><g-link class="nav-link" to="/">Prosjekter</g-link></li>
         <li>
@@ -62,8 +64,8 @@ export default {
     align-items: center;
     justify-content: space-between;
     font-family: var(--font-mono);
+    font-size: var(--font-size-m);
     text-transform: lowercase;
-    font-size: 1.4rem;
   }
 }
 .nav-link {
@@ -76,8 +78,11 @@ export default {
     text-underline-offset: 0.04em;
     text-decoration-thickness: var(--border-width);
   }
+  &.logo {
+    font-family: var(--font-mono);
+  }
 }
 .theme {
-  position: absolute;
+  width: 1.6rem;
 }
 </style>

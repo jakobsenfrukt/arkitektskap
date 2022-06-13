@@ -7,6 +7,7 @@ export default {
       name: 'title',
       title: 'Tittel',
       type: 'string',
+      validation: Rule => Rule.required()
     },
     {
       name: 'slug',
@@ -16,11 +17,33 @@ export default {
         source: 'title',
         maxLength: 96,
       },
+      validation: Rule => Rule.required()
+    },
+    {
+      name: 'intro',
+      title: 'Introtekst',
+      type: 'string',
+      description: 'En setning om prosjektet som dukker opp på forsiden + som overskrift på prosjektsiden.'
     },
     {
       name: 'year',
       title: 'Årstall',
       type: 'number',
+    },
+    {
+      title: 'Rangering', 
+      name: 'rating',
+      type: 'string',
+      options: {
+        list: [
+          {value: '3', title: '***'},
+          {value: '2', title: '**'},
+          {value: '1', title: '*'},
+        ],
+        layout: 'radio',
+        //direction: 'horizontal'
+      },
+      validation: Rule => Rule.required()
     },
     {
       name: 'mainImage',

@@ -12,15 +12,33 @@
       :alt="project.mainImage.alt"
       class="project-image"
     />
+    <ul class="palette">
+      <li
+        v-for="(color, index) in project.mainImage.asset.metadata.palette"
+        :key="`color-${index}`"
+      >
+        <div
+          class="palette-color"
+          :style="
+            `--palette-background: ${color.background}; --palette-foreground: ${
+              color.foreground
+            }`
+          "
+        >
+          {{ color.background }}
+        </div>
+      </li>
+    </ul>
     <h2 class="project-title">{{ project.title }}</h2>
-    <ul class="project-meta">
+    <p class="project-intro">{{ project.intro }}</p>
+    <!--<ul class="project-meta">
       <li>Årstall</li>
       <li>Prosjekttype</li>
       <li>Status</li>
       <li>Sted</li>
       <li>Størrelse</li>
       <li>Verdi</li>
-    </ul>
+    </ul>-->
     <!--<BlockContent :blocks="project._rawBio" v-if="project._rawBio" />-->
     <g-link class="project-link" :to="`/prosjekter/${project.slug.current}`"
       >Link</g-link
@@ -54,20 +72,44 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.palette {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  grid-column: span 6;
+  li {
+    display: inline-block;
+  }
+  &-color {
+    padding: 1em;
+    margin: 0 0.2rem 0.2rem 0;
+    background: var(--palette-background);
+    color: var(--palette-foreground);
+  }
+}
 .project {
+  grid-column: span 6;
   position: relative;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: var(--spacing-sitepadding);
-  padding-top: var(--spacing-sitepadding);
-  border-top: 1px solid var(--color-text);
   &-image {
-    grid-column: span 3;
-    grid-row: span 2;
+    grid-column: 1 / -1;
   }
   &-title {
-    grid-column: span 3;
-    font-size: 2rem;
+    grid-column: 1 / -1;
+    font-size: var(--font-size-s);
+    font-family: var(--font-mono);
+    font-weight: 500;
+  }
+  &-intro {
+    grid-column: 1 / -1;
+    font-size: var(--font-size-l);
+    font-family: var(--font-serif);
   }
   &-meta {
     grid-column: span 3;
@@ -93,7 +135,7 @@ export default {
     z-index: 0;
   }
 
-  &.top {
+  /*&.top {
     .project-image {
       grid-column: span 3;
     }
@@ -109,7 +151,7 @@ export default {
     .project-title {
       grid-column: span 3;
     }
-  }
+  }*/
 
   &.low {
     .project-image {

@@ -1,7 +1,11 @@
 <template>
   <Layout>
-    <p class="intro">{{ $page.frontpage.intro }}</p>
-    <Filtering />
+    <p class="intro">
+      <!--{{ $page.frontpage.intro }}-->Gjennom våre prosjekter skal
+      <strong>arkitektskap</strong> bidra til å skape varige verdier for både
+      mennesker og natur.
+    </p>
+    <Filter />
     <ProjectGrid :projects="$page.projects" />
   </Layout>
 </template>
@@ -25,12 +29,46 @@ query {
         slug {
           current
         }
+        intro
         mainImage {
           asset {
             url
+            metadata {
+              palette {
+                darkMuted {
+                  background
+                  foreground
+                }
+                darkVibrant {
+                  background
+                  foreground
+                }
+                dominant {
+                  background
+                  foreground
+                }
+                lightMuted {
+                  background
+                  foreground
+                }
+                lightVibrant {
+                  background
+                  foreground
+                }
+                muted {
+                  background
+                  foreground
+                }
+                vibrant {
+                  background
+                  foreground
+                }
+              }
+            }
           }
           alt
         }
+        _rawBody
       }
     }
   }
@@ -39,12 +77,12 @@ query {
 
 <script>
 import ProjectGrid from "~/components/ProjectGrid";
-import Filtering from "~/components/Filter";
+import Filter from "~/components/Filter";
 
 export default {
   components: {
     ProjectGrid,
-    Filtering,
+    Filter,
   },
   metaInfo: {
     title: "Forside",
