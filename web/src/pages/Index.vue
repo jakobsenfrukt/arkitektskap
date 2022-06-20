@@ -5,7 +5,7 @@
       <strong>arkitektskap</strong> bidra til å skape varige verdier for både
       mennesker og natur.
     </p>
-    <Filter />
+    <Filtering />
     <ProjectGrid :projects="$page.projects" />
   </Layout>
 </template>
@@ -29,6 +29,7 @@ query {
         slug {
           current
         }
+        rating
         intro
         mainImage {
           asset {
@@ -77,12 +78,12 @@ query {
 
 <script>
 import ProjectGrid from "~/components/ProjectGrid";
-import Filter from "~/components/Filter";
+import Filtering from "~/components/Filter";
 
 export default {
   components: {
     ProjectGrid,
-    Filter,
+    Filtering,
   },
   metaInfo: {
     title: "Forside",

@@ -62,6 +62,7 @@ export default {
   bottom: 0;
   left: 0;
   z-index: 1000;*/
+  display: none;
 }
 .filter-menu {
   list-style: none;

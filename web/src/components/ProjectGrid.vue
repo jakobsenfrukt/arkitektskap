@@ -2,34 +2,9 @@
   <div class="projects">
     <ul class="project-list">
       <ProjectItem
-        v-for="(project, index) in projects.edges"
+        v-for="(project, index) in sortProjects(projects.edges)"
         :key="index"
         :project="project.node"
-        priority="top"
-      />
-      <ProjectItem
-        v-for="(project, index) in projects.edges"
-        :key="index"
-        :project="project.node"
-        priority="top"
-      />
-      <ProjectItem
-        v-for="(project, index) in projects.edges"
-        :key="index"
-        :project="project.node"
-        priority="medium"
-      />
-      <ProjectItem
-        v-for="(project, index) in projects.edges"
-        :key="index"
-        :project="project.node"
-        priority="low"
-      />
-      <ProjectItem
-        v-for="(project, index) in projects.edges"
-        :key="index"
-        :project="project.node"
-        priority="low"
       />
     </ul>
   </div>
@@ -45,6 +20,11 @@ export default {
   props: {
     projects: Object,
   },
+  methods: {
+    sortProjects(projects) {
+      return projects;
+    },
+  },
 };
 </script>
 
@@ -59,5 +39,6 @@ export default {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: var(--spacing-sitepadding);
+  align-items: center;
 }
 </style>

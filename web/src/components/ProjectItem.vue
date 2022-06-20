@@ -1,17 +1,17 @@
 <template>
-  <li class="project" :class="priority">
-    <img
-      v-if="project.mainImage"
-      :src="
-        $urlForImage(project.mainImage, $static.metadata.sanityOptions)
-          .width(1200)
-          .height(800)
-          .auto('format')
-          .url()
-      "
-      :alt="project.mainImage.alt"
-      class="project-image"
-    />
+  <li class="project" :class="`size-${project.rating}`">
+    <div class="project-image">
+      <img
+        v-if="project.mainImage"
+        :src="
+          $urlForImage(project.mainImage, $static.metadata.sanityOptions)
+            .width(1200)
+            .auto('format')
+            .url()
+        "
+        :alt="project.mainImage.alt"
+      />
+    </div>
     <ul class="palette">
       <li
         v-for="(color, index) in project.mainImage.asset.metadata.palette"
@@ -59,7 +59,6 @@ export default {
   },
   props: {
     project: Object,
-    priority: String,
   },
 };
 </script>
@@ -91,6 +90,19 @@ export default {
   }
   &-image {
     margin-bottom: var(--spacing-sitepadding);
+    overflow: hidden;
+
+    img {
+      transition: transform 1s ease;
+    }
+  }
+  &:hover {
+    .project-image {
+      img {
+        transition: transform 0.8s ease;
+        transform: scale(1.04);
+      }
+    }
   }
   &-title {
     font-size: var(--font-size-s);
@@ -125,30 +137,25 @@ export default {
     z-index: 0;
   }
 
-  /*&.top {
-    .project-image {
-      grid-column: span 3;
-    }
-    .project-title {
-      grid-column: span 2;
+  &.size-3 {
+    //
+  }
+
+  &.size-2 {
+    .project-intro {
+      font-size: var(--font-size-m);
     }
   }
 
-  &.medium {
-    .project-image {
-      grid-column: span 2;
-    }
-    .project-title {
-      grid-column: span 3;
-    }
-  }*/
-
-  &.low {
+  &.size-1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-sitepadding);
     .project-image {
       grid-column: span 1;
     }
-    .project-title {
-      grid-column: span 4;
+    .project-intro {
+      font-size: var(--font-size-m);
     }
   }
 }
