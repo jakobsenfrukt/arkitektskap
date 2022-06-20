@@ -69,7 +69,6 @@ query {
           }
           alt
         }
-        _rawBody
       }
     }
   }

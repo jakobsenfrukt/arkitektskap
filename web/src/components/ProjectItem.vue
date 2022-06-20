@@ -31,7 +31,9 @@
     </ul>
     <div class="project-text">
       <h2 class="project-title">{{ project.title }}</h2>
-      <p class="project-intro">{{ project.intro }}</p>
+      <p class="project-intro">
+        {{ project.intro }}
+      </p>
     </div>
     <g-link class="project-link" :to="`/prosjekter/${project.slug.current}`"
       >Link</g-link
@@ -64,25 +66,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.palette {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  font-size: 13px;
-  grid-column: span 6;
-  li {
-    display: inline-block;
-  }
-  &-color {
-    padding: 1em;
-    margin: 0 0.2rem 0.2rem 0;
-    background: var(--palette-background);
-    color: var(--palette-foreground);
-  }
-}
 .project {
   grid-column: span 6;
   position: relative;
@@ -113,6 +96,7 @@ export default {
   &-intro {
     font-size: var(--font-size-l);
     font-family: var(--font-serif);
+    line-height: 1.2;
   }
   &-meta {
     display: grid;
@@ -138,12 +122,14 @@ export default {
   }
 
   &.size-3 {
-    //
+    .project-intro {
+      font-size: var(--font-size-xl);
+    }
   }
 
   &.size-2 {
     .project-intro {
-      font-size: var(--font-size-m);
+      font-size: var(--font-size-l);
     }
   }
 
@@ -153,6 +139,12 @@ export default {
     gap: var(--spacing-sitepadding);
     .project-image {
       grid-column: span 1;
+      min-height: 100%;
+
+      img {
+        height: 100%;
+        object-fit: cover;
+      }
     }
     .project-intro {
       font-size: var(--font-size-m);

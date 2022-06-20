@@ -1,7 +1,6 @@
 <template>
   <Layout>
-    <h1>Om oss</h1>
-    <p>{{ $page.about.intro }}</p>
+    <p class="intro about-intro">{{ $page.about.intro }}</p>
   </Layout>
 </template>
 
@@ -28,4 +27,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.about-intro {
+  grid-column: 1 / -1;
+}
+</style>

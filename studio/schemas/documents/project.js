@@ -56,8 +56,40 @@ export default {
       type: 'body',
     },
     {
-      title: 'Kontaktperson',
+      title: 'Relaterte prosjekter',
+      name: 'relatedProjects',
+      type: 'array',
+      of: [
+        {
+          title: 'Prosjekt',
+          type: 'reference',
+          to: [
+            {
+              type: 'project'
+            }
+          ]
+        }
+      ]
+    },
+    {
+      title: 'Kontaktperson(er)',
       name: 'contactperson',
+      type: 'array',
+      of: [
+        {
+          title: 'Person',
+          type: 'reference',
+          to: [
+            {
+              type: 'person'
+            }
+          ]
+        }
+      ]
+    },
+    {
+      title: 'Andre involverte',
+      name: 'peopleInvolved',
       type: 'array',
       of: [
         {
