@@ -23,6 +23,16 @@ export default {
       type: 'string',
     },
     {
+      name: 'phone',
+      title: 'Telefon',
+      type: 'string',
+    },
+    {
+      name: 'email',
+      title: 'E-post',
+      type: 'string',
+    },
+    {
       name: 'bio',
       title: 'Bio',
       type: 'simpleBody',
@@ -31,7 +41,7 @@ export default {
       name: 'image',
       title: 'Portrett',
       type: 'figure'
-    },
+    }
   ],
 
   preview: {

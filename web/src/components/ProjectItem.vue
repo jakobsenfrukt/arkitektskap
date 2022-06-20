@@ -29,17 +29,10 @@
         </div>
       </li>
     </ul>
-    <h2 class="project-title">{{ project.title }}</h2>
-    <p class="project-intro">{{ project.intro }}</p>
-    <!--<ul class="project-meta">
-      <li>Årstall</li>
-      <li>Prosjekttype</li>
-      <li>Status</li>
-      <li>Sted</li>
-      <li>Størrelse</li>
-      <li>Verdi</li>
-    </ul>-->
-    <!--<BlockContent :blocks="project._rawBio" v-if="project._rawBio" />-->
+    <div class="project-text">
+      <h2 class="project-title">{{ project.title }}</h2>
+      <p class="project-intro">{{ project.intro }}</p>
+    </div>
     <g-link class="project-link" :to="`/prosjekter/${project.slug.current}`"
       >Link</g-link
     >
@@ -58,7 +51,7 @@ query {
 </static-query>
 
 <script>
-import BlockContent from "@/components/BlockContent";
+import BlockContent from "@/components/tools/BlockContent";
 
 export default {
   components: {
@@ -94,25 +87,22 @@ export default {
 .project {
   grid-column: span 6;
   position: relative;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: var(--spacing-sitepadding);
+  &-text {
+  }
   &-image {
-    grid-column: 1 / -1;
+    margin-bottom: var(--spacing-sitepadding);
   }
   &-title {
-    grid-column: 1 / -1;
     font-size: var(--font-size-s);
     font-family: var(--font-mono);
     font-weight: 500;
+    margin-bottom: 0.6rem;
   }
   &-intro {
-    grid-column: 1 / -1;
     font-size: var(--font-size-l);
     font-family: var(--font-serif);
   }
   &-meta {
-    grid-column: span 3;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     font-family: var(--font-mono);

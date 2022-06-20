@@ -1,6 +1,9 @@
 <template>
   <Layout>
-    <h1>Folka</h1>
+    <p class="intro">
+      <!--{{ $page.people.intro }}-->En introtekst til folka i
+      <strong>arkitektskap</strong> kommer her.
+    </p>
     <PersonGrid :people="$page.people" />
   </Layout>
 </template>
@@ -14,9 +17,23 @@ query {
         name
         title
         _rawBio
+        email
+        phone
         image {
           asset {
             url
+          }
+          hotspot {
+            x
+            y
+            height
+            width
+          }
+          crop {
+            top
+            bottom
+            left
+            right
           }
           alt
         }

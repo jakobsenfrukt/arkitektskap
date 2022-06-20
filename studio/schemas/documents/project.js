@@ -55,6 +55,22 @@ export default {
       title: 'Brødtekst',
       type: 'body',
     },
+    {
+      title: 'Kontaktperson',
+      name: 'contactperson',
+      type: 'array',
+      of: [
+        {
+          title: 'Person',
+          type: 'reference',
+          to: [
+            {
+              type: 'person'
+            }
+          ]
+        }
+      ]
+    },
   ],
 
   preview: {

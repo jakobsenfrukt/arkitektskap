@@ -1,13 +1,11 @@
 <template>
-  <div class="people">
-    <ul class="person-list">
-      <PersonItem
-        v-for="(person, index) in people.edges"
-        :key="index"
-        :person="person.node"
-      />
-    </ul>
-  </div>
+  <ul class="person-list">
+    <PersonItem
+      v-for="(person, index) in people.edges"
+      :key="index"
+      :person="person.node"
+    />
+  </ul>
 </template>
 
 <script>
@@ -25,16 +23,13 @@ export default {
 
 <style lang="scss" scoped>
 .person-list {
+  grid-column: 1 / -1;
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--spacing-sitepadding);
-}
-@media (min-width: 800px) {
-  .person-list {
-    grid-template-columns: repeat(4, 1fr);
-  }
+  row-gap: calc(var(--spacing-sitepadding) * 3);
 }
 </style>

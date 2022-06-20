@@ -1,8 +1,16 @@
 <template>
   <div class="totop">
-    <button @click="toTop()" class="totop-button" :class="{inview: isInView}">
-      <svg class="totop-icon" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M482.441 232.441L434.065 280.817L284.207 130.961L284.207 500L215.793 500L215.793 130.959L65.9348 280.817L17.5587 232.441L201.624 48.3765L201.624 48.376L250 -0.000101713L482.441 232.441Z" fill="black"/>
+    <button @click="toTop()" class="totop-button" :class="{ inview: isInView }">
+      <svg
+        class="totop-icon"
+        viewBox="0 0 82 77"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M48.91 76.64H32.41V31.58L11.67 52.32L0 40.65L40.66 0L81.32 40.66L69.65 52.32L48.91 31.58V76.64ZM37.91 71.14H43.41V18.3L69.65 44.54L73.54 40.65L40.66 7.77L7.78 40.65L11.67 44.54L37.91 18.3V71.14Z"
+          fill="currentColor"
+        />
       </svg>
     </button>
     <IntersectionObserver
@@ -14,38 +22,38 @@
 </template>
 
 <script>
-import IntersectionObserver from '@/components/tools/IntersectionObserver.vue'
+import IntersectionObserver from "@/components/tools/IntersectionObserver.vue";
 
 export default {
   components: {
-    IntersectionObserver
+    IntersectionObserver,
   },
   data() {
     return {
-      isInView: false
-    }
+      isInView: false,
+    };
   },
   methods: {
     toTop() {
       window.scrollTo({
         top: 0,
-        behavior: 'smooth'
-      })
+        behavior: "smooth",
+      });
     },
     onEnterViewport(value) {
       this.isInView = value;
       if (value === false) {
-        return
+        return;
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 .totop {
   width: 100%;
-  padding: .5rem .5rem 0;
+  padding: 0.5rem 0.5rem 0;
   text-align: right;
 
   &-button {
@@ -62,7 +70,7 @@ export default {
     right: 1rem;
 
     opacity: 0;
-    transition: opacity .3s linear;
+    transition: opacity 0.3s linear;
 
     &.inview {
       opacity: 1;
@@ -71,8 +79,8 @@ export default {
 
   &-icon {
     display: inline-block;
-    width: 1rem;
-    height: 1rem;
+    width: 1.6rem;
+    height: 1.6rem;
     vertical-align: middle;
   }
 }

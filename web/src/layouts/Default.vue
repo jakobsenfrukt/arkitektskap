@@ -7,6 +7,7 @@
       </main>
     </transition>
     <Footer />
+    <!--<CursorFriend />-->
   </div>
 </template>
 
@@ -21,11 +22,13 @@ query {
 <script>
 import Header from "~/components/Header.vue";
 import Footer from "~/components/Footer.vue";
+import CursorFriend from "~/components/tools/CursorFriend";
 
 export default {
   components: {
     Header,
     Footer,
+    CursorFriend,
   },
 };
 </script>

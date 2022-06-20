@@ -13,8 +13,11 @@
   // colors
   --color-main: #066e32;
   --color-blue: #1e1253;
-  --color-black: #111;
-  --color-white: #fff;
+  --color-black: rgb(12, 24, 18);
+  --color-white: rgb(221, 221, 204);
+
+  --cursor-default: url("/assets/graphics/cursor-default.png"), auto;
+  --cursor-pointer: url("/assets/graphics/cursor-pointer.png"), auto !important;
 }
 
 body {
@@ -28,6 +31,9 @@ body[data-theme="dark"] {
   --color-background: var(--color-black);
   --color-text: var(--color-white);
   --color-highlight: var(--color-main);
+
+  --cursor-default: url("/assets/graphics/cursor-default-dark.png"), auto;
+  --cursor-pointer: url("/assets/graphics/cursor-pointer-dark.png"), auto !important;
 }
 
 @media (max-width: 800px) {

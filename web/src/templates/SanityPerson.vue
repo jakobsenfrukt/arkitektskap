@@ -1,33 +1,40 @@
 <template>
   <Layout>
     <div class="person">
-      <img
-        v-if="$page.person.image"
-        :src="
-          $urlForImage($page.person.image, $page.metadata.sanityOptions)
-            .width(1200)
-            .auto('format')
-            .url()
-        "
-        :alt="$page.person.image.alt"
-        class="person-image"
-      />
-      <div class="person-heading">
-        <h1 class="person-name">{{ $page.person.name }}</h1>
-        <p>{{ $page.person.title }}</p>
-      </div>
-      <div>
-        <BlockContent
-          :blocks="$page.person._rawBio"
-          v-if="$page.person._rawBio"
+      <div class="person-image">
+        <img
+          v-if="$page.person.image"
+          :src="
+            $urlForImage($page.person.image, $page.metadata.sanityOptions)
+              .width(1200)
+              .auto('format')
+              .url()
+          "
+          :alt="$page.person.image.alt"
         />
+      </div>
+      <div class="person-text">
+        <h1 class="person-name">{{ $page.person.name }}</h1>
+        <p class="person-title">{{ $page.person.title }}</p>
+
+        <p class="person-contact">
+          <a :href="$page.person.phone">{{ $page.person.phone }}</a>
+          <a :href="$page.person.email">{{ $page.person.email }}</a>
+        </p>
+
+        <div class="person-content">
+          <BlockContent
+            :blocks="$page.person._rawBio"
+            v-if="$page.person._rawBio"
+          />
+        </div>
       </div>
     </div>
   </Layout>
 </template>
 
 <script>
-import BlockContent from "~/components/BlockContent";
+import BlockContent from "~/components/tools/BlockContent";
 
 export default {
   components: {
@@ -62,6 +69,8 @@ query person ($id: ID!) {
     name
     title
     _rawBio
+    email
+    phone
     image {
       asset {
         _id
@@ -78,8 +87,26 @@ query person ($id: ID!) {
 
 <style lang="scss" scoped>
 .person {
+  margin-top: 3rem;
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--spacing-sitepadding);
   &-image {
-    max-width: 400px;
+    grid-column: span 6;
+    order: 2;
+  }
+  &-text {
+    grid-column: span 6;
+    order: 1;
+  }
+  &-contact {
+    font-family: var(--font-mono);
+    margin: 4rem 0;
+    a {
+      display: block;
+      margin-bottom: 0.6rem;
+    }
   }
 }
 </style>

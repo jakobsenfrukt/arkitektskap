@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import BlockContent from "~/components/BlockContent";
+import BlockContent from "~/components/tools/BlockContent";
 
 export default {
   components: {

@@ -59,8 +59,8 @@ query {
 </static-query>
 
 <script>
-import BlockContent from "~/components/BlockContent";
-import Totop from "@/components/Totop.vue";
+import BlockContent from "~/components/tools/BlockContent";
+import Totop from "@/components/tools/Totop.vue";
 
 export default {
   components: {

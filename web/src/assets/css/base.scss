@@ -6,7 +6,7 @@
 
 html {
   min-height: 100%;
-  font-size: calc(16px + 6 * (100vw - 320px) / 1200);
+  font-size: calc(12px + 6 * (100vw - 320px) / 1200);
 }
 
 body {
@@ -20,6 +20,8 @@ body {
   position: relative;
 
   transition: color 1s ease-in-out, background-color 1.2s ease-in-out;
+
+  cursor: var(--cursor-default);
 }
 
 a {
@@ -30,6 +32,12 @@ a {
     text-underline-position: below;
     text-underline-offset: 0.04em;
     text-decoration-thickness: var(--border-width);
+  }
+}
+
+a, .anchor, button, .button, input {
+  &:hover {
+    cursor: var(--cursor-pointer);
   }
 }
 

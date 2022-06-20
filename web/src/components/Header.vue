@@ -9,7 +9,9 @@
         <li><g-link class="nav-link" to="/folk">Folk</g-link></li>
         <li><g-link class="nav-link" to="/">Prosjekter</g-link></li>
         <li>
-          <span class="nav-link" @click="toAnchor('#kontakt')">Kontakt</span>
+          <span class="nav-link anchor" @click="toAnchor('#kontakt')"
+            >Kontakt</span
+          >
         </li>
         <li class="theme"><ToggleTheme /></li>
       </ul>
@@ -72,7 +74,7 @@ export default {
   color: var(--color-text);
   margin-right: 1rem;
   &:hover {
-    cursor: pointer;
+    cursor: var(--cursor-pointer);
     text-decoration: underline;
     text-underline-position: below;
     text-underline-offset: 0.04em;
