@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <Layout :palette="$page.person.image.asset.metadata.palette">
     <div class="person">
       <div class="person-image">
         <img
@@ -75,6 +75,38 @@ query person ($id: ID!) {
       asset {
         _id
         url
+        metadata {
+          palette {
+            darkMuted {
+              background
+              foreground
+            }
+            darkVibrant {
+              background
+              foreground
+            }
+            dominant {
+              background
+              foreground
+            }
+            lightMuted {
+              background
+              foreground
+            }
+            lightVibrant {
+              background
+              foreground
+            }
+            muted {
+              background
+              foreground
+            }
+            vibrant {
+              background
+              foreground
+            }
+          }
+        }
       }
       alt
     }

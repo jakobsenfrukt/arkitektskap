@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <Layout :palette="$page.project.mainImage.asset.metadata.palette">
     <div class="project">
       <div class="intro project-heading">
         <h1 class="project-title">{{ $page.project.title }}</h1>

@@ -20,19 +20,27 @@
 
   --cursor-default: url("/assets/graphics/cursor-default.png"), auto;
   --cursor-pointer: url("/assets/graphics/cursor-pointer.png"), auto !important;
+
+  --color-background-light: var(--color-white);
+  --color-text-light: var(--color-black);
+  --color-detail-light: var(--color-main);
+
+  --color-background-dark: var(--color-black);
+  --color-text-dark: var(--color-white);
+  --color-detail-dark: var(--color-main);
 }
 
 body {
-  --color-background: var(--color-white);
-  --color-text: var(--color-black);
-  --color-highlight: var(--color-main);
+  --color-background: var(--color-background-light);
+  --color-text: var(--color-text-light);
+  --color-highlight: var(--color-highlight-light);
 }
 
 // dark theme
 body[data-theme="dark"] {
-  --color-background: var(--color-black);
-  --color-text: var(--color-white);
-  --color-highlight: var(--color-main);
+  --color-background: var(--color-background-dark);
+  --color-text: var(--color-text-dark);
+  --color-highlight: var(--color-highlight-dark);
 
   --cursor-default: url("/assets/graphics/cursor-default-dark.png"), auto;
   --cursor-pointer: url("/assets/graphics/cursor-pointer-dark.png"), auto !important;

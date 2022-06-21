@@ -30,6 +30,74 @@ export default {
     Footer,
     CursorFriend,
   },
+  props: {
+    palette: Object,
+    overlay: Boolean,
+  },
+  computed: {
+    cssVars() {
+      if (this.palette) {
+        return {
+          "--color-background-light": this.palette.lightMuted
+            ? this.palette.lightMuted.background
+            : "var(--color-white)",
+          "--color-text-light": this.palette.darkMuted
+            ? this.palette.darkMuted.background
+            : "var(--color-white)",
+          "--color-detail-light": this.palette.darkVibrant
+            ? this.palette.darkVibrant.background
+            : "var(--color-black)",
+
+          "--color-background-dark": this.palette.darkMuted
+            ? this.palette.darkMuted.background
+            : "var(--color-white)",
+          "--color-text-dark": this.palette.lightMuted
+            ? this.palette.lightMuted.background
+            : "var(--color-white)",
+          "--color-detail-dark": this.palette.lightVibrant
+            ? this.palette.lightVibrant.background
+            : "var(--color-white)",
+        };
+      } else if (this.$static.settings.themePalette) {
+        const palette = this.$static.settings.themePalette;
+        return {
+          "--color-background-light": palette.lightMuted
+            ? palette.lightMuted.background
+            : "var(--color-white)",
+          "--color-text-light": palette.light.textColor
+            ? palette.light.textColor.background
+            : "var(--color-white)",
+          "--color-detail-light": palette.light.detailColor
+            ? palette.light.detailColor.background
+            : "var(--color-black)",
+
+          "--color-background-dark": palette.dark.bgColor
+            ? palette.dark.bgColor.background
+            : "var(--color-white)",
+          "--color-text-dark": palette.dark.textColor
+            ? palette.dark.textColor.background
+            : "var(--color-white)",
+          "--color-detail-dark": palette.dark.detailColor
+            ? palette.dark.detailColor.background
+            : "var(--color-white)",
+        };
+      }
+    },
+  },
+  methods: {
+    changeColor() {
+      Object.entries(this.cssVars).forEach((entry) => {
+        const [key, value] = entry;
+        document.body.style.setProperty(key, value);
+      });
+    },
+  },
+  mounted() {
+    this.changeColor();
+  },
+  updated() {
+    this.changeColor();
+  },
 };
 </script>
 
