@@ -17,6 +17,7 @@ export default {
         source: 'title',
         maxLength: 96,
       },
+      description: 'Slutten på URLen til prosjektsiden, eks. "arkitektskap.no/prosjekter/slug-kommer-her". Må skrives med små bokstaver, og uten mellomrom eller ÆØÅ. Skriv inn tittel i feltet over og klikk på Generate for å få en perfekt slug.',
       validation: Rule => Rule.required()
     },
     {

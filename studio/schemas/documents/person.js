@@ -16,6 +16,8 @@ export default {
         source: 'name',
         maxLength: 96,
       },
+      description: 'Slutten på URLen til personsiden, eks. "arkitektskap.no/folk/slug-kommer-her". Må skrives med små bokstaver, og uten mellomrom eller ÆØÅ. Skriv inn navn i feltet over og klikk på Generate for å få en perfekt slug.',
+      validation: Rule => Rule.required()
     },
     {
       name: 'title',
