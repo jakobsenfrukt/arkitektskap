@@ -9,6 +9,16 @@
 }
 
 @font-face {
+  font-family: "Triptych";
+  src: url("../fonts/triptych/Triptych-Italick.woff2")
+      format("woff2"),
+      url("../fonts/triptych/Triptych-Italick.woff")
+      format("woff");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
   font-family: "STK Gerhard";
   src: url("../fonts/stkgerhard/STKGerhard-Standard.woff2")
       format("woff2"),
