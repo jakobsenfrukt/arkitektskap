@@ -10,7 +10,7 @@
 
 <page-query>
 query {
-  people: allSanityPerson(sortBy: "name") {
+  people: allSanityPerson(sortBy: "name", order: ASC) {
     edges {
       node {
         id
