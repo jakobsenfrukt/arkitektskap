@@ -37,8 +37,31 @@
           </li>
         </ul>
       </div>
-      <ul class="project-info">
-        <li>meta</li>
+      <ul class="project-info" v-if="$page.project.projectInfo">
+        <li>Sted: {{ $page.project.projectInfo.location.title }}</li>
+        <li>
+          År: {{ $page.project.projectInfo.startYear
+          }}<template v-if="$page.project.projectInfo.endYear"
+            >&mdash;{{ $page.project.projectInfo.endYear }}</template
+          >
+        </li>
+        <li>
+          Oppdragsgiver:
+          <span
+            v-for="(client, index) in $page.project.projectInfo.client"
+            :key="`client-${index}`"
+            >{{ client.title }}</span
+          >
+        </li>
+        <li>
+          Samarbeidspartnere:
+          <span
+            v-for="(collaborator, index) in $page.project.projectInfo
+              .collaborators"
+            :key="`collaborator-${index}`"
+            >{{ collaborator.title }}</span
+          >
+        </li>
       </ul>
       <div class="project-content">
         <BlockContent
@@ -46,8 +69,9 @@
           v-if="$page.project._rawBody"
           class="block-content"
         />
+        <p class="credits">{{ $page.project.credits }}</p>
       </div>
-      <ul class="contactperson" v-if="$page.project.contactperson">
+      <ul class="contactperson" v-if="$page.project.contactperson.length">
         <h2 v-if="$page.project.contactperson.length > 1">Kontaktpersoner</h2>
         <h2 v-else>Kontaktperson</h2>
         <li v-for="(person, index) in $page.project.contactperson" :key="index">
@@ -136,8 +160,23 @@ query project ($id: ID!) {
     slug {
       current
     }
+    projectInfo {
+      location {
+        title
+      }
+      startYear
+      endYear
+      size
+      client {
+        title
+      }
+      collaborators {
+        title
+      }
+    }
     intro
     _rawBody
+    credits
     contactperson {
       name
       title
@@ -191,6 +230,9 @@ query project ($id: ID!) {
     font-weight: 500;
     margin-bottom: var(--spacing-sitepadding);
   }
+  &-intro {
+    font-size: var(--font-size-xxl);
+  }
   &-image {
     position: relative;
   }
@@ -211,6 +253,11 @@ query project ($id: ID!) {
     align-items: center;
     justify-content: center;
   }
+}
+.credits {
+  font-style: italic;
+  margin-top: 1rem;
+  font-size: var(--font-size-xs);
 }
 .contactperson {
   list-style: none;

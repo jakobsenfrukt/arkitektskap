@@ -26,11 +26,6 @@ export default {
       description: 'En setning om prosjektet som dukker opp på forsiden + som overskrift på prosjektsiden.'
     },
     {
-      name: 'year',
-      title: 'Årstall',
-      type: 'number',
-    },
-    {
       title: 'Rangering', 
       name: 'rating',
       type: 'string',
@@ -46,6 +41,12 @@ export default {
       validation: Rule => Rule.required()
     },
     {
+      title: 'Prosjektinfo',
+      name: 'projectInfo',
+      type: 'projectInfo',
+      validation: Rule => Rule.required()
+    },
+    {
       name: 'mainImage',
       title: 'Hovedbilde',
       type: 'figure'
@@ -54,6 +55,11 @@ export default {
       name: 'body',
       title: 'Brødtekst',
       type: 'body',
+    },
+    {
+      name: 'credits',
+      title: 'Fotokreditering o.l.',
+      type: 'string'
     },
     {
       title: 'Relaterte prosjekter',

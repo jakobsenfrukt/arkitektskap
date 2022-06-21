@@ -11,11 +11,15 @@ import about from './documents/about'
 import contact from './documents/contact'
 import project from './documents/project'
 import person from './documents/person'
+import location from './documents/location'
+import collaborator from './documents/collaborator'
+import client from './documents/client'
 
 import body from './objects/body'
 import simpleBody from './objects/simpleBody'
 import figure from './objects/figure'
 import figureCaptioned from './objects/figureCaptioned'
+import projectInfo from './objects/projectInfo'
 
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -33,11 +37,15 @@ export default createSchema({
     contact,
     project,
     person,
+    location,
+    collaborator,
+    client,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     body,
     simpleBody,
     figure,
-    figureCaptioned
+    figureCaptioned,
+    projectInfo
   ]),
 })
