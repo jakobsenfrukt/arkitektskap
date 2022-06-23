@@ -58,28 +58,15 @@ export default {
             ? this.palette.lightVibrant.background
             : "var(--color-white)",
         };
-      } else if (this.$static.settings.themePalette) {
-        const palette = this.$static.settings.themePalette;
+      } else {
         return {
-          "--color-background-light": palette.lightMuted
-            ? palette.lightMuted.background
-            : "var(--color-white)",
-          "--color-text-light": palette.light.textColor
-            ? palette.light.textColor.background
-            : "var(--color-white)",
-          "--color-detail-light": palette.light.detailColor
-            ? palette.light.detailColor.background
-            : "var(--color-black)",
+          "--color-background-light": "var(--color-white)",
+          "--color-text-light": "var(--color-black)",
+          "--color-detail-light": "var(--color-black)",
 
-          "--color-background-dark": palette.dark.bgColor
-            ? palette.dark.bgColor.background
-            : "var(--color-white)",
-          "--color-text-dark": palette.dark.textColor
-            ? palette.dark.textColor.background
-            : "var(--color-white)",
-          "--color-detail-dark": palette.dark.detailColor
-            ? palette.dark.detailColor.background
-            : "var(--color-white)",
+          "--color-background-dark": "var(--color-black)",
+          "--color-text-dark": "var(--color-white)",
+          "--color-detail-dark": "var(--color-white)",
         };
       }
     },
