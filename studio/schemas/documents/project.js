@@ -63,22 +63,6 @@ export default {
       type: 'string'
     },
     {
-      title: 'Relaterte prosjekter',
-      name: 'relatedProjects',
-      type: 'array',
-      of: [
-        {
-          title: 'Prosjekt',
-          type: 'reference',
-          to: [
-            {
-              type: 'project'
-            }
-          ]
-        }
-      ]
-    },
-    {
       title: 'Kontaktperson(er)',
       name: 'contactperson',
       type: 'array',
@@ -105,6 +89,22 @@ export default {
           to: [
             {
               type: 'person'
+            }
+          ]
+        }
+      ]
+    },
+    {
+      title: 'Relaterte prosjekter',
+      name: 'relatedProjects',
+      type: 'array',
+      of: [
+        {
+          title: 'Prosjekt',
+          type: 'reference',
+          to: [
+            {
+              type: 'project'
             }
           ]
         }
