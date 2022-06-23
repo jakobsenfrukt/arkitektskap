@@ -43,7 +43,24 @@ export default {
       name: 'image',
       title: 'Portrett',
       type: 'figure'
-    }
+    },
+    {
+      title: 'Fremhevede prosjekter',
+      description: 'Havner først i listen over hvilke prosjekter personen har vært involvert i. De øvrige prosjektene personen er markert i via prosjektsidene hentes ut automatisk.',
+      name: 'featuredProjects',
+      type: 'array',
+      of: [
+        {
+          title: 'Prosjekt',
+          type: 'reference',
+          to: [
+            {
+              type: 'project'
+            }
+          ]
+        }
+      ]
+    },
   ],
 
   preview: {
