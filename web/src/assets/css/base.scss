@@ -125,3 +125,13 @@ strong {
   font-weight: 500;
   font-family: var(--font-mono);
 }
+
+.site-footer .contact-list a {
+  text-decoration: none;
+  &:hover {text-decoration: none;}
+}
+.site-footer .contact-list .block-content p,
+.site-footer .contact-list p.block-content,
+.site-footer .contact-list p {
+  line-height: 1.5em;
+}
