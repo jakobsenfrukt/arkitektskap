@@ -24,7 +24,7 @@
       <li class="social" aria-label="Sosiale medier">
         <a
           v-if="$static.contact.facebook"
-          :href="`https://facebook.com/${$static.contact.facebook}`"
+          :href="`${$static.contact.facebook}`"
           target="_blank"
           class="facebook"
           ><span class="icon"
@@ -33,7 +33,7 @@
         >
         <a
           v-if="$static.contact.instagram"
-          :href="`https://instagram.com/${$static.contact.instagram}`"
+          :href="`${$static.contact.instagram}`"
           target="_blank"
           class="instagram"
           ><span class="icon"
