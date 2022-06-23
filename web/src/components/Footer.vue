@@ -103,6 +103,9 @@ export default {
   justify-content: center;
   font-family: var(--font-mono);
   font-size: var(--font-size-m);
+
+  /*background: var(--color-text);
+  color: var(--color-background);*/
 }
 .intro {
   margin-bottom: calc(var(--spacing-sitepadding) * 6);

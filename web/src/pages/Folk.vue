@@ -1,7 +1,8 @@
 <template>
   <Layout>
+    <!--p class="intro" v-html="replaceLogo($page.people.intro)"></p>-->
     <p class="intro">
-      <!--{{ $page.people.intro }}-->En introtekst til folka i
+      En introtekst til folka i
       <strong>arkitektskap</strong> kommer her.
     </p>
     <PersonGrid :people="$page.people" />

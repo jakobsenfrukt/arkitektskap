@@ -294,10 +294,4 @@ query person ($id: ID!) {
     }
   }
 }
-.related-heading {
-  grid-column: 1 / -1;
-  font-size: var(--font-size-s);
-  font-weight: 500;
-  font-family: var(--font-mono);
-}
 </style>

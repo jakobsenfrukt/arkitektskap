@@ -79,16 +79,22 @@
         </li>
       </ul>
     </div>
+    <h2 class="related-heading" v-if="$page.project.relatedProjects.length">
+      Relaterte prosjekter
+    </h2>
+    <RelatedProjects :projects="$page.project.relatedProjects" />
   </Layout>
 </template>
 
 <script>
 import BlockContent from "~/components/tools/BlockContent";
 import PersonItem from "~/components/PersonItemSmall";
+import RelatedProjects from "~/components/RelatedProjects";
 
 export default {
   components: {
     BlockContent,
+    RelatedProjects,
     PersonItem,
   },
   metaInfo() {
@@ -213,6 +219,38 @@ query project ($id: ID!) {
       mainImage {
         asset {
           url
+          metadata {
+            palette {
+              darkMuted {
+                background
+                foreground
+              }
+              darkVibrant {
+                background
+                foreground
+              }
+              dominant {
+                background
+                foreground
+              }
+              lightMuted {
+                background
+                foreground
+              }
+              lightVibrant {
+                background
+                foreground
+              }
+              muted {
+                background
+                foreground
+              }
+              vibrant {
+                background
+                foreground
+              }
+            }
+          }
         }
         alt
       }
