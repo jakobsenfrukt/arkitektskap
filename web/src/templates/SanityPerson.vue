@@ -30,15 +30,57 @@
         </div>
       </div>
     </div>
+    <h2
+      class="related-heading"
+      v-if="
+        combinedProjects($page.person.featuredProjects, relatedProjects())
+          .length
+      "
+    >
+      {{ firstName($page.person.name) }} har blant annet jobbet med
+    </h2>
+    <RelatedProjects
+      :projects="
+        combinedProjects($page.person.featuredProjects, relatedProjects())
+      "
+    />
   </Layout>
 </template>
 
 <script>
 import BlockContent from "~/components/tools/BlockContent";
+import RelatedProjects from "~/components/RelatedProjects";
 
 export default {
   components: {
     BlockContent,
+    RelatedProjects,
+  },
+  methods: {
+    firstName() {
+      return this.$page.person.name.split(" ")[0];
+    },
+    relatedProjects() {
+      const allProjects = this.$page.projects.edges;
+      return allProjects
+        .filter((item) => {
+          if (!item.node.contactperson) {
+            return false;
+          }
+          return (
+            item.node.contactperson.some((item) => {
+              return item.name === this.$page.person.name;
+            }) ||
+            item.node.peopleInvolved.some((item) => {
+              return item.name === this.$page.person.name;
+            })
+          );
+        })
+        .map((item) => item.node);
+    },
+    combinedProjects(array1, array2) {
+      return array1.concat(array2);
+    },
   },
   metaInfo() {
     return {
@@ -110,8 +152,108 @@ query person ($id: ID!) {
       }
       alt
     }
-    slug {
-      current
+    featuredProjects {
+      title
+      intro
+      mainImage {
+        asset {
+          _id
+          url
+          metadata {
+            palette {
+              darkMuted {
+                background
+                foreground
+              }
+              darkVibrant {
+                background
+                foreground
+              }
+              dominant {
+                background
+                foreground
+              }
+              lightMuted {
+                background
+                foreground
+              }
+              lightVibrant {
+                background
+                foreground
+              }
+              muted {
+                background
+                foreground
+              }
+              vibrant {
+                background
+                foreground
+              }
+            }
+          }
+        }
+        alt
+      }
+      slug {
+        current
+      }
+    }
+  }
+  projects: allSanityProject(sortBy: "year") {
+    edges {
+      node {
+        id
+        title
+        slug {
+          current
+        }
+        rating
+        intro
+        mainImage {
+          asset {
+            url
+            metadata {
+              palette {
+                darkMuted {
+                  background
+                  foreground
+                }
+                darkVibrant {
+                  background
+                  foreground
+                }
+                dominant {
+                  background
+                  foreground
+                }
+                lightMuted {
+                  background
+                  foreground
+                }
+                lightVibrant {
+                  background
+                  foreground
+                }
+                muted {
+                  background
+                  foreground
+                }
+                vibrant {
+                  background
+                  foreground
+                }
+              }
+            }
+          }
+          alt
+        }
+        contactperson {
+          name
+        }
+        peopleInvolved {
+          name
+        }
+      }
     }
   }
 }
@@ -151,5 +293,11 @@ query person ($id: ID!) {
       }
     }
   }
+}
+.related-heading {
+  grid-column: 1 / -1;
+  font-size: var(--font-size-s);
+  font-weight: 500;
+  font-family: var(--font-mono);
 }
 </style>
