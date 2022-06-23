@@ -8,6 +8,11 @@ export default {
       name: 'intro',
       type: 'text',
       title: 'Intro'
-    }
+    },
+    {
+      name: 'body',
+      title: 'Brødtekst',
+      type: 'body',
+    },
   ]
 }

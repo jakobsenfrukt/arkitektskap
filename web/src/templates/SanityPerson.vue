@@ -132,12 +132,23 @@ query person ($id: ID!) {
     grid-column: span 6;
     order: 1;
   }
+  &-name {
+    font-size: var(--font-size-xl);
+  }
+  &-title {
+    font-style: italic;
+    font-size: var(--font-size-m);
+  }
   &-contact {
     font-family: var(--font-mono);
     margin: 4rem 0;
     a {
       display: block;
       margin-bottom: 0.6rem;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }

@@ -4,9 +4,9 @@
 
   --font-size-xs: .8rem;
   --font-size-s: 1rem;
-  --font-size-m: 1.5rem;
-  --font-size-l: 2rem;
-  --font-size-xl: 2.5rem;
+  --font-size-m: 1.6rem;
+  --font-size-l: 2.2rem;
+  --font-size-xl: 2.8rem;
   --font-size-xxl: 3.5rem;
 
   --spacing-sitepadding: 1.2rem;
@@ -24,16 +24,19 @@
   --color-background-light: var(--color-white);
   --color-text-light: var(--color-black);
   --color-detail-light: var(--color-main);
+  --color-hover-light: var(--color-main);
 
   --color-background-dark: var(--color-black);
   --color-text-dark: var(--color-white);
   --color-detail-dark: var(--color-main);
+  --color-hover-dark: var(--color-main);
 }
 
 body {
   --color-background: var(--color-background-light);
   --color-text: var(--color-text-light);
   --color-highlight: var(--color-highlight-light);
+  --color-hover: var(--color-hover-light);
 }
 
 // dark theme
@@ -41,6 +44,7 @@ body[data-theme="dark"] {
   --color-background: var(--color-background-dark);
   --color-text: var(--color-text-dark);
   --color-highlight: var(--color-highlight-dark);
+  --color-hover: var(--color-hover-dark);
 
   --cursor-default: url("/assets/graphics/cursor-default-dark.png"), auto;
   --cursor-pointer: url("/assets/graphics/cursor-pointer-dark.png"), auto !important;
@@ -48,8 +52,6 @@ body[data-theme="dark"] {
 
 @media (max-width: 800px) {
   :root {
-    --font-size-l: 1.3rem;
-
     --spacing-sitepadding: 1.2rem;
     --border-width: 0.12em;
   }

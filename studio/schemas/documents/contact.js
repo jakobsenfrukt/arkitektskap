@@ -5,6 +5,11 @@ export default {
   __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'], 
   fields: [
     {
+      name: 'intro',
+      type: 'text',
+      title: 'Intro'
+    },
+    {
       name: 'address',
       type: 'simpleBody',
       title: 'Adresse'

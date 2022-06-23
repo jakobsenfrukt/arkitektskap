@@ -8,10 +8,16 @@ import DefaultLayout from '~/layouts/Default.vue'
 // Import image url builder
 import urlForImage from './utils/urlForImage'
 
+// Import function that replaces logo
+import replaceLogo from './utils/replaceLogo'
+
 export default function (Vue, { router, head, isClient }) {
   // Set default layout as a global component
   Vue.component('Layout', DefaultLayout)
 
   // Inject global image URL builder
   Vue.prototype.$urlForImage = urlForImage
+
+  // Replaces logo where arkitektskap is mentioned
+  Vue.prototype.$replaceLogo = replaceLogo
 }

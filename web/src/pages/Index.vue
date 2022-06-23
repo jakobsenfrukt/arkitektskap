@@ -1,10 +1,6 @@
 <template>
   <Layout>
-    <p class="intro">
-      <!--{{ $page.frontpage.intro }}-->Gjennom våre prosjekter skal
-      <strong>arkitektskap</strong> bidra til å skape varige verdier for både
-      mennesker og natur.
-    </p>
+    <p class="intro" v-html="$replaceLogo($page.frontpage.intro)"></p>
     <Filtering />
     <ProjectGrid :projects="$page.projects" />
   </Layout>

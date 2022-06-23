@@ -1,5 +1,15 @@
 <template>
-  <li class="project" :class="`size-${project.rating}`">
+  <li
+    class="project"
+    :class="`size-${project.rating}`"
+    :style="
+      `--color-hover-light: ${
+        project.mainImage.asset.metadata.palette.darkMuted.background
+      }; --color-hover-dark: ${
+        project.mainImage.asset.metadata.palette.lightMuted.background
+      }`
+    "
+  >
     <div class="project-image">
       <img
         v-if="project.mainImage"
@@ -12,7 +22,7 @@
         :alt="project.mainImage.alt"
       />
     </div>
-    <ul class="palette">
+    <!--<ul class="palette">
       <li
         v-for="(color, index) in project.mainImage.asset.metadata.palette"
         :key="`color-${index}`"
@@ -28,7 +38,7 @@
           {{ color.background }}
         </div>
       </li>
-    </ul>
+    </ul>-->
     <div class="project-text">
       <h2 class="project-title">{{ project.title }}</h2>
       <p class="project-intro">
@@ -70,6 +80,7 @@ export default {
   grid-column: span 6;
   position: relative;
   &-text {
+    transition: color 0.6s ease;
   }
   &-image {
     margin-bottom: var(--spacing-sitepadding);
@@ -85,6 +96,9 @@ export default {
         transition: transform 0.8s ease;
         transform: scale(1.04);
       }
+    }
+    .project-text {
+      color: var(--color-hover);
     }
   }
   &-title {
@@ -149,6 +163,18 @@ export default {
     .project-intro {
       font-size: var(--font-size-m);
     }
+  }
+}
+
+body {
+  .project-text {
+    --color-hover: var(--color-hover-light);
+  }
+}
+
+body[data-theme="dark"] {
+  .project-text {
+    --color-hover: var(--color-hover-dark);
   }
 }
 </style>

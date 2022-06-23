@@ -70,12 +70,22 @@ img {
 
 strong {
   font-family: var(--font-mono);
-  font-weight: 700;
+  font-weight: 500;
+  display: inline-block;
+  margin: 0 .1em;
+}
+
+.logo {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  display: inline-block;
+  margin: 0 .1em;
 }
 
 .intro {
   grid-column: 1 / span 12;
-  font-size: var(--font-size-xl);
+  font-family: var(--font-serif);
+  font-size: var(--font-size-xxl);
   max-width: 20em;
   margin: 4rem 0 5rem;
   line-height: 1.2;
