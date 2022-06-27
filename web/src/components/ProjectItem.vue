@@ -77,7 +77,7 @@ export default {
 
 <style lang="scss" scoped>
 .project {
-  grid-column: span 6;
+  grid-column: span 12;
   position: relative;
   &-text {
     transition: color 0.6s ease;
@@ -177,6 +177,17 @@ body {
 body[data-theme="dark"] {
   .project-text {
     --color-hover: var(--color-hover-dark);
+  }
+}
+
+@media (min-width: 600px) {
+  .project {
+    grid-column: span 6;
+  }
+}
+@media (min-width: 1940px) {
+  .project {
+    grid-column: span 4;
   }
 }
 </style>
