@@ -18,7 +18,7 @@
           "
           :alt="$page.project.mainImage.alt"
         />
-        <ul class="palette">
+        <!--<ul class="palette">
           <li
             v-for="(color, index) in $page.project.mainImage.asset.metadata
               .palette"
@@ -35,7 +35,7 @@
               {{ color.background }}
             </div>
           </li>
-        </ul>
+        </ul>-->
       </div>
       <ul class="project-info" v-if="$page.project.projectInfo">
         <li>Sted: {{ $page.project.projectInfo.location.title }}</li>
@@ -45,22 +45,38 @@
             >&mdash;{{ $page.project.projectInfo.endYear }}</template
           >
         </li>
-        <li>
-          Oppdragsgiver:
-          <span
-            v-for="(client, index) in $page.project.projectInfo.client"
-            :key="`client-${index}`"
-            >{{ client.title }}</span
+        <li v-if="$page.project.projectInfo.client.length">
+          <template v-if="$page.project.projectInfo.client.length > 1"
+            >Oppdragsgivere:</template
           >
+          <template v-else
+            >Oppdragsgiver:</template
+          >
+          <ul>
+            <li
+              v-for="(client, index) in $page.project.projectInfo.client"
+              :key="`client-${index}`"
+            >
+              {{ client.title }}
+            </li>
+          </ul>
         </li>
-        <li>
-          Samarbeidspartnere:
-          <span
-            v-for="(collaborator, index) in $page.project.projectInfo
-              .collaborators"
-            :key="`collaborator-${index}`"
-            >{{ collaborator.title }}</span
+        <li v-if="$page.project.projectInfo.collaborators.length">
+          <template v-if="$page.project.projectInfo.collaborators.length > 1"
+            >Samarbeidspartnere:</template
           >
+          <template v-else
+            >Samarbeidspartner:</template
+          >
+          <ul>
+            <li
+              v-for="(collaborator, index) in $page.project.projectInfo
+                .collaborators"
+              :key="`collaborator-${index}`"
+            >
+              {{ collaborator.title }}
+            </li>
+          </ul>
         </li>
       </ul>
       <div class="project-content">
@@ -282,6 +298,21 @@ query project ($id: ID!) {
     font-family: var(--font-mono);
     font-weight: 500;
     font-size: var(--font-size-s);
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      li {
+        display: inline-block;
+        &:before {
+          content: ", ";
+        }
+        &:first-of-type:before {
+          content: "";
+        }
+      }
+    }
   }
   &-content {
     margin: calc(var(--spacing-sitepadding) * 2) 0
