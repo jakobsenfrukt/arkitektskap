@@ -7,18 +7,14 @@
           v-if="$static.contact.email"
           :href="`tel:${$static.contact.phone}`"
           class="phone"
-          ><span class="icon"
-            ><img src="/assets/graphics/dingbats/phone.svg"/></span
-          ><span>{{ $static.contact.phone }}</span></a
+          ><Dingbats icon="phone" /><span>{{ $static.contact.phone }}</span></a
         >
         <a
           v-if="$static.contact.phone"
           :href="`mailto:${$static.contact.email}`"
           target="_blank"
           class="email"
-          ><span class="icon"
-            ><img src="/assets/graphics/dingbats/email.svg"/></span
-          ><span>{{ $static.contact.email }}</span></a
+          ><Dingbats icon="email" /><span>{{ $static.contact.email }}</span></a
         >
       </li>
       <li class="social" aria-label="Sosiale medier">
@@ -27,27 +23,21 @@
           :href="`${$static.contact.facebook}`"
           target="_blank"
           class="facebook"
-          ><span class="icon"
-            ><img src="/assets/graphics/dingbats/facebook.svg"/></span
-          ><span>Facebook</span></a
+          ><Dingbats icon="facebook" /><span>Facebook</span></a
         >
         <a
           v-if="$static.contact.instagram"
           :href="`${$static.contact.instagram}`"
           target="_blank"
           class="instagram"
-          ><span class="icon"
-            ><img src="/assets/graphics/dingbats/instagram.svg"/></span
-          ><span>Instagram</span></a
+          ><Dingbats icon="instagram" /><span>Instagram</span></a
         >
         <a
           v-if="$static.contact.linkedin"
           :href="`https://linkedin.com/${$static.contact.linkedin}`"
           target="_blank"
           class="linkedin"
-          ><span class="icon"
-            ><img src="/assets/graphics/dingbats/linkedin.svg"/></span
-          ><span>Linkedin</span></a
+          ><Dingbats icon="linkedin" /><span>Linkedin</span></a
         >
       </li>
       <li
@@ -55,9 +45,7 @@
         aria-label="Adresse"
         class="address"
       >
-        <span class="icon"
-          ><img src="/assets/graphics/dingbats/earth.svg"
-        /></span>
+        <Dingbats icon="earth" class="icon" />
         <block-content
           :blocks="$static.contact._rawAddress"
           v-if="$static.contact._rawAddress"
@@ -85,11 +73,13 @@ query {
 <script>
 import BlockContent from "~/components/tools/BlockContent";
 import Totop from "@/components/tools/Totop.vue";
+import Dingbats from "@/components/tools/Dingbats.vue";
 
 export default {
   components: {
     BlockContent,
     Totop,
+    Dingbats,
   },
 };
 </script>
