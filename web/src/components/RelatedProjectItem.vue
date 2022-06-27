@@ -60,7 +60,7 @@ export default {
 
 <style lang="scss" scoped>
 .project {
-  grid-column: span 4;
+  grid-column: span 3;
   position: relative;
   &-text {
     transition: color 0.6s ease;
@@ -102,7 +102,7 @@ export default {
     margin-bottom: 0.6rem;
   }
   &-intro {
-    font-size: var(--font-size-l);
+    font-size: var(--font-size-m);
     font-family: var(--font-serif);
     line-height: 1.2;
   }

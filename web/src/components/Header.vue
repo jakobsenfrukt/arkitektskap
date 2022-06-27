@@ -1,36 +1,55 @@
 <template>
   <header class="site-header">
     <!--<g-link class="logo" to="/"><Logo /></g-link>-->
-    <nav class="site-nav">
-      <ul>
-        <li>
-          <g-link class="nav-link logo" to="/om">Arkitektskap</g-link>
-        </li>
-        <li><g-link class="nav-link" to="/folk">Folk</g-link></li>
-        <li><g-link class="nav-link" to="/">Prosjekter</g-link></li>
-        <li>
-          <span class="nav-link anchor" @click="toAnchor('#kontakt')"
-            >Kontakt</span
-          >
-        </li>
-        <li class="theme"><ToggleTheme /></li>
-      </ul>
-    </nav>
+    <div class="site-header-wrapper" :class="{ inview: isInView }">
+      <nav class="site-nav">
+        <ul>
+          <li>
+            <g-link class="nav-link logo" to="/om"
+              ><span
+                v-for="(block, index) in getLogoBlocks('arkitektskap')"
+                :key="index"
+                class="logo-block"
+                :style="`animation-delay: ${10 / index}s`"
+                >{{ block }}</span
+              ></g-link
+            >
+          </li>
+          <li><g-link class="nav-link" to="/folk">Folk</g-link></li>
+          <li><g-link class="nav-link" to="/">Prosjekter</g-link></li>
+          <li>
+            <span class="nav-link anchor" @click="toAnchor('#kontakt')"
+              >Kontakt</span
+            >
+          </li>
+          <li class="theme"><ToggleTheme /></li>
+        </ul>
+      </nav>
+    </div>
+
+    <IntersectionObserver
+      id="observer"
+      class="observer"
+      @on-enter-viewport="onEnterViewport"
+    ></IntersectionObserver>
   </header>
 </template>
 
 <script>
 import Logo from "~/components/Logo.vue";
 import ToggleTheme from "~/components/tools/ToggleTheme.vue";
+import IntersectionObserver from "~/components/tools/IntersectionObserver";
 
 export default {
   components: {
     Logo,
     ToggleTheme,
+    IntersectionObserver,
   },
   data() {
     return {
       menuOpen: false,
+      isInView: false,
     };
   },
   methods: {
@@ -44,16 +63,47 @@ export default {
     toggleMenu() {
       this.menuOpen = !this.menuOpen;
     },
+    onEnterViewport(value) {
+      this.isInView = value;
+    },
+    getLogoBlocks(string) {
+      let arr = string.split("");
+      console.log(arr);
+      return arr;
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.site-header {
-  padding: var(--spacing-sitepadding);
+.site-header-wrapper {
+  padding: calc(var(--spacing-sitepadding) * 0.5) var(--spacing-sitepadding);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+  background: var(--color-background);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-m);
+  transition: padding 0.3s ease-in-out, color 1s ease-in-out,
+    background-color 1.2s ease-in-out;
+
+  &.inview {
+    padding: calc(var(--spacing-sitepadding) * 0.25) var(--spacing-sitepadding);
+
+    .logo {
+      &-block {
+        //animation: fadeOut 0.3s linear forwards;
+        &:first-of-type {
+          animation: none;
+        }
+      }
+    }
+  }
 }
 .site-nav {
   width: 100%;
@@ -65,13 +115,11 @@ export default {
     gap: 1rem;
     align-items: center;
     justify-content: space-between;
-    font-family: var(--font-mono);
-    font-size: var(--font-size-m);
     text-transform: lowercase;
   }
 }
 .nav-link {
-  color: var(--color-text);
+  color: currentColor;
   margin-right: 1rem;
   &:hover {
     cursor: var(--cursor-pointer);
@@ -83,5 +131,19 @@ export default {
 }
 .theme {
   width: 1.6rem;
+}
+.observer {
+  position: absolute;
+  top: 110vh;
+  height: 100%;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 </style>

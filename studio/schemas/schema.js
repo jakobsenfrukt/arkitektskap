@@ -10,6 +10,7 @@ import frontpage from './documents/frontpage'
 import about from './documents/about'
 import contact from './documents/contact'
 import project from './documents/project'
+import category from './documents/category'
 import person from './documents/person'
 import location from './documents/location'
 import collaborator from './documents/collaborator'
@@ -36,6 +37,7 @@ export default createSchema({
     about,
     contact,
     project,
+    category,
     person,
     location,
     collaborator,

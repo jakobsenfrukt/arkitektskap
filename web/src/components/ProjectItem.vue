@@ -84,9 +84,11 @@ export default {
   }
   &-image {
     margin-bottom: var(--spacing-sitepadding);
+    max-height: 80vh;
     overflow: hidden;
 
     img {
+      object-fit: cover;
       transition: transform 1s ease;
     }
   }

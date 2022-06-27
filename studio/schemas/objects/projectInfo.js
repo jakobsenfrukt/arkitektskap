@@ -62,5 +62,24 @@ export default {
         }
       ]
     },
+    {
+      title: 'Kategori',
+      name: 'category',
+      type: 'array',
+      of: [
+        {
+          title: 'Kategori',
+          type: 'reference',
+          to: [
+            {
+              type: 'category',
+            }
+          ],
+          options: {
+            disableNew: true,
+          }
+        }
+      ]
+    },
   ]
 }

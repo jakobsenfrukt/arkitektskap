@@ -10,7 +10,7 @@
         over <span class="number">{{ getActiveYears() }}</span> år
       </li>
       <li>
-        i <span class="number">{{ $page.locations.edges.length }}</span> byer
+        på <span class="number">{{ $page.locations.edges.length }}</span> steder
       </li>
       <li>
         for <span class="number">{{ $page.clients.edges.length }}</span> ulike
@@ -21,7 +21,11 @@
         <span class="number">{{ $page.people.edges.length }}</span> folk
       </li>
       <li>
-        som samarbeider på tvers med
+        som snakker
+        <span class="number">{{ $page.people.edges.length }}</span> språk
+      </li>
+      <li>
+        og samarbeider på tvers med
         <span class="number">{{ $page.collaborators.edges.length }}</span>
         samarbeidspartnere
       </li>

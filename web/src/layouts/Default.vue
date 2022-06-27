@@ -90,7 +90,7 @@ export default {
 
 <style lang="scss" scoped>
 .layout {
-  padding: var(--spacing-m);
+  padding-top: 3rem;
 }
 
 .site-main {

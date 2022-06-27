@@ -1,3 +1,3 @@
-const replaceLogo = (str) => str.replaceAll('arkitektskap', `<a class="logo" href="/om">arkitektskap</a>`);
+const replaceLogo = (str) => str.replaceAll('arkitektskap', `<span class="logo">arkitektskap</span>`);
 
 export default replaceLogo
