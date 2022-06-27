@@ -75,10 +75,7 @@ export default {
   margin-right: 1rem;
   &:hover {
     cursor: var(--cursor-pointer);
-    text-decoration: underline;
-    text-underline-position: below;
-    text-underline-offset: 0.04em;
-    text-decoration-thickness: var(--border-width);
+    text-decoration: none;
   }
   &.logo {
     font-family: var(--font-mono);
