@@ -38,11 +38,26 @@
         </ul>-->
       </div>
       <ul class="project-info" v-if="$page.project.projectInfo">
-        <li>Sted: {{ $page.project.projectInfo.location.title }}</li>
+        <li v-if="$page.project.projectInfo.category.length">
+          Hva:
+          <ul>
+            <li
+              v-for="(category, index) in $page.project.projectInfo.category"
+              :key="`category-${index}`"
+            >
+              {{ category.title }}
+            </li>
+          </ul>
+        </li>
+        <li>Hvor:<br />{{ $page.project.projectInfo.location.title }}</li>
         <li>
-          År: {{ $page.project.projectInfo.startYear
-          }}<template v-if="$page.project.projectInfo.endYear"
-            >&mdash;{{ $page.project.projectInfo.endYear }}</template
+          Når:<br /><template v-if="$page.project.projectInfo.endYear"
+            >{{ $page.project.projectInfo.startYear }}&mdash;{{
+              $page.project.projectInfo.endYear
+            }}</template
+          ><template v-else>
+            Startet
+            {{ $page.project.projectInfo.startYear }} (pågående)</template
           >
         </li>
         <li v-if="$page.project.projectInfo.client.length">
@@ -193,6 +208,9 @@ query project ($id: ID!) {
         title
       }
       collaborators {
+        title
+      }
+      category {
         title
       }
     }
