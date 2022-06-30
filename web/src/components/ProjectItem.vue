@@ -155,7 +155,7 @@ export default {
     gap: var(--spacing-sitepadding);
     .project-image {
       grid-column: span 1;
-      min-height: 100%;
+      //min-height: 100%;
 
       img {
         height: 100%;
