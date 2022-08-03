@@ -21,6 +21,7 @@ import simpleBody from './objects/simpleBody'
 import figure from './objects/figure'
 import figureCaptioned from './objects/figureCaptioned'
 import projectInfo from './objects/projectInfo'
+import gallery from './objects/gallery'
 
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -48,6 +49,7 @@ export default createSchema({
     simpleBody,
     figure,
     figureCaptioned,
-    projectInfo
+    projectInfo,
+    gallery
   ]),
 })

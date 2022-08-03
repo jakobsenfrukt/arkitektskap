@@ -95,6 +95,11 @@ export default {
       ]
     },
     {
+      title: 'Bildegalleri',
+      name: 'gallery',
+      type: 'gallery'
+    },
+    {
       title: 'Relaterte prosjekter',
       name: 'relatedProjects',
       type: 'array',
