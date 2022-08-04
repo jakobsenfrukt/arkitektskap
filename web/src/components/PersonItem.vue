@@ -5,7 +5,7 @@
         v-if="person.image"
         :src="
           $urlForImage(person.image, $static.metadata.sanityOptions)
-            .width(600)
+            .width(400)
             .height(400)
             .auto('format')
             .url()
