@@ -60,7 +60,14 @@
         </li>
         <li v-if="project.projectInfo.category.length">
           Hva:<br />
-          {{ project.projectInfo.category[0].title }}
+          <ul class="project-categories">
+            <li
+              v-for="(category, index) in project.projectInfo.category"
+              :key="`category-${index}`"
+            >
+              {{ category.title }}
+            </li>
+          </ul>
         </li>
       </ul>
     </div>
@@ -170,6 +177,11 @@ export default {
     margin: 0 0 1rem;
     padding: 0;
     align-self: flex-end;
+  }
+  &-categories {
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
   &-link {
     position: absolute;
