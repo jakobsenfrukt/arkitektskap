@@ -48,6 +48,19 @@
     <g-link class="project-link" :to="`/prosjekter/${project.slug.current}`"
       >Link</g-link
     >
+
+    <!--<CursorFriend
+      v-if="isInView"
+      :text="`Les mer om ${project.title}`"
+      :id="project.id"
+      class="cursorfriend"
+    />-->
+
+    <IntersectionObserver
+      :id="`observer-${project.id}`"
+      class="observer"
+      @on-enter-viewport="onEnterViewport"
+    ></IntersectionObserver>
   </li>
 </template>
 
@@ -64,13 +77,30 @@ query {
 
 <script>
 import BlockContent from "@/components/tools/BlockContent";
+import IntersectionObserver from "@/components/tools/IntersectionObserver";
+import CursorFriend from "@/components/tools/CursorFriend.vue";
 
 export default {
   components: {
     BlockContent,
+    IntersectionObserver,
+    CursorFriend,
   },
   props: {
     project: Object,
+  },
+  data() {
+    return {
+      isInView: false,
+    };
+  },
+  methods: {
+    onEnterViewport(value) {
+      this.isInView = value;
+      if (value === false) {
+        return;
+      }
+    },
   },
 };
 </script>
@@ -92,15 +122,12 @@ export default {
       transition: transform 1s ease;
     }
   }
+  .cursorfriend {
+    display: none;
+  }
   &:hover {
-    .project-image {
-      img {
-        transition: transform 0.8s ease;
-        transform: scale(1.04);
-      }
-    }
-    .project-text {
-      color: var(--color-hover);
+    .cursorfriend {
+      display: block;
     }
   }
   &-title {
@@ -166,6 +193,15 @@ export default {
       font-size: var(--font-size-m);
     }
   }
+}
+
+.observer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  z-index: 0;
+  width: 10px;
 }
 
 body {

@@ -68,7 +68,6 @@ export default {
     },
     getLogoBlocks(string) {
       let arr = string.split("");
-      console.log(arr);
       return arr;
     },
   },

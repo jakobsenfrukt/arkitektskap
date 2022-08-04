@@ -1,45 +1,38 @@
 <template>
-  <svg
-    width="48"
-    height="78"
-    viewBox="0 0 48 78"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    class="cursorfriend"
-    :style="`--cursor-color: ${color}`"
-  >
-    <path
-      d="M5.5 14.16L34.62 45.99H20.85L31.19 67.74L26.02 70.16L15.34 48.04L5.49 56.8V14.16H5.5ZM0 0V14.16V56.8V69.06L9.16 60.91L13.56 56.99L21.07 72.55L23.43 77.44L28.35 75.14L33.52 72.72L38.53 70.37L36.15 65.37L29.55 51.49H34.61H47.1L38.67 42.28L9.55 10.45L0 0Z"
-      fill="black"
-    />
-  </svg>
+  <div class="cursorfriend" :class="`project-${id}`">
+    <div class="label">
+      <span>{{ text }}</span>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
   props: {
-    color: {
+    text: {
       type: String,
-      default: "black",
+      default: "Les mer",
     },
-  },
-  data() {
-    return {
-      isInView: false,
-    };
+    id: {
+      type: String,
+      default: "cursorfriend",
+    },
   },
   methods: {
     moveCursor(e) {
-      const cursorFriend = document.querySelector(".cursorfriend");
+      const cursorFriend = document.querySelector(".project-" + this.id);
       const mouseY = e.clientY;
       const mouseX = e.clientX;
 
-      cursorFriend.style.display = `block`;
-      cursorFriend.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+      cursorFriend.style.transform = `translate(${mouseX + 30}px, ${mouseY -
+        30}px)`;
     },
   },
   mounted() {
     window.addEventListener("mousemove", this.moveCursor);
+  },
+  beforeDestroy() {
+    window.removeEventListener("mousemove", this.moveCursor);
   },
 };
 </script>
@@ -50,8 +43,18 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  fill: var(--cursor-color);
 
-  display: none;
+  overflow: hidden;
+
+  .label {
+    background: #000;
+    color: #fff;
+    padding: 0 0.25rem;
+  }
+
+  span {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
+  }
 }
 </style>
