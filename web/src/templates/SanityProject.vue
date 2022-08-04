@@ -100,7 +100,9 @@
           v-if="$page.project._rawBody"
           class="block-content"
         />
-        <p class="credits">Foto: {{ $page.project.credits }}</p>
+        <p v-if="$page.project.credits" class="credits">
+          Foto: {{ $page.project.credits }}
+        </p>
       </div>
       <ul class="contactperson" v-if="$page.project.contactperson.length">
         <h2 v-if="$page.project.contactperson.length > 1">Kontaktpersoner</h2>
@@ -309,6 +311,7 @@ query project ($id: ID!) {
   &-intro {
     grid-column: 1 / -1;
     font-size: var(--font-size-xxl);
+    margin-bottom: 0;
   }
   &-image {
     grid-column: 1 / -1;
