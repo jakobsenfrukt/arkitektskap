@@ -102,7 +102,7 @@ export default {
     margin-bottom: 0.6rem;
   }
   &-intro {
-    font-size: var(--font-size-l);
+    font-size: var(--font-size-m);
     font-family: var(--font-serif);
     line-height: 1.2;
   }

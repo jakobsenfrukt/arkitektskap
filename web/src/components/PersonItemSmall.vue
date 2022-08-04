@@ -84,6 +84,9 @@ export default {
     justify-content: space-between;
     padding: 0.3rem 0;
   }
+  &-name {
+    font-size: var(--font-size-m);
+  }
   &-title {
     font-style: italic;
   }

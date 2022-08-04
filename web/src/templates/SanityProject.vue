@@ -38,9 +38,14 @@
         </ul>-->
       </div>
       <ul class="project-info" v-if="$page.project.projectInfo">
-        <li>Hvor:<br />{{ $page.project.projectInfo.location.title }}</li>
         <li>
-          Når:<br /><template v-if="$page.project.projectInfo.endYear"
+          <strong>Hvor:</strong><br />{{
+            $page.project.projectInfo.location.title
+          }}
+        </li>
+        <li>
+          <strong>Når:</strong><br /><template
+            v-if="$page.project.projectInfo.endYear"
             >{{ $page.project.projectInfo.startYear }}&mdash;{{
               $page.project.projectInfo.endYear
             }}</template
@@ -50,7 +55,7 @@
           >
         </li>
         <li v-if="$page.project.projectInfo.category.length">
-          Hva:
+          <strong>Hva:</strong>
           <ul>
             <li
               v-for="(category, index) in $page.project.projectInfo.category"
@@ -62,10 +67,10 @@
         </li>
         <li v-if="$page.project.projectInfo.client.length">
           <template v-if="$page.project.projectInfo.client.length > 1"
-            >Oppdragsgivere:</template
+            ><strong>Oppdragsgivere:</strong></template
           >
           <template v-else
-            >Oppdragsgiver:</template
+            ><strong>Oppdragsgiver:</strong></template
           >
           <ul>
             <li
@@ -78,10 +83,10 @@
         </li>
         <li v-if="$page.project.projectInfo.collaborators.length">
           <template v-if="$page.project.projectInfo.collaborators.length > 1"
-            >Samarbeidspartnere:</template
+            ><strong>Samarbeidspartnere:</strong></template
           >
           <template v-else
-            >Samarbeidspartner:</template
+            ><strong>Samarbeidspartner:</strong></template
           >
           <ul>
             <li
@@ -344,10 +349,12 @@ query project ($id: ID!) {
     list-style: none;
     margin: calc(var(--spacing-sitepadding) * 1) 0
       calc(var(--spacing-sitepadding) * 4);
-    padding: 0;
-    font-family: var(--font-mono);
-    font-weight: 500;
+    padding: 0 calc(var(--spacing-sitepadding) * 4) 0 0;
     font-size: var(--font-size-s);
+
+    strong {
+      margin: 0;
+    }
 
     li {
       margin-bottom: 1rem;
@@ -378,15 +385,17 @@ query project ($id: ID!) {
   grid-column: 1 / -1;
   list-style: none;
   padding: 0;
-  margin: calc(var(--spacing-sitepadding) * 2) 0;
+  margin: calc(var(--spacing-sitepadding) * 2) 0
+    calc(var(--spacing-sitepadding) * 4);
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--spacing-sitepadding);
-  h2 {
-    grid-column: 1 / -1;
-    font-family: var(--font-mono);
-    font-weight: 500;
-    font-size: var(--font-size-s);
-  }
+}
+h2 {
+  grid-column: 1 / -1;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: var(--font-size-l);
+  margin-bottom: calc(var(--spacing-sitepadding) * 1);
 }
 </style>

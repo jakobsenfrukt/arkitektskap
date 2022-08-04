@@ -37,12 +37,14 @@
           .length
       "
     >
-      {{ firstName($page.person.name) }} har blant annet jobbet med
+      {{ firstName($page.person.name) }} har blant annet jobbet med:
     </h2>
     <RelatedProjects
       :projects="
         combinedProjects($page.person.featuredProjects, relatedProjects())
       "
+      limit="4"
+      :person="$page.person.name"
     />
   </Layout>
 </template>
@@ -293,5 +295,13 @@ query person ($id: ID!) {
       }
     }
   }
+}
+h2 {
+  grid-column: 1 / -1;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: var(--font-size-l);
+  margin: calc(var(--spacing-sitepadding) * 4) 0
+    calc(var(--spacing-sitepadding) * 1);
 }
 </style>

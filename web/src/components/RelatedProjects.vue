@@ -2,7 +2,7 @@
   <div class="projects">
     <ul class="project-list">
       <ProjectItem
-        v-for="(project, index) in projects"
+        v-for="(project, index) in projects.slice(0, limit)"
         :key="index"
         :project="project"
       />
@@ -19,6 +19,7 @@ export default {
   },
   props: {
     projects: Array,
+    limit: 4,
   },
 };
 </script>
