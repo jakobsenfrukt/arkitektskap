@@ -59,7 +59,8 @@ export default {
     },
     {
       name: 'credits',
-      title: 'Fotokreditering o.l.',
+      title: 'Fotokreditering',
+      description: 'Skriv kun navn, "Foto:" kommer foran på nettsiden automatisk.',
       type: 'string'
     },
     {
@@ -79,6 +80,11 @@ export default {
       ]
     },
     {
+      title: 'Bildegalleri',
+      name: 'gallery',
+      type: 'gallery'
+    },
+    {
       title: 'Andre involverte',
       name: 'peopleInvolved',
       type: 'array',
@@ -93,11 +99,6 @@ export default {
           ]
         }
       ]
-    },
-    {
-      title: 'Bildegalleri',
-      name: 'gallery',
-      type: 'gallery'
     },
     {
       title: 'Relaterte prosjekter',
