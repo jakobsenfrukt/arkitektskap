@@ -38,17 +38,6 @@
         </ul>-->
       </div>
       <ul class="project-info" v-if="$page.project.projectInfo">
-        <li v-if="$page.project.projectInfo.category.length">
-          Hva:
-          <ul>
-            <li
-              v-for="(category, index) in $page.project.projectInfo.category"
-              :key="`category-${index}`"
-            >
-              {{ category.title }}
-            </li>
-          </ul>
-        </li>
         <li>Hvor:<br />{{ $page.project.projectInfo.location.title }}</li>
         <li>
           Når:<br /><template v-if="$page.project.projectInfo.endYear"
@@ -59,6 +48,17 @@
             Startet
             {{ $page.project.projectInfo.startYear }} (pågående)</template
           >
+        </li>
+        <li v-if="$page.project.projectInfo.category.length">
+          Hva:
+          <ul>
+            <li
+              v-for="(category, index) in $page.project.projectInfo.category"
+              :key="`category-${index}`"
+            >
+              {{ category.title }}
+            </li>
+          </ul>
         </li>
         <li v-if="$page.project.projectInfo.client.length">
           <template v-if="$page.project.projectInfo.client.length > 1"
@@ -100,7 +100,7 @@
           v-if="$page.project._rawBody"
           class="block-content"
         />
-        <p class="credits">{{ $page.project.credits }}</p>
+        <p class="credits">Foto: {{ $page.project.credits }}</p>
       </div>
       <ul class="contactperson" v-if="$page.project.contactperson.length">
         <h2 v-if="$page.project.contactperson.length > 1">Kontaktpersoner</h2>
@@ -296,19 +296,26 @@ query project ($id: ID!) {
 <style lang="scss" scoped>
 .project {
   grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--spacing-sitepadding);
   &-title {
+    grid-column: 1 / -1;
     font-size: var(--font-size-s);
     font-family: var(--font-mono);
     font-weight: 500;
     margin-bottom: var(--spacing-sitepadding);
   }
   &-intro {
+    grid-column: 1 / -1;
     font-size: var(--font-size-xxl);
   }
   &-image {
+    grid-column: 1 / -1;
     position: relative;
   }
   &-info {
+    grid-column: 1 / 5;
     list-style: none;
     margin: calc(var(--spacing-sitepadding) * 1) 0
       calc(var(--spacing-sitepadding) * 4);
@@ -317,28 +324,24 @@ query project ($id: ID!) {
     font-weight: 500;
     font-size: var(--font-size-s);
 
+    li {
+      margin-bottom: 1rem;
+    }
+
     ul {
       list-style: none;
       margin: 0;
       padding: 0;
       li {
-        display: inline-block;
-        &:before {
-          content: ", ";
-        }
-        &:first-of-type:before {
-          content: "";
-        }
+        display: block;
+        margin-bottom: 0;
       }
     }
   }
   &-content {
-    margin: calc(var(--spacing-sitepadding) * 2) 0
+    grid-column: 5 / span 7;
+    margin: calc(var(--spacing-sitepadding) * 1) 0
       calc(var(--spacing-sitepadding) * 4);
-    display: grid;
-    grid-template-columns: 1;
-    align-items: center;
-    justify-content: center;
   }
 }
 .credits {
@@ -347,6 +350,7 @@ query project ($id: ID!) {
   font-size: var(--font-size-xs);
 }
 .contactperson {
+  grid-column: 1 / -1;
   list-style: none;
   padding: 0;
   margin: calc(var(--spacing-sitepadding) * 2) 0;
