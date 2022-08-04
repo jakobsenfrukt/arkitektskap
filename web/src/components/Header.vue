@@ -80,19 +80,20 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1001;
-  background: var(--color-background);
   font-family: var(--font-mono);
   font-size: var(--font-size-m);
-  transition: padding 0.3s ease-in-out, color 1s ease-in-out,
-    background-color 1.2s ease-in-out;
 
   &.inview {
-    padding: calc(var(--spacing-sitepadding) * 0.25) var(--spacing-sitepadding);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-background);
 
     .logo {
       &-block {

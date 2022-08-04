@@ -27,6 +27,17 @@ query {
         }
         rating
         intro
+        projectInfo {
+          location {
+            title
+          }
+          startYear
+          endYear
+          size
+          category {
+            title
+          }
+        }
         mainImage {
           asset {
             url

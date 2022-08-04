@@ -44,6 +44,25 @@
       <p class="project-intro">
         {{ project.intro }}
       </p>
+      <ul class="project-info">
+        <li v-if="project.projectInfo.location.title">
+          Hvor:<br />
+          {{ project.projectInfo.location.title }}
+        </li>
+        <li>
+          Når:<br />
+          {{ project.projectInfo.startYear
+          }}<template v-if="project.projectInfo.endYear"
+            >&mdash;{{ project.projectInfo.endYear }}</template
+          ><template v-else>
+            (pågår)</template
+          >
+        </li>
+        <li v-if="project.projectInfo.category.length">
+          Hva:<br />
+          {{ project.projectInfo.category[0].title }}
+        </li>
+      </ul>
     </div>
     <g-link class="project-link" :to="`/prosjekter/${project.slug.current}`"
       >Link</g-link
@@ -141,7 +160,7 @@ export default {
     font-family: var(--font-serif);
     line-height: 1.2;
   }
-  &-meta {
+  &-info {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     font-family: var(--font-mono);
@@ -166,19 +185,19 @@ export default {
 
   &.size-3 {
     .project-intro {
-      font-size: var(--font-size-xl);
+      font-size: var(--font-size-xxl);
     }
   }
 
   &.size-2 {
     .project-intro {
-      font-size: var(--font-size-l);
+      font-size: var(--font-size-xl);
     }
   }
 
   &.size-1 {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr minmax(0, 1fr);
     gap: var(--spacing-sitepadding);
     .project-image {
       grid-column: span 1;
@@ -189,8 +208,18 @@ export default {
         object-fit: cover;
       }
     }
+    .project-text {
+      grid-column: span 1;
+    }
     .project-intro {
-      font-size: var(--font-size-m);
+      font-size: var(--font-size-l);
+    }
+    .project-info {
+      grid-template-columns: 1fr;
+
+      br {
+        display: none;
+      }
     }
   }
 }

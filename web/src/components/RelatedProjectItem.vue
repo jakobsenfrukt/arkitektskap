@@ -84,7 +84,7 @@ export default {
       transition: transform 1s ease;
     }
   }
-  &:hover {
+  /*&:hover {
     .project-image {
       img {
         transition: transform 0.8s ease;
@@ -94,7 +94,7 @@ export default {
     .project-text {
       color: var(--color-hover);
     }
-  }
+  }*/
   &-title {
     font-size: var(--font-size-s);
     font-family: var(--font-mono);
@@ -102,7 +102,7 @@ export default {
     margin-bottom: 0.6rem;
   }
   &-intro {
-    font-size: var(--font-size-m);
+    font-size: var(--font-size-l);
     font-family: var(--font-serif);
     line-height: 1.2;
   }

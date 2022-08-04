@@ -22,7 +22,10 @@ export default {
   },
   methods: {
     sortProjects(projects) {
-      return projects;
+      var sortedProjects = projects
+        .slice()
+        .sort((a, b) => b.node.rating - a.node.rating);
+      return sortedProjects;
     },
   },
 };
@@ -38,7 +41,8 @@ export default {
   padding: 0;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: var(--spacing-sitepadding);
+  column-gap: var(--spacing-sitepadding);
+  row-gap: calc(var(--spacing-sitepadding) * 4);
   align-items: center;
 }
 </style>
