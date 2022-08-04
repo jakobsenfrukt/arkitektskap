@@ -94,6 +94,7 @@
           </ul>
         </li>
       </ul>
+
       <div class="project-content">
         <BlockContent
           :blocks="$page.project._rawBody"
@@ -104,6 +105,12 @@
           Foto: {{ $page.project.credits }}
         </p>
       </div>
+
+      <ProjectGallery
+        v-if="$page.project.gallery && $page.project.gallery.images.length"
+        :images="$page.project.gallery.images"
+      />
+
       <ul class="contactperson" v-if="$page.project.contactperson.length">
         <h2 v-if="$page.project.contactperson.length > 1">Kontaktpersoner</h2>
         <h2 v-else>Kontaktperson</h2>
@@ -123,12 +130,14 @@
 import BlockContent from "~/components/tools/BlockContent";
 import PersonItem from "~/components/PersonItemSmall";
 import RelatedProjects from "~/components/RelatedProjects";
+import ProjectGallery from "@/components/ProjectGallery";
 
 export default {
   components: {
     BlockContent,
     RelatedProjects,
     PersonItem,
+    ProjectGallery,
   },
   metaInfo() {
     return {
@@ -219,6 +228,19 @@ query project ($id: ID!) {
     intro
     _rawBody
     credits
+    gallery {
+      images {
+        ... on SanityGalleryImage {
+          asset {
+            _id
+            url
+          }
+          alt
+          caption
+          columns
+        }
+      }
+    }
     contactperson {
       name
       title
