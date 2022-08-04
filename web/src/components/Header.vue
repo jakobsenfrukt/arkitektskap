@@ -94,6 +94,7 @@ export default {
     left: 0;
     right: 0;
     background: var(--color-background);
+    animation: slideDown 0.3s linear forwards;
 
     .logo {
       &-block {
@@ -136,6 +137,7 @@ export default {
   position: absolute;
   top: 110vh;
   height: 100%;
+  left: 50%;
 }
 
 @keyframes fadeOut {
@@ -144,6 +146,15 @@ export default {
   }
   to {
     opacity: 0;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
   }
 }
 </style>

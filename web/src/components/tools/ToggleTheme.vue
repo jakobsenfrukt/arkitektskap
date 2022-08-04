@@ -56,5 +56,9 @@ export default {
   &:focus {
     outline: none;
   }
+
+  .dingbat {
+    margin: 0;
+  }
 }
 </style>
