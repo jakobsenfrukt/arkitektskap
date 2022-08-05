@@ -86,7 +86,7 @@ export default {
   right: 0;
   z-index: 1001;
   font-family: var(--font-mono);
-  font-size: var(--font-size-m);
+  font-size: var(--font-size-s);
 
   &.inview {
     position: fixed;
@@ -131,7 +131,7 @@ export default {
   }
 }
 .theme {
-  width: 1.6rem;
+  width: 1.6em;
 }
 .observer {
   position: absolute;

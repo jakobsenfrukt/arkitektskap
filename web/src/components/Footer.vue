@@ -92,7 +92,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   font-family: var(--font-mono);
-  font-size: var(--font-size-m);
+  font-size: var(--font-size-s);
 
   /*background: var(--color-text);
   color: var(--color-background);*/
