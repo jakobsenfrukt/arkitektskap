@@ -19,7 +19,7 @@ export default {
   },
   props: {
     projects: Array,
-    limit: 4,
+    limit: Number,
   },
 };
 </script>
