@@ -8,10 +8,10 @@
   --font-size-xl: 2.8rem;
   --font-size-xxl: 3.4rem;
 
-  --spacing-s: 1rem;
+  --spacing-s: calc(var(--spacing-m) * 0.5);
   --spacing-m: 2rem;
-  --spacing-l: 6rem;
-  --spacing-xl: 12rem;
+  --spacing-l: calc(var(--spacing-m) * 3);
+  --spacing-xl: calc(var(--spacing-m) * 6);
   --spacing-sitepadding: 8rem;
   --border-width: 0.1em;
 
@@ -53,9 +53,22 @@ body[data-theme="dark"] {
   --cursor-pointer: url("/assets/graphics/cursor-pointer-dark.png"), auto !important;
 }
 
+@media (max-width: 1600px) {
+  :root {
+    --spacing-sitepadding: 4rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  :root {
+    --spacing-sitepadding: 2rem;
+  }
+}
+
 @media (max-width: 800px) {
   :root {
     --spacing-m: 1.2rem;
+    --spacing-sitepadding: 1rem;
     --border-width: 0.12em;
   }
 }

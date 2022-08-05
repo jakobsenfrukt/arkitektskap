@@ -117,10 +117,10 @@ export default {
   grid-column: 1 / -1;
 }
 .about-content {
-  grid-column: 1 / -1;
+  grid-column: 5 / span 7;
 }
 .about-numbers {
-  grid-column: 1 / -1;
+  grid-column: 1 / span 4;
   list-style: none;
   margin: 0;
   padding: 0;
