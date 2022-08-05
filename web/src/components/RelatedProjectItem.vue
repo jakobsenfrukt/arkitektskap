@@ -66,7 +66,7 @@ export default {
     transition: color 0.6s ease;
   }
   &-image {
-    margin-bottom: var(--spacing-sitepadding);
+    margin-bottom: var(--spacing-m);
     position: relative;
     width: 100%;
     padding-top: 100%;

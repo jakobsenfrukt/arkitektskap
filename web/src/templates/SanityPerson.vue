@@ -31,7 +31,7 @@
       </div>
     </div>
     <h2
-      class="related-heading"
+      class="section-heading"
       v-if="
         combinedProjects($page.person.featuredProjects, relatedProjects())
           .length
@@ -43,7 +43,7 @@
       :projects="
         combinedProjects($page.person.featuredProjects, relatedProjects())
       "
-      limit="4"
+      :limit="4"
       :person="$page.person.name"
     />
   </Layout>
@@ -267,7 +267,7 @@ query person ($id: ID!) {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: var(--spacing-sitepadding);
+  gap: var(--spacing-m);
   &-image {
     grid-column: span 6;
     order: 2;
@@ -295,13 +295,5 @@ query person ($id: ID!) {
       }
     }
   }
-}
-h2 {
-  grid-column: 1 / -1;
-  font-family: var(--font-serif);
-  font-weight: 500;
-  font-size: var(--font-size-l);
-  margin: calc(var(--spacing-sitepadding) * 4) 0
-    calc(var(--spacing-sitepadding) * 1);
 }
 </style>

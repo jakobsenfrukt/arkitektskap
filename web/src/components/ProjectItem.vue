@@ -139,7 +139,7 @@ export default {
     transition: color 0.6s ease;
   }
   &-image {
-    margin-bottom: var(--spacing-sitepadding);
+    margin-bottom: var(--spacing-m);
     max-height: 80vh;
     overflow: hidden;
 
@@ -210,7 +210,7 @@ export default {
   &.size-1 {
     display: grid;
     grid-template-columns: 1fr minmax(0, 1fr);
-    gap: var(--spacing-sitepadding);
+    gap: var(--spacing-m);
     .project-image {
       grid-column: span 1;
       //min-height: 100%;
@@ -260,11 +260,6 @@ body[data-theme="dark"] {
 @media (min-width: 600px) {
   .project {
     grid-column: span 6;
-  }
-}
-@media (min-width: 1940px) {
-  .project {
-    grid-column: span 4;
   }
 }
 </style>

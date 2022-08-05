@@ -59,7 +59,7 @@ export default {
   position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--spacing-sitepadding);
+  gap: var(--spacing-m);
   &-image {
     grid-column: 1 / span 1;
     position: relative;

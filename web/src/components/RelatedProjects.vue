@@ -34,7 +34,7 @@ export default {
   padding: 0;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: var(--spacing-sitepadding);
+  gap: var(--spacing-m);
   align-items: flex-start;
 }
 </style>

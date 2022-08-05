@@ -87,7 +87,7 @@ export default {
 <style lang="scss" scoped>
 .site-footer {
   min-height: 100vh;
-  padding: var(--spacing-sitepadding);
+  padding: var(--spacing-m) var(--spacing-sitepadding);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -98,7 +98,7 @@ export default {
   color: var(--color-background);*/
 }
 .intro {
-  margin-bottom: calc(var(--spacing-sitepadding) * 6);
+  margin-bottom: var(--spacing-l);
 }
 .contact-list {
   list-style: none;
@@ -108,8 +108,8 @@ export default {
 
   li {
     display: inline-block;
-    padding-right: calc(var(--spacing-sitepadding) * 6);
-    margin-bottom: calc(var(--spacing-sitepadding) * 3);
+    padding-right: var(--spacing-l);
+    margin-bottom: var(--spacing-l);
   }
   a {
     display: block;

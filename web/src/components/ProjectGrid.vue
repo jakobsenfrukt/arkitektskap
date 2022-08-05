@@ -41,8 +41,8 @@ export default {
   padding: 0;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  column-gap: var(--spacing-sitepadding);
-  row-gap: calc(var(--spacing-sitepadding) * 4);
+  column-gap: var(--spacing-m);
+  row-gap: var(--spacing-l);
   align-items: center;
 }
 </style>

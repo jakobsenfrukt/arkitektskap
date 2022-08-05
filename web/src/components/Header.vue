@@ -76,7 +76,7 @@ export default {
 
 <style lang="scss" scoped>
 .site-header-wrapper {
-  padding: calc(var(--spacing-sitepadding) * 0.5) var(--spacing-sitepadding);
+  padding: var(--spacing-s) var(--spacing-sitepadding);
   display: flex;
   align-items: center;
   justify-content: space-between;

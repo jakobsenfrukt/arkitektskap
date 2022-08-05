@@ -36,11 +36,16 @@ export default {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: var(--spacing-sitepadding);
+  gap: var(--spacing-s);
   justify-items: center;
+  margin: 0 calc(var(--spacing-sitepadding) * -0.5);
 
   figure {
     margin: 0;
+
+    img {
+      display: block;
+    }
 
     &.column {
       &-full {

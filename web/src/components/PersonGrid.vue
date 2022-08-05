@@ -29,7 +29,7 @@ export default {
   padding: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-sitepadding);
-  row-gap: calc(var(--spacing-sitepadding) * 3);
+  gap: var(--spacing-m);
+  row-gap: var(--spacing-l);
 }
 </style>

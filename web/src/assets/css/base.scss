@@ -98,6 +98,13 @@ strong {
   line-height: 1.2;
 }
 
+.section-heading {
+  grid-column: 1 / -1;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--font-size-l);
+}
+
 
 
 .palette {
@@ -118,13 +125,6 @@ strong {
     background: var(--palette-background);
     color: var(--palette-foreground);
   }
-}
-
-.related-heading {
-  grid-column: 1 / -1;
-  font-size: var(--font-size-s);
-  font-weight: 500;
-  font-family: var(--font-mono);
 }
 
 .site-footer .contact-list a {

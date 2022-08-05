@@ -8,7 +8,11 @@
   --font-size-xl: 2.8rem;
   --font-size-xxl: 3.4rem;
 
-  --spacing-sitepadding: 2rem;
+  --spacing-s: 1rem;
+  --spacing-m: 2rem;
+  --spacing-l: 6rem;
+  --spacing-xl: 12rem;
+  --spacing-sitepadding: 8rem;
   --border-width: 0.1em;
 
   // colors
@@ -51,7 +55,7 @@ body[data-theme="dark"] {
 
 @media (max-width: 800px) {
   :root {
-    --spacing-sitepadding: 1.2rem;
+    --spacing-m: 1.2rem;
     --border-width: 0.12em;
   }
 }

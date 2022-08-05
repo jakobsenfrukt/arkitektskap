@@ -97,8 +97,8 @@ export default {
   min-height: 100vh;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: var(--spacing-sitepadding);
-  padding: var(--spacing-sitepadding);
+  gap: var(--spacing-m);
+  padding: var(--spacing-m) var(--spacing-sitepadding);
 }
 
 .fade-enter-active {

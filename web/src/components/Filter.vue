@@ -57,7 +57,7 @@ export default {
 .filter-wrapper {
   width: 100%;
   grid-column: 1 / -1;
-  padding: var(--spacing-sitepadding);
+  padding: var(--spacing-m);
   /*position: fixed;
   bottom: 0;
   left: 0;
@@ -70,7 +70,7 @@ export default {
   padding: 0;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: calc(var(--spacing-sitepadding) / 4);
+  gap: calc(var(--spacing-m) / 4);
   font-family: var(--font-serif);
   text-transform: lowercase;
   text-align: left;
@@ -79,7 +79,7 @@ export default {
     background: var(--color-background);
   }
   &:first-of-type {
-    margin: 0 0 calc(var(--spacing-sitepadding) / 4);
+    margin: 0 0 calc(var(--spacing-m) / 4);
   }
 }
 .filter-submenu {
@@ -88,7 +88,7 @@ export default {
   padding: 0;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: calc(var(--spacing-sitepadding) / 2);
+  gap: calc(var(--spacing-m) / 2);
 }
 button,
 .heading {

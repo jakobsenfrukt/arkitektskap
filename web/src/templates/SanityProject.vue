@@ -1,42 +1,18 @@
 <template>
   <Layout :palette="$page.project.mainImage.asset.metadata.palette">
-    <div class="project">
+    <div class="project image-fullwidth">
       <div class="intro project-heading">
-        <h1 class="project-title">{{ $page.project.title }}</h1>
-        <p class="project-intro">
+        <h1 class="project-title" v-if="$page.project.intro">
+          {{ $page.project.title }}
+        </h1>
+        <h1 class="project-intro" v-else>
+          {{ $page.project.title }}
+        </h1>
+        <p class="project-intro" v-if="$page.project.intro">
           {{ $page.project.intro }}
         </p>
       </div>
-      <div class="project-image">
-        <img
-          v-if="$page.project.mainImage"
-          :src="
-            $urlForImage($page.project.mainImage, $page.metadata.sanityOptions)
-              .width(1200)
-              .auto('format')
-              .url()
-          "
-          :alt="$page.project.mainImage.alt"
-        />
-        <!--<ul class="palette">
-          <li
-            v-for="(color, index) in $page.project.mainImage.asset.metadata
-              .palette"
-            :key="`color-${index}`"
-          >
-            <div
-              class="palette-color"
-              :style="
-                `--palette-background: ${
-                  color.background
-                }; --palette-foreground: ${color.foreground}`
-              "
-            >
-              {{ color.background }}
-            </div>
-          </li>
-        </ul>-->
-      </div>
+
       <ul class="project-info" v-if="$page.project.projectInfo">
         <li>
           <strong>Hvor:</strong><br />{{
@@ -100,6 +76,36 @@
         </li>
       </ul>
 
+      <div v-if="$page.project.mainImage" class="project-image">
+        <img
+          :src="
+            $urlForImage($page.project.mainImage, $page.metadata.sanityOptions)
+              .width(1200)
+              .auto('format')
+              .url()
+          "
+          :alt="$page.project.mainImage.alt"
+        />
+        <!--<ul class="palette">
+          <li
+            v-for="(color, index) in $page.project.mainImage.asset.metadata
+              .palette"
+            :key="`color-${index}`"
+          >
+            <div
+              class="palette-color"
+              :style="
+                `--palette-background: ${
+                  color.background
+                }; --palette-foreground: ${color.foreground}`
+              "
+            >
+              {{ color.background }}
+            </div>
+          </li>
+        </ul>-->
+      </div>
+
       <div class="project-content">
         <BlockContent
           :blocks="$page.project._rawBody"
@@ -117,14 +123,19 @@
       />
 
       <ul class="contactperson" v-if="$page.project.contactperson.length">
-        <h2 v-if="$page.project.contactperson.length > 1">Kontaktpersoner</h2>
-        <h2 v-else>Kontaktperson</h2>
+        <h2
+          v-if="$page.project.contactperson.length > 1"
+          class="section-heading"
+        >
+          Kontaktpersoner
+        </h2>
+        <h2 v-else class="section-heading">Kontaktperson</h2>
         <li v-for="(person, index) in $page.project.contactperson" :key="index">
           <PersonItem :person="person" />
         </li>
       </ul>
     </div>
-    <h2 class="related-heading" v-if="$page.project.relatedProjects.length">
+    <h2 class="section-heading" v-if="$page.project.relatedProjects.length">
       Relaterte prosjekter
     </h2>
     <RelatedProjects :projects="$page.project.relatedProjects" />
@@ -327,29 +338,33 @@ query project ($id: ID!) {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: var(--spacing-sitepadding);
+  gap: var(--spacing-m);
+  &-heading {
+    margin-bottom: var(--spacing-m);
+  }
   &-title {
     grid-column: 1 / -1;
-    font-size: var(--font-size-s);
-    font-family: var(--font-mono);
-    font-weight: 500;
-    margin-bottom: var(--spacing-sitepadding);
+    font-size: var(--font-size-m);
+    font-style: italic;
+    margin-bottom: 0.6rem;
   }
   &-intro {
     grid-column: 1 / -1;
+    font-family: var(--font-serif);
     font-size: var(--font-size-xxl);
-    margin-bottom: 0;
+    max-width: 20em;
+    margin: 0;
+    line-height: 1.2;
   }
   &-image {
-    grid-column: 1 / -1;
+    grid-column: 4 / span 6;
     position: relative;
   }
   &-info {
     grid-column: 1 / 5;
     list-style: none;
-    margin: calc(var(--spacing-sitepadding) * 1) 0
-      calc(var(--spacing-sitepadding) * 4);
-    padding: 0 calc(var(--spacing-sitepadding) * 4) 0 0;
+    margin: var(--spacing-m) 0 var(--spacing-l);
+    padding: 0 var(--spacing-m) 0 0;
     font-size: var(--font-size-s);
 
     strong {
@@ -372,8 +387,23 @@ query project ($id: ID!) {
   }
   &-content {
     grid-column: 5 / span 7;
-    margin: calc(var(--spacing-sitepadding) * 1) 0
-      calc(var(--spacing-sitepadding) * 4);
+    margin: var(--spacing-m) 0 var(--spacing-l);
+  }
+  &.image-fullwidth {
+    .project-heading {
+      order: 1;
+    }
+    .project-image {
+      grid-column: 1 / -1;
+      margin: 0 calc((var(--spacing-m) + var(--spacing-sitepadding)) * -1);
+      order: 2;
+    }
+    .project-info {
+      order: 3;
+    }
+    > * {
+      order: 4;
+    }
   }
 }
 .credits {
@@ -385,17 +415,9 @@ query project ($id: ID!) {
   grid-column: 1 / -1;
   list-style: none;
   padding: 0;
-  margin: calc(var(--spacing-sitepadding) * 2) 0
-    calc(var(--spacing-sitepadding) * 4);
+  margin: var(--spacing-l) 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-sitepadding);
-}
-h2 {
-  grid-column: 1 / -1;
-  font-family: var(--font-serif);
-  font-weight: 500;
-  font-size: var(--font-size-l);
-  margin-bottom: calc(var(--spacing-sitepadding) * 1);
+  gap: var(--spacing-m);
 }
 </style>
