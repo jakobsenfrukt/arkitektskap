@@ -24,6 +24,9 @@ export default {
     sortProjects(projects) {
       var sortedProjects = projects
         .slice()
+        .sort(
+          (a, b) => b.node.projectInfo.startYear - a.node.projectInfo.startYear
+        )
         .sort((a, b) => b.node.rating - a.node.rating);
       return sortedProjects;
     },
