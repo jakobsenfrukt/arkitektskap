@@ -93,7 +93,10 @@ export default {
     top: 0;
     left: 0;
     right: 0;
+    padding: var(--spacing-xs) var(--spacing-sitepadding);
     background: var(--color-background);
+    /*background: var(--color-text);
+    color: var(--color-background);*/
     animation: slideDown 0.3s linear forwards;
 
     .logo {

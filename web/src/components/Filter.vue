@@ -1,54 +1,43 @@
 <template>
-  <div class="filter-wrapper">
-    <ul class="filter-menu">
-      <li class="heading">Filter</li>
-      <li>
-        <button @click="showMenu = !showMenu">Filter</button>
-        <ul class="filter-submenu" v-if="showMenu">
-          <li><button>Filter</button></li>
-          <li><button>Filter</button></li>
-          <li><button>Filter</button></li>
-          <li><button>Filter</button></li>
-          <li><button>Filter</button></li>
-          <li><button>Filter</button></li>
-          <li><button>Filter</button></li>
-          <li><button>Filter</button></li>
-        </ul>
-      </li>
-      <li>
-        <button @click="showMenu = !showMenu">Filter</button>
-        <ul class="filter-submenu" v-if="showMenu">
-          <li><button>Filter</button></li>
-          <li><button>Filter</button></li>
-          <li><button>Filter</button></li>
-          <li><button>Filter</button></li>
-          <li><button>Filter</button></li>
-          <li><button>Filter</button></li>
-          <li><button>Filter</button></li>
-          <li><button>Filter</button></li>
-        </ul>
-      </li>
-      <li><button>Filter</button></li>
-      <li><button>Filter</button></li>
-      <li><button>Filter</button></li>
-    </ul>
-    <ul class="filter-menu">
-      <li class="heading">Sortering</li>
-      <li><button>Sortering</button></li>
-      <li><button>Sortering</button></li>
-      <li><button>Sortering</button></li>
-      <li><button>Sortering</button></li>
-      <li><button>Sortering</button></li>
-    </ul>
+  <div class="filter">
+    <div class="filter-wrapper" :class="{ inview: isInView }">
+      <ul class="filter-menu">
+        <li>Filter <Dingbats icon="arrow-down" /></li>
+        <li>Sortering <Dingbats icon="arrow-down" /></li>
+        <li>Nullstill &times; <Dingbats icon="close" /></li>
+      </ul>
+    </div>
+
+    <IntersectionObserver
+      id="observer"
+      class="observer"
+      @on-enter-viewport="onEnterViewport"
+    ></IntersectionObserver>
   </div>
 </template>
 
 <script>
+import IntersectionObserver from "~/components/tools/IntersectionObserver";
+import Dingbats from "~/components/tools/Dingbats";
+
 export default {
+  components: {
+    IntersectionObserver,
+    Dingbats,
+  },
   data() {
     return {
-      showMenu: false,
+      menuOpen: false,
+      isInView: false,
     };
+  },
+  methods: {
+    toggleMenu() {
+      this.menuOpen = !this.menuOpen;
+    },
+    onEnterViewport(value) {
+      this.isInView = value;
+    },
   },
 };
 </script>
@@ -56,39 +45,37 @@ export default {
 <style lang="scss" scoped>
 .filter-wrapper {
   width: 100%;
-  grid-column: 1 / -1;
-  padding: var(--spacing-m);
-  /*position: fixed;
+  padding: var(--spacing-xs) var(--spacing-sitepadding);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
   bottom: 0;
   left: 0;
-  z-index: 1000;*/
-  display: none;
+  right: 0;
+  z-index: 1001;
+  background: var(--color-text);
+  color: var(--color-background);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-s);
+
+  transform: translateY(100%);
+  animation: slideDown 0.3s linear forwards;
+
+  &.inview {
+    animation: slideUp 0.3s linear forwards;
+  }
 }
 .filter-menu {
+  width: 100%;
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: calc(var(--spacing-m) / 4);
-  font-family: var(--font-serif);
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
   text-transform: lowercase;
-  text-align: left;
-  .heading {
-    font-weight: bold;
-    background: var(--color-background);
-  }
-  &:first-of-type {
-    margin: 0 0 calc(var(--spacing-m) / 4);
-  }
-}
-.filter-submenu {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: calc(var(--spacing-m) / 2);
 }
 button,
 .heading {
@@ -100,5 +87,28 @@ button,
   color: inherit;
   background: var(--color-background);
   border: 1px solid var(--color-text);
+}
+.observer {
+  position: absolute;
+  top: 110vh;
+  height: calc(100% - 280vh);
+  left: 50%;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes slideDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
 }
 </style>
