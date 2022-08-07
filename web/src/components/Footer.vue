@@ -121,13 +121,6 @@ export default {
     }
   }
 }
-.icon {
-  display: inline-block;
-  width: 1.5em;
-  height: 1.5em;
-  vertical-align: middle;
-  margin-right: 1em;
-}
 .address {
   position: relative;
   padding-left: 2.4em;

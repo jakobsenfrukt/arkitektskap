@@ -35,6 +35,11 @@ export default {
       type: 'string',
     },
     {
+      name: 'languages',
+      title: 'Språk',
+      type: 'string',
+    },
+    {
       name: 'bio',
       title: 'Bio',
       type: 'simpleBody',

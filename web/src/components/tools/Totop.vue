@@ -1,17 +1,7 @@
 <template>
   <div class="totop">
     <button @click="toTop()" class="totop-button" :class="{ inview: isInView }">
-      <svg
-        class="totop-icon"
-        viewBox="0 0 82 77"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M48.91 76.64H32.41V31.58L11.67 52.32L0 40.65L40.66 0L81.32 40.66L69.65 52.32L48.91 31.58V76.64ZM37.91 71.14H43.41V18.3L69.65 44.54L73.54 40.65L40.66 7.77L7.78 40.65L11.67 44.54L37.91 18.3V71.14Z"
-          fill="currentColor"
-        />
-      </svg>
+      <strong>Til toppen</strong> <Dingbats icon="arrow-up" class="icon" />
     </button>
     <IntersectionObserver
       id="totop"
@@ -23,10 +13,12 @@
 
 <script>
 import IntersectionObserver from "@/components/tools/IntersectionObserver.vue";
+import Dingbats from "@/components/tools/Dingbats.vue";
 
 export default {
   components: {
     IntersectionObserver,
+    Dingbats,
   },
   data() {
     return {
@@ -67,7 +59,8 @@ export default {
     cursor: pointer;
     position: fixed;
     bottom: 1rem;
-    right: 1rem;
+    right: var(--spacing-sitepadding);
+    color: var(--color-text);
 
     opacity: 0;
     transition: opacity 0.3s linear;
@@ -77,10 +70,11 @@ export default {
     }
   }
 
-  &-icon {
-    display: inline-block;
-    width: 1.6rem;
-    height: 1.6rem;
+  .icon {
+    margin: 0;
+  }
+  strong {
+    margin-right: 1em;
     vertical-align: middle;
   }
 }

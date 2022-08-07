@@ -18,8 +18,12 @@
         <p class="person-title">{{ $page.person.title }}</p>
 
         <p class="person-contact">
-          <a :href="$page.person.phone">{{ $page.person.phone }}</a>
-          <a :href="$page.person.email">{{ $page.person.email }}</a>
+          <a :href="$page.person.phone" v-if="$page.person.phone"
+            ><Dingbats icon="smiley" /><span>{{ $page.person.phone }}</span></a
+          >
+          <a :href="$page.person.email" v-if="$page.person.email"
+            ><Dingbats icon="email" /><span>{{ $page.person.email }}</span></a
+          >
         </p>
 
         <div class="person-content">
@@ -28,6 +32,11 @@
             v-if="$page.person._rawBio"
           />
         </div>
+
+        <p class="person-languages" v-if="$page.person.languages">
+          <Dingbats icon="earth" /><strong>Språk:</strong
+          ><span>{{ $page.person.languages }}</span>
+        </p>
       </div>
     </div>
     <h2
@@ -52,11 +61,13 @@
 <script>
 import BlockContent from "~/components/tools/BlockContent";
 import RelatedProjects from "~/components/RelatedProjects";
+import Dingbats from "@/components/tools/Dingbats.vue";
 
 export default {
   components: {
     BlockContent,
     RelatedProjects,
+    Dingbats,
   },
   methods: {
     firstName() {
@@ -115,6 +126,7 @@ query person ($id: ID!) {
     _rawBio
     email
     phone
+    languages
     image {
       asset {
         _id
@@ -271,6 +283,7 @@ query person ($id: ID!) {
   &-image {
     grid-column: span 6;
     order: 2;
+    margin-bottom: var(--spacing-m);
   }
   &-text {
     grid-column: span 6;
@@ -288,11 +301,17 @@ query person ($id: ID!) {
     margin: 4rem 0;
     a {
       display: block;
-      margin-bottom: 0.6rem;
       text-decoration: none;
       &:hover {
         text-decoration: underline;
       }
+    }
+  }
+  &-languages {
+    margin-top: 4rem;
+    span {
+      display: block;
+      margin-left: 2.9em;
     }
   }
 }

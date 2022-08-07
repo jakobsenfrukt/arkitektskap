@@ -53,6 +53,12 @@ body[data-theme="dark"] {
   --cursor-pointer: url("/assets/graphics/cursor-pointer-dark.png"), auto !important;
 }
 
+@media (min-width: 1920px) {
+  :root {
+    --spacing-sitepadding: 12rem;
+  }
+}
+
 @media (max-width: 1600px) {
   :root {
     --spacing-sitepadding: 4rem;
