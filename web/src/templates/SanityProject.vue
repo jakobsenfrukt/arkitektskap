@@ -1,6 +1,6 @@
 <template>
   <Layout :palette="$page.project.mainImage.asset.metadata.palette">
-    <div class="project image-fullwidth">
+    <div class="project" :class="{ fullwidth: $page.project.fullwidth }">
       <div class="intro project-heading">
         <h1 class="project-title" v-if="$page.project.intro">
           {{ $page.project.title }}
@@ -221,6 +221,7 @@ query project ($id: ID!) {
       }
       alt
     }
+    fullwidth
     slug {
       current
     }
@@ -357,13 +358,20 @@ query project ($id: ID!) {
     line-height: 1.2;
   }
   &-image {
-    grid-column: 4 / span 6;
+    grid-column: 4 / span 9;
     position: relative;
+
+    img {
+      max-height: 100vh;
+      min-width: 70%;
+      width: auto;
+      object-fit: cover;
+    }
   }
   &-info {
-    grid-column: 1 / 5;
+    grid-column: 1 / span 3;
     list-style: none;
-    margin: var(--spacing-m) 0 var(--spacing-l);
+    margin: 0 0 var(--spacing-l);
     padding: 0 var(--spacing-m) 0 0;
     font-size: var(--font-size-s);
 
@@ -386,10 +394,10 @@ query project ($id: ID!) {
     }
   }
   &-content {
-    grid-column: 5 / span 7;
-    margin: var(--spacing-m) 0 var(--spacing-l);
+    grid-column: 4 / span 9;
+    margin: var(--spacing-s) 0 var(--spacing-l);
   }
-  &.image-fullwidth {
+  &.fullwidth {
     .project-heading {
       order: 1;
     }
@@ -397,12 +405,22 @@ query project ($id: ID!) {
       grid-column: 1 / -1;
       margin: 0 calc((var(--spacing-m) + var(--spacing-sitepadding)) * -1);
       order: 2;
+
+      img {
+        max-height: 120vh;
+        min-width: none;
+        width: 100%;
+      }
     }
     .project-info {
       order: 3;
+      margin: var(--spacing-s) 0 var(--spacing-l);
     }
     > * {
       order: 4;
+    }
+    .project-content {
+      margin: var(--spacing-s) 0 var(--spacing-l);
     }
   }
 }

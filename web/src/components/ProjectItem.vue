@@ -140,7 +140,7 @@ export default {
   }
   &-image {
     margin-bottom: var(--spacing-m);
-    max-height: 80vh;
+    max-height: 70vh;
     overflow: hidden;
 
     img {

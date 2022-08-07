@@ -53,6 +53,11 @@ export default {
       type: 'figure'
     },
     {
+      name: 'fullwidth',
+      title: 'Vis hovedbilde i fullbredde',
+      type: 'boolean',
+    },
+    {
       name: 'body',
       title: 'Brødtekst',
       type: 'body',
