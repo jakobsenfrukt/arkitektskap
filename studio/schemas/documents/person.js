@@ -35,14 +35,25 @@ export default {
       type: 'string',
     },
     {
-      name: 'languages',
-      title: 'Språk',
-      type: 'string',
-    },
-    {
       name: 'bio',
       title: 'Bio',
       type: 'simpleBody',
+    },
+    {
+      title: 'Språk',
+      name: 'languages',
+      type: 'array',
+      of: [
+        {
+          title: 'Språk',
+          type: 'reference',
+          to: [
+            {
+              type: 'language'
+            }
+          ]
+        }
+      ]
     },
     {
       name: 'image',

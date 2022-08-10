@@ -1,6 +1,15 @@
 <template>
   <footer class="site-footer" id="kontakt">
-    <p class="intro" v-html="$replaceLogo($static.contact.intro)"></p>
+    <p
+      class="intro"
+      v-html="
+        $replaceLogo(
+          $static.contact.intro[
+            Math.floor(Math.random() * $static.contact.intro.length)
+          ]
+        )
+      "
+    ></p>
     <ul class="contact-list">
       <li class="contact" aria-label="Kontakt">
         <a

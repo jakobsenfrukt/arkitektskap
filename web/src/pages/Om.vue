@@ -4,30 +4,17 @@
     <ul class="about-numbers">
       <h2><strong>arkitektskap</strong> i tall</h2>
       <li>
-        <span class="number">{{ $page.projects.edges.length }}</span> prosjekter
+        <span class="number">{{ getActiveYears() }}</span> år i praksis
       </li>
       <li>
-        over <span class="number">{{ getActiveYears() }}</span> år
+        <span class="number">{{ $page.locations.edges.length }}</span> steder
       </li>
       <li>
-        på <span class="number">{{ $page.locations.edges.length }}</span> steder
+        <span class="number">{{ $page.people.edges.length }}</span> flinke folk
       </li>
       <li>
-        for <span class="number">{{ $page.clients.edges.length }}</span> ulike
-        oppdragsgivere
-      </li>
-      <li>
-        nå er vi
-        <span class="number">{{ $page.people.edges.length }}</span> folk
-      </li>
-      <li>
-        som snakker
-        <span class="number">{{ $page.people.edges.length }}</span> språk
-      </li>
-      <li>
-        og samarbeider på tvers med
-        <span class="number">{{ $page.collaborators.edges.length }}</span>
-        samarbeidspartnere
+        <span class="number">{{ $page.languages.edges.length }}</span> ulike
+        språk
       </li>
     </ul>
     <div class="about-content">
@@ -75,6 +62,13 @@ query {
     }
   }
   collaborators: allSanityCollaborator(sortBy: "title") {
+    edges {
+      node {
+        id
+      }
+    }
+  }
+  languages: allSanityLanguage(sortBy: "title") {
     edges {
       node {
         id

@@ -15,6 +15,7 @@ import person from './documents/person'
 import location from './documents/location'
 import collaborator from './documents/collaborator'
 import client from './documents/client'
+import language from './documents/language'
 
 import body from './objects/body'
 import simpleBody from './objects/simpleBody'
@@ -44,6 +45,7 @@ export default createSchema({
     location,
     collaborator,
     client,
+    language,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     body,

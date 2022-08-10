@@ -35,7 +35,13 @@
 
         <p class="person-languages" v-if="$page.person.languages">
           <Dingbats icon="earth" /><strong>Språk:</strong
-          ><span>{{ $page.person.languages }}</span>
+          ><ul><li
+            v-for="(language, index) in $page.person.languages"
+            :key="language"
+            >{{
+              index === 0 ? language.title : language.title.toLowerCase()
+            }}</li
+          ></ul>
         </p>
       </div>
     </div>
@@ -126,7 +132,9 @@ query person ($id: ID!) {
     _rawBio
     email
     phone
-    languages
+    languages {
+      title
+    }
     image {
       asset {
         _id
@@ -309,9 +317,22 @@ query person ($id: ID!) {
   }
   &-languages {
     margin-top: 4rem;
-    span {
-      display: block;
-      margin-left: 2.9em;
+    ul {
+      list-style: none;
+      margin: 0 0 0 2.9em;
+      padding: 0;
+
+      li {
+        display: inline;
+        &:after {
+          content: ", ";
+        }
+        &:last-of-type {
+          &:after {
+            display: none;
+          }
+        }
+      }
     }
   }
 }

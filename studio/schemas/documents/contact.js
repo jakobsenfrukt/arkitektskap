@@ -5,9 +5,16 @@ export default {
   __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'], 
   fields: [
     {
+      title: 'Intro',
+      description: 'Teksten under "Kontakt" nederst på nettsiden vil velge tilfeldig blant disse tekstene hver gang man oppdaterer eller navigerer til en ny side.',
       name: 'intro',
-      type: 'text',
-      title: 'Intro'
+      type: 'array',
+      of: [
+        {
+          title: 'Tekst',
+          type: 'text'
+        }
+      ]
     },
     {
       name: 'address',
