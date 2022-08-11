@@ -51,17 +51,18 @@
         </li>
         <li>
           Når:<br />
-          {{ project.projectInfo.startYear
-          }}<template
+          <template
             v-if="
               project.projectInfo.endYear &&
                 project.projectInfo.endYear === project.projectInfo.startYear
             "
-          ></template
+            >{{ project.projectInfo.startYear }}</template
           ><template v-else-if="project.projectInfo.endYear"
-            >&mdash;{{ project.projectInfo.endYear }}</template
+            >{{ project.projectInfo.startYear }}&mdash;{{
+              project.projectInfo.endYear
+            }}</template
           ><template v-else>
-            (pågår)</template
+            {{ project.projectInfo.startYear }} (pågår)</template
           >
         </li>
         <li v-if="project.projectInfo.category.length">
