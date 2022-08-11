@@ -437,5 +437,9 @@ query project ($id: ID!) {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--spacing-m);
+
+  .section-heading {
+    margin-bottom: 0;
+  }
 }
 </style>

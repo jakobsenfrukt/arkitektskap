@@ -97,7 +97,7 @@ export default {
   min-height: 100vh;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: var(--spacing-m);
+  column-gap: var(--spacing-m);
   padding: var(--spacing-m) var(--spacing-sitepadding);
 }
 

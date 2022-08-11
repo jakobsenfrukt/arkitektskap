@@ -4,17 +4,32 @@
     <ul class="about-numbers">
       <h2><strong>arkitektskap</strong> i tall</h2>
       <li>
-        <span class="number">{{ getActiveYears() }}</span> år i praksis
+        <strong class="number">{{ getActiveYears() }}</strong> år i praksis
       </li>
       <li>
-        <span class="number">{{ $page.locations.edges.length }}</span> steder
+        prosjekter på
+        <strong class="number">{{ $page.locations.edges.length }}</strong> ulike
+        steder
       </li>
       <li>
-        <span class="number">{{ $page.people.edges.length }}</span> flinke folk
+        som har mottatt
+        <strong class="number">{{ $page.about.numbers.awards }}</strong> priser
+        og utmerkelser
       </li>
       <li>
-        <span class="number">{{ $page.languages.edges.length }}</span> ulike
+        nå er vi
+        <strong class="number">{{ $page.people.edges.length }}</strong> flinke
+        folk
+      </li>
+      <li>
+        som snakker
+        <strong class="number">{{ $page.languages.edges.length }}</strong> ulike
         språk
+      </li>
+      <li>
+        fordelt på
+        <strong class="number">{{ $page.about.numbers.sqm }}</strong>
+        kvadratmeter
       </li>
     </ul>
     <div class="about-content">
@@ -31,6 +46,10 @@
 query {
   about: sanityAbout(id: "about") {
     intro
+    numbers {
+      awards
+      sqm
+    }
     _rawBody
   }
   projects: allSanityProject(sortBy: "year") {
@@ -126,6 +145,8 @@ export default {
   .number {
     font-family: var(--font-mono);
     font-size: var(--font-size-xl);
+    vertical-align: middle;
+    margin-bottom: 0.2em;
   }
 }
 </style>

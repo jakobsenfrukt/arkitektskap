@@ -33,7 +33,7 @@
           />
         </div>
 
-        <p class="person-languages" v-if="$page.person.languages">
+        <p class="person-languages" v-if="$page.person.languages.length">
           <Dingbats icon="earth" /><strong>Språk:</strong
           ><ul><li
             v-for="(language, index) in $page.person.languages"

@@ -10,6 +10,12 @@ export default {
       title: 'Intro'
     },
     {
+      title: 'Arkitektskap i tall',
+      name: 'numbers',
+      type: 'aboutNumbers',
+      description: 'Disse tallene oppdateres manuelt, mens de andre tallene som listes ut på "Om oss"-siden hentes ut automatisk.'
+    },
+    {
       name: 'body',
       title: 'Brødtekst',
       type: 'body',

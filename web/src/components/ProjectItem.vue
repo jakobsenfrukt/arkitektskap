@@ -160,12 +160,13 @@ export default {
     font-size: var(--font-size-s);
     font-family: var(--font-mono);
     font-weight: 500;
-    margin-bottom: 0.6rem;
+    margin-bottom: var(--spacing-s);
   }
   &-intro {
     font-size: var(--font-size-l);
     font-family: var(--font-serif);
     line-height: 1.2;
+    margin-bottom: var(--spacing-m);
   }
   &-info {
     display: grid;
