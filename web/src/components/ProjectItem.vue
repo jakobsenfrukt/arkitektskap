@@ -52,7 +52,13 @@
         <li>
           Når:<br />
           {{ project.projectInfo.startYear
-          }}<template v-if="project.projectInfo.endYear"
+          }}<template
+            v-if="
+              project.projectInfo.endYear &&
+                project.projectInfo.endYear === project.projectInfo.startYear
+            "
+          ></template
+          ><template v-else-if="project.projectInfo.endYear"
             >&mdash;{{ project.projectInfo.endYear }}</template
           ><template v-else>
             (pågår)</template

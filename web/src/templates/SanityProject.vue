@@ -21,7 +21,13 @@
         </li>
         <li>
           <strong>Når:</strong><br /><template
-            v-if="$page.project.projectInfo.endYear"
+            v-if="
+              $page.project.projectInfo.endYear &&
+                $page.project.projectInfo.endYear ===
+                  $page.project.projectInfo.startYear
+            "
+            >{{ $page.project.projectInfo.startYear }}</template
+          ><template v-else-if="$page.project.projectInfo.endYear"
             >{{ $page.project.projectInfo.startYear }}&mdash;{{
               $page.project.projectInfo.endYear
             }}</template
