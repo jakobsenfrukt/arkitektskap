@@ -1,16 +1,15 @@
 <template>
   <Layout>
-    <!--p class="intro" v-html="replaceLogo($page.people.intro)"></p>-->
-    <p class="intro">
-      En introtekst til folka i
-      <strong>arkitektskap</strong> kommer her.
-    </p>
+    <p class="intro" v-html="$replaceLogo($page.peoplePage.intro)"></p>
     <PersonGrid :people="$page.people" />
   </Layout>
 </template>
 
 <page-query>
 query {
+  peoplePage: sanityPeople(id: "people") {
+    intro
+  }
   people: allSanityPerson(sortBy: "name", order: ASC) {
     edges {
       node {

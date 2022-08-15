@@ -3,7 +3,7 @@ import S from '@sanity/desk-tool/structure-builder'
 import { MdSettings, MdHomeFilled, MdArticle, MdPeople, MdArchitecture, MdEmail, MdInfo, MdGroups, MdLocationPin, MdLocationCity, MdCategory, MdOutlineChat } from 'react-icons/md'
 
 const hiddenDocTypes = listItem =>
-  !['general', 'frontpage', 'project', 'person', 'contact', 'about', 'location', 'collaborator', 'client', 'category', 'language'].includes(listItem.getId())
+  !['general', 'frontpage', 'project', 'person', 'contact', 'about', 'location', 'collaborator', 'client', 'category', 'language', 'people'].includes(listItem.getId())
 
 export default () =>
   S.list()
@@ -35,10 +35,34 @@ export default () =>
         .schemaType('project')
         .child(S.documentTypeList('project').title('Prosjekter')),
       S.listItem()
-        .title('Personer')
+        .title('Folk')
         .icon(MdPeople)
-        .schemaType('person')
-        .child(S.documentTypeList('person').title('Personer')),
+        .child(
+          S.list()
+            .id('articles')
+            .title('Articles')
+            .items(
+              [
+                S.listItem()
+                  .title('Intro')
+                  .icon(MdArticle)
+                  .child(
+                    S.editor()
+                      .title('Intro')
+                      .id('people')
+                      .schemaType('people')
+                      .documentId('people')
+                  ),
+                S.listItem()
+                  .title('Liste over personer')
+                  .schemaType('person')
+                  .icon(MdPeople)
+                  .child(
+                    S.documentTypeList('person').title('Personer')
+                  )
+              ]
+            )
+        ),
       S.listItem()
         .title('Om')
         .icon(MdInfo)
