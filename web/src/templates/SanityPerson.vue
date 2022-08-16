@@ -59,7 +59,7 @@
         combinedProjects($page.person.featuredProjects, relatedProjects())
       "
       :limit="4"
-      :person="$page.person.name"
+      :person="firstName($page.person.name)"
     />
   </Layout>
 </template>

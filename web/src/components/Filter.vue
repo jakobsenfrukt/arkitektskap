@@ -2,9 +2,9 @@
   <div class="filter">
     <div class="filter-wrapper" :class="{ inview: isInView }">
       <ul class="filter-menu">
-        <li>Filter <Dingbats icon="arrow-down" /></li>
-        <li>Sortering <Dingbats icon="arrow-down" /></li>
-        <li>Nullstill &times; <Dingbats icon="close" /></li>
+        <li>Filter <Dingbats icon="filter" /></li>
+        <li>Sortering <Dingbats icon="sort" /></li>
+        <li>Nullstill <Dingbats icon="close-small" /></li>
       </ul>
     </div>
 
