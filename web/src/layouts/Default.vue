@@ -1,5 +1,5 @@
 <template>
-  <div class="layout">
+  <div class="layout" id="top">
     <Header />
     <transition name="fade" appear>
       <main class="site-main">

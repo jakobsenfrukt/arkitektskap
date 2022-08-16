@@ -32,4 +32,9 @@ export default {
   gap: var(--spacing-m);
   row-gap: var(--spacing-l);
 }
+@media (max-width: 480px) {
+  .person-list {
+    grid-template-columns: 1fr;
+  }
+}
 </style>

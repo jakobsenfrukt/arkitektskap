@@ -270,4 +270,12 @@ body[data-theme="dark"] {
     grid-column: span 6;
   }
 }
+
+@media (max-width: 480px) {
+  .project {
+    &.size-1 {
+      grid-template-columns: 1fr;
+    }
+  }
+}
 </style>

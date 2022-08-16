@@ -25,6 +25,35 @@
           <li class="theme"><ToggleTheme /></li>
         </ul>
       </nav>
+
+      <nav class="site-nav--mobile" :class="{ menuopen: menuOpen }">
+        <div class="logo" @click="toAnchor('#top')">
+          <span
+            v-for="(block, index) in getLogoBlocks('arkitektskap')"
+            :key="index"
+            class="logo-block"
+            :style="`animation-delay: ${10 / index}s`"
+            >{{ block }}</span
+          >
+        </div>
+        <div class="menu-toggle">
+          <button class="button" @click="toggleMenu()">
+            <Dingbats icon="close" v-if="menuOpen" />
+            <Dingbats icon="hamburger" v-else />
+          </button>
+        </div>
+        <ul class="main-menu">
+          <li><g-link class="nav-link" to="/om">Om oss</g-link></li>
+          <li><g-link class="nav-link" to="/folk">Folk</g-link></li>
+          <li><g-link class="nav-link" to="/">Prosjekter</g-link></li>
+          <li>
+            <span class="nav-link anchor" @click="toAnchor('#kontakt')"
+              >Kontakt</span
+            >
+          </li>
+          <li class="theme"><ToggleTheme /></li>
+        </ul>
+      </nav>
     </div>
 
     <IntersectionObserver
@@ -38,12 +67,14 @@
 <script>
 import Logo from "~/components/Logo.vue";
 import ToggleTheme from "~/components/tools/ToggleTheme.vue";
+import Dingbats from "~/components/tools/Dingbats.vue";
 import IntersectionObserver from "~/components/tools/IntersectionObserver";
 
 export default {
   components: {
     Logo,
     ToggleTheme,
+    Dingbats,
     IntersectionObserver,
   },
   data() {
@@ -74,7 +105,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .site-header-wrapper {
   padding: var(--spacing-s) var(--spacing-sitepadding);
   display: flex;
@@ -142,6 +173,9 @@ export default {
   height: 100%;
   left: 50%;
 }
+.site-nav--mobile {
+  display: none;
+}
 
 @keyframes fadeOut {
   from {
@@ -158,6 +192,58 @@ export default {
   }
   to {
     transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .site-nav {
+    display: none;
+  }
+  .site-nav--mobile {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .menu-toggle {
+    .dingbat {
+      margin: 0;
+    }
+  }
+  .logo,
+  .menu-toggle {
+    position: relative;
+    z-index: 1001;
+  }
+  .main-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-transform: lowercase;
+    background: var(--color-background);
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: opacity 0.3s linear;
+  }
+  .nav-link {
+    margin: 0;
+  }
+  .menuopen {
+    .main-menu {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 }
 </style>

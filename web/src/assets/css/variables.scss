@@ -79,3 +79,13 @@ body[data-theme="dark"] {
     --border-width: 0.12em;
   }
 }
+
+@media (max-width: 480px) {
+  :root {
+    --font-size-s: 1rem;
+    --font-size-m: 1.2rem;
+    --font-size-l: 1.4rem;
+    --font-size-xl: 1.6rem;
+    --font-size-xxl: 1.8rem;
+  }
+}
