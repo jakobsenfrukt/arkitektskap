@@ -271,7 +271,7 @@ body[data-theme="dark"] {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .project {
     &.size-1 {
       grid-template-columns: 1fr;

@@ -58,7 +58,7 @@
 
     <IntersectionObserver
       id="observer"
-      class="observer"
+      class="header-observer"
       @on-enter-viewport="onEnterViewport"
     ></IntersectionObserver>
   </header>
@@ -167,7 +167,7 @@ export default {
 .theme {
   width: 1.6em;
 }
-.observer {
+.header-observer {
   position: absolute;
   top: 110vh;
   height: 100%;
@@ -195,7 +195,7 @@ export default {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .site-nav {
     display: none;
   }
