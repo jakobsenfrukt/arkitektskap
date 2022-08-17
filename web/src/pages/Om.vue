@@ -149,4 +149,14 @@ export default {
     margin-bottom: 0.2em;
   }
 }
+
+@media (max-width: 600px) {
+  .about-content,
+  .about-numbers {
+    grid-column: 1 / -1;
+  }
+  .about-numbers {
+    margin-bottom: var(--spacing-l);
+  }
+}
 </style>
