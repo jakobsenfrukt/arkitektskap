@@ -2,7 +2,7 @@
   <div class="projects">
     <ul class="project-list">
       <ProjectItem
-        v-for="(project, index) in sortProjects(projects.edges)"
+        v-for="(project, index) in projects"
         :key="index"
         :project="project.node"
       />
@@ -18,18 +18,7 @@ export default {
     ProjectItem,
   },
   props: {
-    projects: Object,
-  },
-  methods: {
-    sortProjects(projects) {
-      var sortedProjects = projects
-        .slice()
-        .sort(
-          (a, b) => b.node.projectInfo.startYear - a.node.projectInfo.startYear
-        )
-        .sort((a, b) => b.node.rating - a.node.rating);
-      return sortedProjects;
-    },
+    projects: Array,
   },
 };
 </script>
