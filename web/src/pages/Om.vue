@@ -2,34 +2,35 @@
   <Layout>
     <p class="intro about-intro" v-html="$replaceLogo($page.about.intro)"></p>
     <ul class="about-numbers">
-      <h2><strong>arkitektskap</strong> i tall</h2>
       <li>
+        <Dingbats icon="house" />
         <strong class="number">{{ getActiveYears() }}</strong> år i praksis
       </li>
-      <li>
-        prosjekter på
+      <!--<li>
         <strong class="number">{{ $page.locations.edges.length }}</strong> ulike
         steder
-      </li>
+      </li>-->
       <li>
-        som har mottatt
+        <Dingbats icon="award" />
         <strong class="number">{{ $page.about.numbers.awards }}</strong> priser
         og utmerkelser
       </li>
       <li>
-        nå er vi
+        <Dingbats icon="heart" />
         <strong class="number">{{ $page.people.edges.length }}</strong> flinke
         folk
       </li>
       <li>
-        som snakker
+        <Dingbats icon="earth" />
         <strong class="number">{{ $page.languages.edges.length }}</strong> ulike
         språk
       </li>
       <li>
-        fordelt på
-        <strong class="number">{{ $page.about.numbers.sqm }}</strong>
-        kvadratmeter
+        <Dingbats icon="measuring" />
+        <strong class="number"
+          >{{ $page.about.numbers.sqm }}m<sup>2</sup></strong
+        >
+        kontorareal
       </li>
     </ul>
     <div class="about-content">
@@ -99,10 +100,12 @@ query {
 
 <script>
 import BlockContent from "~/components/tools/BlockContent";
+import Dingbats from "~/components/tools/Dingbats";
 
 export default {
   components: {
     BlockContent,
+    Dingbats,
   },
   methods: {
     getActiveYears() {
@@ -137,26 +140,61 @@ export default {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
 
+  li {
+    margin-bottom: 2rem;
+    position: relative;
+    padding-left: 2.4em;
+    .dingbat {
+      position: absolute;
+      top: 0.4rem;
+      left: 0;
+    }
+    sup {
+      line-height: 0;
+    }
+  }
   h2 {
     grid-column: 1 / -1;
   }
   .number {
     font-family: var(--font-mono);
-    font-size: var(--font-size-xl);
-    vertical-align: middle;
-    margin-bottom: 0.2em;
+    font-size: var(--font-size-l);
+    margin: 0 0.1em 0.2em 0;
+    display: block;
+    line-height: 1;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   .about-content,
   .about-numbers {
     grid-column: 1 / -1;
   }
   .about-numbers {
     margin-bottom: var(--spacing-l);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: var(--spacing-m);
+
+    li {
+      .dingbat {
+        top: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .about-numbers {
+    margin-bottom: var(--spacing-m);
+    grid-template-columns: 1fr;
+
+    li {
+      .dingbat {
+        top: 0;
+      }
+    }
   }
 }
 </style>

@@ -1,19 +1,10 @@
 <template>
   <header class="site-header">
-    <!--<g-link class="logo" to="/"><Logo /></g-link>-->
     <div class="site-header-wrapper" :class="{ inview: isInView }">
       <nav class="site-nav">
         <ul>
           <li>
-            <g-link class="nav-link logo" to="/om"
-              ><span
-                v-for="(block, index) in getLogoBlocks('arkitektskap')"
-                :key="index"
-                class="logo-block"
-                :style="`animation-delay: ${10 / index}s`"
-                >{{ block }}</span
-              ></g-link
-            >
+            <g-link class="nav-link" to="/om"><Logo /></g-link>
           </li>
           <li><g-link class="nav-link" to="/folk">Folk</g-link></li>
           <li><g-link class="nav-link" to="/">Prosjekter</g-link></li>
@@ -28,13 +19,7 @@
 
       <nav class="site-nav--mobile" :class="{ menuopen: menuOpen }">
         <div class="logo" @click="toAnchor('#top')">
-          <span
-            v-for="(block, index) in getLogoBlocks('arkitektskap')"
-            :key="index"
-            class="logo-block"
-            :style="`animation-delay: ${10 / index}s`"
-            >{{ block }}</span
-          >
+          <Logo />
         </div>
         <div class="menu-toggle">
           <button class="button" @click="toggleMenu()">
@@ -97,10 +82,6 @@ export default {
     onEnterViewport(value) {
       this.isInView = value;
     },
-    getLogoBlocks(string) {
-      let arr = string.split("");
-      return arr;
-    },
   },
 };
 </script>
@@ -129,15 +110,6 @@ export default {
     /*background: var(--color-text);
     color: var(--color-background);*/
     animation: slideDown 0.3s linear forwards;
-
-    .logo {
-      &-block {
-        //animation: fadeOut 0.3s linear forwards;
-        &:first-of-type {
-          animation: none;
-        }
-      }
-    }
   }
 }
 .site-nav {
@@ -159,9 +131,6 @@ export default {
   &:hover {
     cursor: var(--cursor-pointer);
     text-decoration: none;
-  }
-  &.logo {
-    font-family: var(--font-mono);
   }
 }
 .theme {
@@ -196,6 +165,17 @@ export default {
 }
 
 @media (max-width: 600px) {
+  .site-header-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: var(--spacing-xs) var(--spacing-sitepadding);
+    background: var(--color-background);
+    &.inview {
+      animation: none;
+    }
+  }
   .site-nav {
     display: none;
   }

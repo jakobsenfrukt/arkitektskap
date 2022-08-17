@@ -54,7 +54,7 @@
         aria-label="Adresse"
         class="address"
       >
-        <Dingbats icon="logo" class="icon" />
+        <Dingbats icon="building" class="icon" />
         <block-content
           :blocks="$static.contact._rawAddress"
           v-if="$static.contact._rawAddress"
