@@ -38,7 +38,7 @@ export default {
   grid-template-columns: repeat(12, 1fr);
   gap: var(--spacing-s);
   justify-items: center;
-  margin: 0 calc(var(--spacing-sitepadding) * -0.5);
+  margin: 0 calc(var(--spacing-sitepadding) * -0.5) var(--spacing-l);
 
   figure {
     margin: 0;

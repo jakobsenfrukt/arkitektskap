@@ -54,7 +54,7 @@ export default {
 }
 .project-list {
   list-style: none;
-  margin: 0;
+  margin: 0 0 var(--spacing-l);
   padding: 0;
   display: grid;
   grid-template-columns: repeat(12, 1fr);

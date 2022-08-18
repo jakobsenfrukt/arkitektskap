@@ -439,7 +439,7 @@ query project ($id: ID!) {
   grid-column: 1 / -1;
   list-style: none;
   padding: 0;
-  margin: var(--spacing-l) 0;
+  margin: 0 0 var(--spacing-l);
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--spacing-m);
