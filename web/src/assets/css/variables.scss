@@ -22,8 +22,11 @@
   --color-black: rgb(12, 24, 18);
   --color-white: rgb(221, 221, 204);
 
-  --cursor-default: url("/assets/graphics/cursor-default.png"), auto;
-  --cursor-pointer: url("/assets/graphics/cursor-pointer.png"), auto !important;
+  --cursor-default: url("/assets/graphics/cursors/cursor-default.png"), auto;
+  --cursor-pointer: url("/assets/graphics/cursors/cursor-pointer.png"), auto !important;
+  --cursor-zoom: url("/assets/graphics/cursors/cursor-zoom.png"), auto !important;
+  --cursor-arrow-left: url("/assets/graphics/cursors/cursor-arrow-left.png"), auto !important;
+  --cursor-arrow-right: url("/assets/graphics/cursors/cursor-arrow-right.png"), auto !important;
 
   --color-background-light: var(--color-white);
   --color-text-light: var(--color-black);
@@ -50,8 +53,11 @@ body[data-theme="dark"] {
   --color-highlight: var(--color-highlight-dark);
   --color-hover: var(--color-hover-dark);
 
-  --cursor-default: url("/assets/graphics/cursor-default-dark.png"), auto;
-  --cursor-pointer: url("/assets/graphics/cursor-pointer-dark.png"), auto !important;
+  --cursor-default: url("/assets/graphics/cursors/cursor-default-dark.png"), auto;
+  --cursor-pointer: url("/assets/graphics/cursors/cursor-pointer-dark.png"), auto !important;
+  --cursor-zoom: url("/assets/graphics/cursors/cursor-zoom-dark.png"), auto !important;
+  --cursor-arrow-left: url("/assets/graphics/cursors/cursor-arrow-left-dark.png"), auto !important;
+  --cursor-arrow-right: url("/assets/graphics/cursors/cursor-arrow-right-dark.png"), auto !important;
 }
 
 @media (min-width: 1920px) {
