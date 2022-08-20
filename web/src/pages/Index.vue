@@ -10,16 +10,26 @@
             <ul>
               <li>
                 Hva
-                <select v-model="filter.what">
+                <select v-model="filter.category">
                   <option value="all">Vis alle</option>
-                  <option value="x">X</option>
+                  <option
+                    v-for="category in $page.categories.edges"
+                    :key="category.node.title"
+                    :value="category.node.title"
+                    >{{ category.node.title }}</option
+                  >
                 </select>
               </li>
               <li>
                 Hvor
-                <select v-model="filter.where">
+                <select v-model="filter.location">
                   <option value="all">Vis alle</option>
-                  <option value="x">X</option>
+                  <option
+                    v-for="location in $page.locations.edges"
+                    :key="location.node.title"
+                    :value="location.node.title"
+                    >{{ location.node.title }}</option
+                  >
                 </select>
               </li>
               <li>
@@ -27,14 +37,14 @@
                 <label>Fra</label>
                 <input
                   type="number"
-                  v-model="filter.when.from"
-                  placeholder="1995"
+                  placeholder="Årstall"
+                  v-model="filter.minYear"
                 />
                 <label>Til</label>
                 <input
                   type="number"
-                  v-model="filter.when.to"
-                  placeholder="2022"
+                  placeholder="Årstall"
+                  v-model="filter.maxYear"
                 />
               </li>
             </ul>
@@ -137,6 +147,22 @@ query {
       }
     }
   }
+  locations: allSanityLocation(sortBy: "title") {
+    edges {
+      node {
+        id
+        title
+      }
+    }
+  }
+  categories: allSanityCategory(sortBy: "title") {
+    edges {
+      node {
+        id
+        title
+      }
+    }
+  }
 }
 </page-query>
 
@@ -159,15 +185,16 @@ export default {
       isInView: false,
       sorting: "standard",
       filter: {
-        what: "all",
-        where: "all",
-        when: "all",
+        category: "all",
+        location: "all",
+        minYear: undefined,
+        maxYear: undefined,
       },
     };
   },
   computed: {
     sortedProjects() {
-      const projects = this.filterProjects(this.$page.projects.edges);
+      const projects = this.filteredProjects;
       if (this.sorting === "standard") {
         return projects
           .slice()
@@ -204,6 +231,46 @@ export default {
           );
       }
     },
+    filteredProjects() {
+      const projects = this.$page.projects.edges;
+      const filters = this.filter;
+      let filtered = projects;
+      if (filters.category !== "all") {
+        filtered = filtered.filter((item) => {
+          const categories = item.node.projectInfo.category.map(
+            (category) => category.title
+          );
+          return categories.some((category) => category === filters.category);
+        });
+      }
+      if (filters.location !== "all") {
+        filtered = filtered.filter((item) => {
+          if (!item.node.projectInfo.location) {
+            return false;
+          }
+          return item.node.projectInfo.location.title === filters.location;
+        });
+      }
+      if (filters.minYear !== undefined) {
+        const minYear = Number(filters.minYear);
+        filtered = filtered.filter((item) => {
+          if (!item.node.projectInfo.startYear) {
+            return false;
+          }
+          return item.node.projectInfo.startYear >= minYear;
+        });
+      }
+      if (filters.maxYear !== undefined) {
+        const maxYear = Number(filters.maxYear);
+        filtered = filtered.filter((item) => {
+          if (!item.node.projectInfo.startYear) {
+            return false;
+          }
+          return item.node.projectInfo.startYear <= maxYear;
+        });
+      }
+      return filtered;
+    },
   },
   methods: {
     toggleMenu() {
@@ -212,13 +279,14 @@ export default {
     onEnterViewport(value) {
       this.isInView = value;
     },
-    filterProjects(projects) {
-      console.log("filtering");
-      return projects;
-    },
     reset() {
       this.sorting = "standard";
-      console.log("resetting");
+      this.filter = {
+        category: "all",
+        location: "all",
+        minYear: undefined,
+        maxYear: undefined,
+      };
     },
   },
   metaInfo: {
