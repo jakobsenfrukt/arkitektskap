@@ -73,8 +73,8 @@ export default {
     },
     prepareColors(palette) {
       const newPalette = {
-        light: palette.lightMuted ? palette.lightMuted.background : "#F08080",
-        dark: palette.darkMuted ? palette.darkMuted.background : "#CD5C5C",
+        light: palette.lightMuted.background,
+        dark: palette.darkMuted.background,
       };
       do {
         newPalette.light = this.lightenDarkenColor(newPalette.light, 10);
