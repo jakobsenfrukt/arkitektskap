@@ -42,6 +42,9 @@
       <div class="lightbox-close" @click="lightboxOpen = false">
         <strong>Lukk bildegalleri</strong> &nbsp; <Dingbats icon="close" />
       </div>
+      <div class="lightbox-number">
+        <strong>{{ currentImage + 1 }}/{{ images.length }}</strong>
+      </div>
     </div>
   </div>
 </template>
@@ -124,7 +127,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--spacing-sitepadding) calc(var(--spacing-sitepadding) * 0.5) 0;
+  padding: 0 calc(var(--spacing-sitepadding) * 0.5) 0;
 
   figure {
     width: 100%;
@@ -168,6 +171,16 @@ export default {
     &:hover {
       cursor: var(--cursor-pointer);
     }
+  }
+  &-number {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #000;
+    color: var(--color-white);
+    text-align: center;
+    padding: var(--spacing-s) var(--spacing-sitepadding);
   }
 }
 </style>
