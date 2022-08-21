@@ -92,7 +92,7 @@
           "
           :alt="$page.project.mainImage.alt"
         />
-        <!--<ul class="palette">
+        <ul class="palette">
           <li
             v-for="(color, index) in $page.project.mainImage.asset.metadata
               .palette"
@@ -109,7 +109,7 @@
               {{ color.background }}
             </div>
           </li>
-        </ul>-->
+        </ul>
       </div>
 
       <div class="project-content">

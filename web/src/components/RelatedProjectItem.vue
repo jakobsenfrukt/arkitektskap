@@ -1,15 +1,5 @@
 <template>
-  <li
-    class="project"
-    :class="`size-${project.rating}`"
-    :style="
-      `--color-hover-light: ${
-        project.mainImage.asset.metadata.palette.darkMuted.background
-      }; --color-hover-dark: ${
-        project.mainImage.asset.metadata.palette.lightMuted.background
-      }`
-    "
-  >
+  <li class="project" :class="`size-${project.rating}`">
     <div class="project-image">
       <img
         v-if="project.mainImage"
@@ -84,17 +74,6 @@ export default {
       transition: transform 1s ease;
     }
   }
-  /*&:hover {
-    .project-image {
-      img {
-        transition: transform 0.8s ease;
-        transform: scale(1.04);
-      }
-    }
-    .project-text {
-      color: var(--color-hover);
-    }
-  }*/
   &-title {
     font-size: var(--font-size-s);
     font-family: var(--font-mono);
@@ -127,18 +106,6 @@ export default {
     overflow: hidden;
     text-indent: -9999px;
     z-index: 0;
-  }
-}
-
-body {
-  .project-text {
-    --color-hover: var(--color-hover-light);
-  }
-}
-
-body[data-theme="dark"] {
-  .project-text {
-    --color-hover: var(--color-hover-dark);
   }
 }
 </style>

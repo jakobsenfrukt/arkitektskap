@@ -1,13 +1,16 @@
 :root {
+  // fonts
   --font-serif: "Triptych", serif;
   --font-mono: "STK Gerhard", monospace;
 
+  // font sizes
   --font-size-s: 1rem;
   --font-size-m: 1.6rem;
   --font-size-l: 2.2rem;
   --font-size-xl: 2.8rem;
   --font-size-xxl: 3.4rem;
 
+  // spacing
   --spacing-xs: calc(var(--spacing-m) * 0.5);
   --spacing-s: calc(var(--spacing-m) * 0.5);
   --spacing-m: 2rem;
@@ -17,41 +20,33 @@
   --border-width: 0.1em;
 
   // colors
-  --color-main: #066e32;
-  --color-blue: #1e1253;
   --color-black: rgb(12, 24, 18);
   --color-white: rgb(221, 221, 204);
 
+  --color-background-light: var(--color-white);
+  --color-text-light: var(--color-black);
+
+  --color-background-dark: var(--color-black);
+  --color-text-dark: var(--color-white);
+
+  // cursors
   --cursor-default: url("/assets/graphics/cursors/cursor-default.png"), auto;
   --cursor-pointer: url("/assets/graphics/cursors/cursor-pointer.png"), auto !important;
   --cursor-zoom: url("/assets/graphics/cursors/cursor-zoom.png"), auto !important;
   --cursor-arrow-left: url("/assets/graphics/cursors/cursor-arrow-left.png"), auto !important;
   --cursor-arrow-right: url("/assets/graphics/cursors/cursor-arrow-right.png"), auto !important;
-
-  --color-background-light: var(--color-white);
-  --color-text-light: var(--color-black);
-  --color-detail-light: var(--color-main);
-  --color-hover-light: var(--color-main);
-
-  --color-background-dark: var(--color-black);
-  --color-text-dark: var(--color-white);
-  --color-detail-dark: var(--color-main);
-  --color-hover-dark: var(--color-main);
 }
 
+// light theme
 body {
   --color-background: var(--color-background-light);
   --color-text: var(--color-text-light);
-  --color-highlight: var(--color-highlight-light);
-  --color-hover: var(--color-hover-light);
 }
 
 // dark theme
 body[data-theme="dark"] {
   --color-background: var(--color-background-dark);
   --color-text: var(--color-text-dark);
-  --color-highlight: var(--color-highlight-dark);
-  --color-hover: var(--color-hover-dark);
 
   --cursor-default: url("/assets/graphics/cursors/cursor-default-dark.png"), auto;
   --cursor-pointer: url("/assets/graphics/cursors/cursor-pointer-dark.png"), auto !important;
@@ -60,6 +55,7 @@ body[data-theme="dark"] {
   --cursor-arrow-right: url("/assets/graphics/cursors/cursor-arrow-right-dark.png"), auto !important;
 }
 
+// responsive variables
 @media (min-width: 1920px) {
   :root {
     --spacing-sitepadding: 12rem;

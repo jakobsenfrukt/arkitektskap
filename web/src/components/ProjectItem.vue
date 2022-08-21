@@ -1,15 +1,5 @@
 <template>
-  <li
-    class="project"
-    :class="`size-${project.rating}`"
-    :style="
-      `--color-hover-light: ${
-        project.mainImage.asset.metadata.palette.darkMuted.background
-      }; --color-hover-dark: ${
-        project.mainImage.asset.metadata.palette.lightMuted.background
-      }`
-    "
-  >
+  <li class="project" :class="`size-${project.rating}`">
     <div class="project-image">
       <img
         v-if="project.mainImage"
@@ -205,13 +195,13 @@ export default {
 
   &.size-3 {
     .project-intro {
-      font-size: var(--font-size-xxl);
+      font-size: var(--font-size-xl);
     }
   }
 
   &.size-2 {
     .project-intro {
-      font-size: var(--font-size-xl);
+      font-size: var(--font-size-l);
     }
   }
 
@@ -232,7 +222,7 @@ export default {
       grid-column: span 1;
     }
     .project-intro {
-      font-size: var(--font-size-l);
+      font-size: var(--font-size-m);
     }
     .project-info {
       grid-template-columns: 1fr;
@@ -251,18 +241,6 @@ export default {
   height: 100%;
   z-index: 0;
   width: 10px;
-}
-
-body {
-  .project-text {
-    --color-hover: var(--color-hover-light);
-  }
-}
-
-body[data-theme="dark"] {
-  .project-text {
-    --color-hover: var(--color-hover-dark);
-  }
 }
 
 @media (min-width: 600px) {
