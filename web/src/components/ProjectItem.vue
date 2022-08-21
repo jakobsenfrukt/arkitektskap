@@ -36,11 +36,7 @@
       </p>
       <ul class="project-info">
         <li v-if="project.projectInfo.location.title">
-          Hvor:<br />
-          {{ project.projectInfo.location.title }}
-        </li>
-        <li>
-          Når:<br />
+          {{ project.projectInfo.location.title }},
           <template
             v-if="
               project.projectInfo.endYear &&
@@ -56,7 +52,6 @@
           >
         </li>
         <li v-if="project.projectInfo.category.length">
-          Hva:<br />
           <ul class="project-categories">
             <li
               v-for="(category, index) in project.projectInfo.category"
@@ -163,11 +158,9 @@ export default {
     font-size: var(--font-size-l);
     font-family: var(--font-serif);
     line-height: 1.2;
-    margin-bottom: var(--spacing-m);
+    margin-bottom: calc(var(--spacing-s) * 1.2);
   }
   &-info {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
     font-family: var(--font-mono);
     font-size: var(--font-size-s);
     font-weight: 500;

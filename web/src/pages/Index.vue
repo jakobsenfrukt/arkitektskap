@@ -4,35 +4,35 @@
 
     <div class="filter">
       <div class="filter-wrapper" :class="{ inview: isInView }">
-        <ul class="filter-menu">
-          <li>
-            Filter <Dingbats icon="filter" />
-            <ul>
-              <li>
-                Hva
-                <select v-model="filter.category">
-                  <option value="all">Vis alle</option>
-                  <option
-                    v-for="category in $page.categories.edges"
-                    :key="category.node.title"
-                    :value="category.node.title"
-                    >{{ category.node.title }}</option
-                  >
-                </select>
-              </li>
-              <li>
-                Hvor
-                <select v-model="filter.location">
-                  <option value="all">Vis alle</option>
-                  <option
-                    v-for="location in $page.locations.edges"
-                    :key="location.node.title"
-                    :value="location.node.title"
-                    >{{ location.node.title }}</option
-                  >
-                </select>
-              </li>
-              <li>
+        <ul class="filter-menu" :class="{ menuOpen: menuOpen }">
+          <li class="filter-toggle">Filter <Dingbats icon="filter" /></li>
+          <li class="filter-menu-item filter-submenu">
+            {{ filter.category }} <Dingbats icon="filter" />
+            <select v-model="filter.category" @change="toAnchor('#projects')">
+              <option disabled>Hva</option>
+              <option value="hva">Vis alle</option>
+              <option
+                v-for="category in $page.categories.edges"
+                :key="category.node.title"
+                :value="category.node.title"
+                >{{ category.node.title }}</option
+              >
+            </select>
+          </li>
+          <li class="filter-menu-item filter-submenu">
+            {{ filter.location }} <Dingbats icon="filter" />
+            <select v-model="filter.location" @change="toAnchor('#projects')">
+              <option disabled>Hvor</option>
+              <option value="hvor">Vis alle</option>
+              <option
+                v-for="location in $page.locations.edges"
+                :key="location.node.title"
+                :value="location.node.title"
+                >{{ location.node.title }}</option
+              >
+            </select>
+          </li>
+          <!--<li class="filter-menu-item">
                 Når
                 <label>Fra</label>
                 <input
@@ -46,20 +46,20 @@
                   placeholder="Årstall"
                   v-model="filter.maxYear"
                 />
-              </li>
-            </ul>
-          </li>
-          <li>
-            Sortering <Dingbats icon="sort" />
-            <select v-model="sorting">
-              <option value="standard">Standard</option>
-              <option value="titleAsc">A-Å</option>
-              <option value="titleDesc">Å-A</option>
-              <option value="yearAsc">Eldst-Nyest</option>
-              <option value="yearDesc">Nyest-Eldst</option>
+              </li>-->
+          <li class="filter-menu-item">
+            {{ sorting }} <Dingbats icon="sort" />
+            <select v-model="sorting" @change="toAnchor('#projects')">
+              <option value="sortering">Standard</option>
+              <option value="a-å">A-Å</option>
+              <option value="å-a">Å-A</option>
+              <option value="eldst-nyest">Eldst-Nyest</option>
+              <option value="nyest-eldst">Nyest-Eldst</option>
             </select>
           </li>
-          <li @click="reset()">Nullstill <Dingbats icon="close-small" /></li>
+          <li class="filter-menu-item" @click="reset()">
+            Nullstill <Dingbats icon="close-small" />
+          </li>
         </ul>
       </div>
 
@@ -70,7 +70,7 @@
       ></IntersectionObserver>
     </div>
 
-    <ProjectGrid :projects="sortedProjects" />
+    <ProjectGrid :projects="sortedProjects" id="projects" />
   </Layout>
 </template>
 
@@ -183,10 +183,10 @@ export default {
     return {
       menuOpen: false,
       isInView: false,
-      sorting: "standard",
+      sorting: "sortering",
       filter: {
-        category: "all",
-        location: "all",
+        category: "hva",
+        location: "hvor",
         minYear: undefined,
         maxYear: undefined,
       },
@@ -195,7 +195,7 @@ export default {
   computed: {
     sortedProjects() {
       const projects = this.filteredProjects;
-      if (this.sorting === "standard") {
+      if (this.sorting === "sortering") {
         return projects
           .slice()
           .sort(
@@ -204,17 +204,17 @@ export default {
           )
           .sort((a, b) => b.node.rating - a.node.rating);
       }
-      if (this.sorting === "titleAsc") {
+      if (this.sorting === "a-å") {
         return projects
           .slice()
           .sort((a, b) => a.node.title.localeCompare(b.node.title));
       }
-      if (this.sorting === "titleDesc") {
+      if (this.sorting === "å-a") {
         return projects
           .slice()
           .sort((a, b) => b.node.title.localeCompare(a.node.title));
       }
-      if (this.sorting === "yearAsc") {
+      if (this.sorting === "eldst-nyest") {
         return projects
           .slice()
           .sort(
@@ -222,7 +222,7 @@ export default {
               a.node.projectInfo.startYear - b.node.projectInfo.startYear
           );
       }
-      if (this.sorting === "yearDesc") {
+      if (this.sorting === "nyest-eldst") {
         return projects
           .slice()
           .sort(
@@ -235,7 +235,7 @@ export default {
       const projects = this.$page.projects.edges;
       const filters = this.filter;
       let filtered = projects;
-      if (filters.category !== "all") {
+      if (filters.category !== "hva") {
         filtered = filtered.filter((item) => {
           const categories = item.node.projectInfo.category.map(
             (category) => category.title
@@ -243,7 +243,7 @@ export default {
           return categories.some((category) => category === filters.category);
         });
       }
-      if (filters.location !== "all") {
+      if (filters.location !== "hvor") {
         filtered = filtered.filter((item) => {
           if (!item.node.projectInfo.location) {
             return false;
@@ -280,13 +280,19 @@ export default {
       this.isInView = value;
     },
     reset() {
-      this.sorting = "standard";
+      this.sorting = "sortering";
       this.filter = {
-        category: "all",
-        location: "all",
+        category: "hva",
+        location: "hvor",
         minYear: undefined,
         maxYear: undefined,
       };
+      this.toAnchor("#projects");
+    },
+    toAnchor(anchor) {
+      document.querySelector(anchor).scrollIntoView({
+        behavior: "smooth",
+      });
     },
   },
   metaInfo: {
@@ -338,6 +344,18 @@ export default {
   align-items: center;
   justify-content: space-between;
   text-transform: lowercase;
+
+  &-item {
+    position: relative;
+    cursor: var(--cursor-pointer);
+  }
+}
+.filter-toggle {
+  background: transparent;
+  text-decoration: none;
+  cursor: var(--cursor-pointer);
+
+  display: none;
 }
 button,
 .heading {
@@ -349,6 +367,23 @@ button,
   color: inherit;
   background: var(--color-background);
   border: 1px solid var(--color-text);
+}
+select {
+  margin-bottom: 0px;
+  padding: 0px;
+  border: 0px solid transparent;
+  background-color: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  opacity: 0;
+  height: 2rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  cursor: var(--cursor-pointer);
 }
 .observer {
   position: absolute;
@@ -371,6 +406,15 @@ button,
   }
   to {
     transform: translateY(100%);
+  }
+}
+
+@media (max-width: 870px) {
+  .filter-toggle {
+    display: block;
+  }
+  .filter-submenu {
+    display: none;
   }
 }
 </style>
