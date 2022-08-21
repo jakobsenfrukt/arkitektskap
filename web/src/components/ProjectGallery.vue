@@ -17,7 +17,7 @@
       />
     </figure>
 
-    <!--<div class="lightbox" v-if="lightboxOpen">
+    <div class="lightbox" v-if="lightboxOpen">
       <figure class="lightbox-image">
         <img
           :src="
@@ -39,12 +39,19 @@
         v-if="currentImage > 0"
         @click="lightboxNav('prev')"
       ></div>
-    </div>-->
+      <div class="lightbox-close" @click="lightboxOpen = false">
+        <strong>Lukk bildegalleri</strong> &nbsp; <Dingbats icon="close" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import Dingbats from "@/components/tools/Dingbats";
 export default {
+  components: {
+    Dingbats,
+  },
   props: {
     images: Array,
   },
@@ -110,10 +117,10 @@ export default {
   right: 0;
   left: 0;
   bottom: 0;
-  z-index: 999;
+  z-index: 1002;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.9);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -146,6 +153,20 @@ export default {
     &.next {
       left: 50%;
       cursor: var(--cursor-arrow-right);
+    }
+  }
+  &-close {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1002;
+    background: #000;
+    color: var(--color-white);
+    text-align: right;
+    padding: var(--spacing-s) var(--spacing-sitepadding);
+    &:hover {
+      cursor: var(--cursor-pointer);
     }
   }
 }
