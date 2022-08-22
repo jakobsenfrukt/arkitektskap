@@ -6,7 +6,7 @@
           v-if="$page.person.image"
           :src="
             $urlForImage($page.person.image, $page.metadata.sanityOptions)
-              .width(1200)
+              .width(800)
               .auto('format')
               .url()
           "

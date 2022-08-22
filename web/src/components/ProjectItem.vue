@@ -5,7 +5,7 @@
         v-if="project.mainImage"
         :src="
           $urlForImage(project.mainImage, $static.metadata.sanityOptions)
-            .width(1200)
+            .width(600)
             .auto('format')
             .url()
         "
