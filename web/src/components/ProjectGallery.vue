@@ -93,9 +93,12 @@ export default {
   figure {
     margin: 0;
     cursor: var(--cursor-zoom);
+    height: 100%;
 
     img {
       display: block;
+      height: 100%;
+      object-fit: cover;
     }
 
     &.column {

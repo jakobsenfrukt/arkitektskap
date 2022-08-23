@@ -75,5 +75,13 @@ export default {
   h6 {
     margin: 1.6em 0 0.6em;
   }
+  ul {
+    list-style-type: none;
+    padding-left: 1em;
+  }
+  ul > li:before {
+    content: "—";
+    margin-right: 0.5em;
+  }
 }
 </style>
