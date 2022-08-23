@@ -5,6 +5,7 @@
         v-for="(project, index) in projects"
         :key="index"
         :project="project.node"
+        :usePalette="usePalette(index)"
       />
     </ul>
   </div>
@@ -19,6 +20,14 @@ export default {
   },
   props: {
     projects: Array,
+  },
+  methods: {
+    usePalette(index) {
+      if (index === 0 || index % 5 === 0) {
+        return true;
+      }
+      return false;
+    },
   },
 };
 </script>

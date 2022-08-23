@@ -11,6 +11,9 @@ import urlForImage from './utils/urlForImage'
 // Import function that replaces logo
 import replaceLogo from './utils/replaceLogo'
 
+// Import function that prepares color palette
+import prepareColors from './utils/palette'
+
 export default function (Vue, { router, head, isClient }) {
   // Set default layout as a global component
   Vue.component('Layout', DefaultLayout)
@@ -20,4 +23,7 @@ export default function (Vue, { router, head, isClient }) {
 
   // Replaces logo where arkitektskap is mentioned
   Vue.prototype.$replaceLogo = replaceLogo
+
+  // Prepares WCAG compliant color palette
+  Vue.prototype.$prepareColors = prepareColors
 }
