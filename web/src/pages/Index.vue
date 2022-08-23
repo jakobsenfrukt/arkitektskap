@@ -15,6 +15,7 @@
                 v-for="category in $page.categories.edges"
                 :key="category.node.title"
                 :value="category.node.title"
+                :disabled="!categoryHasContent(category.node.title)"
                 >{{ category.node.title }}</option
               >
             </select>
@@ -28,6 +29,7 @@
                 v-for="location in $page.locations.edges"
                 :key="location.node.title"
                 :value="location.node.title"
+                :disabled="!locationHasContent(location.node.title)"
                 >{{ location.node.title }}</option
               >
             </select>
@@ -292,6 +294,19 @@ export default {
     toAnchor(anchor) {
       document.querySelector(anchor).scrollIntoView({
         behavior: "smooth",
+      });
+    },
+    categoryHasContent(category) {
+      return this.filteredProjects.some((project) => {
+        const categories = project.node.projectInfo.category.map(
+          (item) => item.title
+        );
+        return categories.some((item) => item === category);
+      });
+    },
+    locationHasContent(location) {
+      return this.filteredProjects.some((element) => {
+        return element.node.projectInfo.location.title === location;
       });
     },
   },
