@@ -107,6 +107,7 @@ export default {
     right: 0;
     padding: var(--spacing-xs) var(--spacing-sitepadding);
     background: var(--color-background);
+    transition: color 1s ease-in-out, background-color 1s ease-in-out;
     /*background: var(--color-text);
     color: var(--color-background);*/
     animation: slideDown 0.3s linear forwards;

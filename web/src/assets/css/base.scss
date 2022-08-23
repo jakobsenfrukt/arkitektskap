@@ -21,7 +21,7 @@ body {
   position: relative;
   overflow-x: hidden;
 
-  transition: color .6s ease-in-out, background-color .6s ease-in-out;
+  transition: color 1s ease-in-out, background-color 1s ease-in-out;
 
   cursor: var(--cursor-default);
 }
