@@ -322,13 +322,12 @@ export default {
   z-index: 1001;
   background: var(--color-text);
   color: var(--color-background);
+  transition: color 1s ease-in-out, background-color 1s ease-in-out;
   font-family: var(--font-mono);
   font-size: var(--font-size-s);
 
   transform: translateY(100%);
   animation: slideDown 0.3s linear forwards;
-
-  display: none;
 
   &.inview {
     animation: slideUp 0.3s linear forwards;
