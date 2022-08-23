@@ -99,6 +99,8 @@ export default {
   z-index: 1001;
   font-family: var(--font-mono);
   font-size: var(--font-size-s);
+  background: var(--color-background);
+  transition: color 1s ease-in-out, background-color 1s ease-in-out;
 
   &.inview {
     position: fixed;
@@ -106,8 +108,6 @@ export default {
     left: 0;
     right: 0;
     padding: var(--spacing-xs) var(--spacing-sitepadding);
-    background: var(--color-background);
-    transition: color 1s ease-in-out, background-color 1s ease-in-out;
     /*background: var(--color-text);
     color: var(--color-background);*/
     animation: slideDown 0.3s linear forwards;

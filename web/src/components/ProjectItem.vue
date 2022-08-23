@@ -250,10 +250,12 @@ export default {
   }
   &-image {
     margin-bottom: var(--spacing-m);
+    width: 100%;
     max-height: 70vh;
     overflow: hidden;
 
     img {
+      width: 100%;
       object-fit: cover;
       transition: transform 1s ease;
     }

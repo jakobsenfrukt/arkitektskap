@@ -93,10 +93,12 @@ export default {
   figure {
     margin: 0;
     cursor: var(--cursor-zoom);
+    width: 100%;
     height: 100%;
 
     img {
       display: block;
+      width: 100%;
       height: 100%;
       object-fit: cover;
     }
