@@ -347,6 +347,10 @@ export default {
   &-item {
     position: relative;
     cursor: var(--cursor-pointer);
+
+    .dingbat {
+      margin-right: 0;
+    }
   }
 }
 .filter-toggle {
