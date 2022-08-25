@@ -46,4 +46,10 @@ export default {
   row-gap: var(--spacing-l);
   align-items: center;
 }
+
+@media (min-width: 1600px) {
+  .project-list {
+    column-gap: calc(var(--spacing-m) * 2);
+  }
+}
 </style>

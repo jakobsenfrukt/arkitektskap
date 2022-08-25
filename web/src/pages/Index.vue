@@ -1,7 +1,15 @@
 <template>
   <Layout>
-    <p class="intro" v-html="$replaceLogo($page.frontpage.intro)"></p>
-
+    <p
+      class="intro"
+      v-html="
+        $replaceLogo(
+          $page.frontpage.intro[
+            Math.floor(Math.random() * $page.frontpage.intro.length)
+          ]
+        )
+      "
+    ></p>
     <div class="filter">
       <div class="filter-wrapper" :class="{ inview: isInView }">
         <ul class="filter-menu" :class="{ menuOpen: menuOpen }">
@@ -408,6 +416,11 @@ select {
   top: 110vh;
   height: calc(100% - 280vh);
   left: 50%;
+}
+// give anchor link a lil space for the header
+#projects {
+  padding-top: var(--spacing-l);
+  margin-top: calc(var(--spacing-l) * -1);
 }
 
 @keyframes slideUp {
