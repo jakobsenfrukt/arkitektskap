@@ -261,6 +261,7 @@ query project ($id: ID!) {
           alt
           caption
           columns
+          nocrop
         }
       }
     }

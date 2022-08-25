@@ -3,7 +3,7 @@
     <figure
       v-for="(image, index) in images"
       :key="index"
-      :class="`column-${image.columns}`"
+      :class="`column-${image.columns} ${image.nocrop ? 'nocrop' : ''}`"
       @click="openLightbox(index)"
     >
       <img
@@ -103,8 +103,17 @@ export default {
       object-fit: cover;
     }
 
+    &.nocrop {
+      height: auto;
+
+      img {
+        height: auto;
+      }
+    }
+
     &.column {
-      &-full {
+      &-full,
+      &-null {
         grid-column: span 12;
       }
       &-half {

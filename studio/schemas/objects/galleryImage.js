@@ -3,7 +3,7 @@ export default {
   type: 'image',
   title: 'Bilde',
   options: {
-    hotspot: false,
+    hotspot: true,
   },
   fields: [
     {
@@ -30,6 +30,15 @@ export default {
         layout: 'radio', // <-- defaults to 'dropdown'
         isHighlighted: true
       },
+    },
+    {
+      name: 'nocrop',
+      title: 'Unngå beskjæring av bildet',
+      description: 'Bildet vil vises i sin opprinnelige høyde, istedenfor å strekkes til samme høyde som andre bilder på samme rad.',
+      type: 'boolean',
+      options: {
+        isHighlighted: true
+      }
     },
     {
       name: 'caption',
