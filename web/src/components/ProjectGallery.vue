@@ -144,14 +144,13 @@ export default {
   padding: 0 calc(var(--spacing-sitepadding) * 0.5) 0;
 
   figure {
-    width: 100%;
-    max-height: 90%;
+    padding: 3.8rem 0;
     cursor: var(--cursor-default);
 
     img {
       display: block;
-      width: 100%;
-      height: 80vh;
+      max-width: 100%;
+      max-height: 100%;
       object-fit: contain;
     }
   }
@@ -191,7 +190,6 @@ export default {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    background: #000;
     color: var(--color-white);
     text-align: center;
     padding: var(--spacing-s) var(--spacing-sitepadding);

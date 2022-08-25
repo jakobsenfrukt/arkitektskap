@@ -92,24 +92,6 @@
           "
           :alt="$page.project.mainImage.alt"
         />
-        <!--<ul class="palette">
-          <li
-            v-for="(color, index) in $page.project.mainImage.asset.metadata
-              .palette"
-            :key="`color-${index}`"
-          >
-            <div
-              class="palette-color"
-              :style="
-                `--palette-background: ${
-                  color.background
-                }; --palette-foreground: ${color.foreground}`
-              "
-            >
-              {{ color.background }}
-            </div>
-          </li>
-        </ul>-->
       </div>
 
       <div class="project-content">
@@ -378,7 +360,7 @@ query project ($id: ID!) {
   &-info {
     grid-column: 1 / span 3;
     list-style: none;
-    margin: 0 0 var(--spacing-l);
+    margin: 0 0 var(--spacing-m);
     padding: 0 var(--spacing-m) 0 0;
     font-size: var(--font-size-s);
 

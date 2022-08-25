@@ -156,8 +156,8 @@ query {
         }
       }
     }
-  }
-  locations: allSanityLocation(sortBy: "title") {
+  },
+  locations: allSanityLocation(sortBy: "title", order: ASC) {
     edges {
       node {
         id
@@ -165,7 +165,7 @@ query {
       }
     }
   }
-  categories: allSanityCategory(sortBy: "title") {
+  categories: allSanityCategory(sortBy: "title", order: ASC) {
     edges {
       node {
         id
@@ -281,6 +281,34 @@ export default {
       }
       return filtered;
     },
+    filteredProjectsByLocation() {
+      const projects = this.$page.projects.edges;
+      const filters = this.filter;
+      let filtered = projects;
+      if (filters.location !== "hvor") {
+        filtered = filtered.filter((item) => {
+          if (!item.node.projectInfo.location) {
+            return false;
+          }
+          return item.node.projectInfo.location.title === filters.location;
+        });
+      }
+      return filtered;
+    },
+    filteredProjectsByCategory() {
+      const projects = this.$page.projects.edges;
+      const filters = this.filter;
+      let filtered = projects;
+      if (filters.category !== "hva") {
+        filtered = filtered.filter((item) => {
+          const categories = item.node.projectInfo.category.map(
+            (category) => category.title
+          );
+          return categories.some((category) => category === filters.category);
+        });
+      }
+      return filtered;
+    },
   },
   methods: {
     toggleMenu() {
@@ -305,7 +333,7 @@ export default {
       });
     },
     categoryHasContent(category) {
-      return this.filteredProjects.some((project) => {
+      return this.filteredProjectsByLocation.some((project) => {
         const categories = project.node.projectInfo.category.map(
           (item) => item.title
         );
@@ -313,7 +341,7 @@ export default {
       });
     },
     locationHasContent(location) {
-      return this.filteredProjects.some((element) => {
+      return this.filteredProjectsByCategory.some((element) => {
         return element.node.projectInfo.location.title === location;
       });
     },
