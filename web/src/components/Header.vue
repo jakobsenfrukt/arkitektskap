@@ -35,7 +35,7 @@
           <li @click="toggleMenu()">
             <g-link class="nav-link" to="/">Prosjekter</g-link>
           </li>
-          <li @click="toggleMenu()">
+          <li>
             <span class="nav-link anchor" @click="toAnchor('#kontakt')"
               >Kontakt</span
             >
