@@ -1,18 +1,15 @@
 <template>
   <Layout :palette="$page.person.image.asset.metadata.palette">
     <div class="person">
-      <div class="person-image">
-        <img
-          v-if="$page.person.image"
-          :src="
-            $urlForImage($page.person.image, $page.metadata.sanityOptions)
-              .width(800)
-              .auto('format')
-              .url()
-          "
-          :alt="$page.person.image.alt"
-        />
-      </div>
+      <SuperImage
+        v-if="$page.person.image"
+        class="person-image"
+        :image="$page.person.image"
+        :alt="$page.person.image.alt ? $page.person.image.alt : 'Portrett av ansatt'"
+        :width="1000"
+        :lqip="$page.person.image.asset.metadata.lqip"
+        :aspectRatio="$page.person.image.asset.metadata.dimensions.aspectRatio"
+      />
       <div class="person-text">
         <h1 class="person-name">{{ $page.person.name }}</h1>
         <p class="person-title">{{ $page.person.title }}</p>
@@ -140,6 +137,10 @@ query person ($id: ID!) {
         _id
         url
         metadata {
+          lqip
+          dimensions {
+            aspectRatio
+          }
           palette {
             darkMuted {
               background
@@ -182,6 +183,10 @@ query person ($id: ID!) {
           _id
           url
           metadata {
+            lqip
+            dimensions {
+              aspectRatio
+            }
             palette {
               darkMuted {
                 background
@@ -235,6 +240,10 @@ query person ($id: ID!) {
           asset {
             url
             metadata {
+              lqip
+              dimensions {
+                aspectRatio
+              }
               palette {
                 darkMuted {
                   background
@@ -291,7 +300,7 @@ query person ($id: ID!) {
   &-image {
     grid-column: span 6;
     order: 2;
-    margin-bottom: var(--spacing-m);
+    margin-bottom: var(--spacing-l);
   }
   &-text {
     grid-column: span 6;

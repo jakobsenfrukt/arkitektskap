@@ -1,34 +1,14 @@
 <template>
   <li class="project" :class="`size-${project.rating}`">
-    <div class="project-image">
-      <img
-        v-if="project.mainImage"
-        :src="
-          $urlForImage(project.mainImage, $static.metadata.sanityOptions)
-            .width(600)
-            .auto('format')
-            .url()
-        "
-        :alt="project.mainImage.alt"
-      />
-    </div>
-    <!--<ul class="palette">
-      <li
-        v-for="(color, index) in project.mainImage.asset.metadata.palette"
-        :key="`color-${index}`"
-      >
-        <div
-          class="palette-color"
-          :style="
-            `--palette-background: ${color.background}; --palette-foreground: ${
-              color.foreground
-            }`
-          "
-        >
-          {{ color.background }}
-        </div>
-      </li>
-    </ul>-->
+    <SuperImage
+      v-if="project.mainImage"
+      class="project-image"
+      :image="project.mainImage"
+      :alt="project.mainImage.alt"
+      :width="800"
+      :lqip="project.mainImage.asset.metadata.lqip"
+      :aspectRatio="project.mainImage.asset.metadata.dimensions.aspectRatio"
+    />
     <div class="project-text">
       <h2 class="project-title">{{ project.title }}</h2>
       <p class="project-intro">
@@ -66,14 +46,6 @@
     <g-link class="project-link" :to="`/prosjekter/${project.slug.current}`"
       >Link</g-link
     >
-
-    <!--<CursorFriend
-      v-if="isInView"
-      :text="`Les mer om ${project.title}`"
-      :id="project.id"
-      class="cursorfriend"
-    />-->
-
     <template v-if="usePalette">
       <IntersectionObserver
         :id="`observer-${project.id}`"

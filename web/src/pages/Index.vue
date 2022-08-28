@@ -120,6 +120,10 @@ query {
           asset {
             url
             metadata {
+              lqip
+              dimensions {
+                aspectRatio
+              }
               palette {
                 darkMuted {
                   background

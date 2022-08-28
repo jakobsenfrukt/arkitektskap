@@ -1,23 +1,32 @@
 <template>
   <div class="project-gallery">
-    <figure
+    <SuperImage
       v-for="(image, index) in images"
       :key="index"
       :class="`column-${image.columns} ${image.nocrop ? 'nocrop' : ''}`"
-      @click="openLightbox(index)"
-    >
-      <img
-        :src="
-          $urlForImage(image, $page.metadata.sanityOptions)
-            .width(1200)
-            .auto('format')
-            .url()
-        "
-        :alt="image.alt ? image.alt : ''"
-      />
-    </figure>
+      @click.native="openLightbox(index)"
+      :image="image"
+      :alt="image.alt ? image.alt : 'Bilde fra prosjekt'"
+      :width="1200"
+      :lqip="image.asset.metadata.lqip"
+      :aspectRatio="image.asset.metadata.dimensions.aspectRatio"
+    />
 
     <div class="lightbox" v-if="lightboxOpen">
+      <!--<SuperImage
+        class="lightbox-image"
+        :image="images[currentImage]"
+        :alt="
+          images[currentImage].alt
+            ? images[currentImage].alt
+            : 'Bilde fra prosjekt'
+        "
+        :width="1200"
+        :lqip="images[currentImage].asset.metadata.lqip"
+        :aspectRatio="
+          images[currentImage].asset.metadata.dimensions.aspectRatio
+        "
+      />-->
       <figure class="lightbox-image">
         <img
           :src="
@@ -51,6 +60,7 @@
 
 <script>
 import Dingbats from "@/components/tools/Dingbats";
+
 export default {
   components: {
     Dingbats,

@@ -85,18 +85,17 @@
           </ul>
         </li>
       </ul>
-
-      <div v-if="$page.project.mainImage" class="project-image">
-        <g-image
-          :src="
-            $urlForImage($page.project.mainImage, $page.metadata.sanityOptions)
-              .width(1200)
-              .auto('format')
-              .url()
-          "
-          :alt="$page.project.mainImage.alt"
-        />
-      </div>
+      <SuperImage
+        v-if="$page.project.mainImage"
+        class="project-image"
+        :image="$page.project.mainImage"
+        :alt="$page.project.mainImage.alt"
+        :width="1200"
+        :lqip="$page.project.mainImage.asset.metadata.lqip"
+        :aspectRatio="
+          $page.project.mainImage.asset.metadata.dimensions.aspectRatio
+        "
+      />
 
       <div class="project-content">
         <BlockContent
@@ -180,6 +179,10 @@ query project ($id: ID!) {
         _id
         url
         metadata {
+          lqip
+          dimensions {
+            aspectRatio
+          }
           palette {
             darkMuted {
               background
@@ -244,6 +247,12 @@ query project ($id: ID!) {
           asset {
             _id
             url
+            metadata {
+              lqip
+              dimensions {
+                aspectRatio
+              }
+            }
           }
           alt
           caption
@@ -263,6 +272,12 @@ query project ($id: ID!) {
       image {
         asset {
           url
+          metadata {
+            lqip
+            dimensions {
+              aspectRatio
+            }
+          }
         }
         hotspot {
           x
@@ -289,6 +304,10 @@ query project ($id: ID!) {
         asset {
           url
           metadata {
+            lqip
+            dimensions {
+              aspectRatio
+            }
             palette {
               darkMuted {
                 background
@@ -353,14 +372,6 @@ query project ($id: ID!) {
   }
   &-image {
     grid-column: 4 / span 9;
-    position: relative;
-
-    img {
-      max-height: 100vh;
-      min-width: 70%;
-      width: auto;
-      object-fit: cover;
-    }
   }
   &-info {
     grid-column: 1 / span 3;
@@ -402,12 +413,7 @@ query project ($id: ID!) {
       grid-column: 1 / -1;
       margin: 0 calc((var(--spacing-m) + var(--spacing-sitepadding)) * -1);
       order: 2;
-
-      img {
-        max-height: 120vh;
-        min-width: none;
-        width: 100%;
-      }
+      max-height: 120vh;
     }
     .project-info {
       order: 3;

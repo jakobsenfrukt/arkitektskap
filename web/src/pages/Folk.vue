@@ -22,6 +22,12 @@ query {
         image {
           asset {
             url
+            metadata {
+              lqip
+              dimensions {
+                aspectRatio
+              }
+            }
           }
           hotspot {
             x

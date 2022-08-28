@@ -4,6 +4,7 @@
 import '~/assets/css/main.scss'
 
 import DefaultLayout from '~/layouts/Default.vue'
+import SuperImage from "@/components/tools/SuperImage";
 
 // Import image url builder
 import urlForImage from './utils/urlForImage'
@@ -17,6 +18,8 @@ import prepareColors from './utils/palette'
 export default function (Vue, { router, head, isClient }) {
   // Set default layout as a global component
   Vue.component('Layout', DefaultLayout)
+
+  Vue.component('SuperImage', SuperImage)
 
   // Inject global image URL builder
   Vue.prototype.$urlForImage = urlForImage

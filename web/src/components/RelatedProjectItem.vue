@@ -1,17 +1,14 @@
 <template>
   <li class="project" :class="`size-${project.rating}`">
-    <div class="project-image">
-      <img
-        v-if="project.mainImage"
-        :src="
-          $urlForImage(project.mainImage, $static.metadata.sanityOptions)
-            .width(400)
-            .auto('format')
-            .url()
-        "
-        :alt="project.mainImage.alt"
-      />
-    </div>
+    <SuperImage
+      v-if="project.mainImage"
+      class="project-image"
+      :image="project.mainImage"
+      :alt="project.mainImage.alt"
+      :width="400"
+      :lqip="project.mainImage.asset.metadata.lqip"
+      :aspectRatio="project.mainImage.asset.metadata.dimensions.aspectRatio"
+    />
     <div class="project-text">
       <h2 class="project-title">{{ project.title }}</h2>
       <p class="project-intro">

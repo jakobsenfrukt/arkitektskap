@@ -1,18 +1,14 @@
 <template>
   <li class="person">
-    <div class="person-image">
-      <img
-        v-if="person.image"
-        :src="
-          $urlForImage(person.image, $static.metadata.sanityOptions)
-            .width(400)
-            .height(400)
-            .auto('format')
-            .url()
-        "
-        :alt="person.image.alt"
-      />
-    </div>
+    <SuperImage
+      v-if="person.image"
+      class="person-image"
+      :image="person.image"
+      :alt="person.image.alt ? person.image.alt : 'Portrett av ansatt'"
+      :width="400"
+      :lqip="person.image.asset.metadata.lqip"
+      :aspectRatio="person.image.asset.metadata.dimensions.aspectRatio"
+    />
     <div class="person-text">
       <div>
         <h2 class="person-name">{{ person.name }}</h2>
