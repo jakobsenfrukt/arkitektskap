@@ -467,7 +467,7 @@ query project ($id: ID!) {
     }
     &-info {
       order: 3;
-      margin: var(--spacing-s) 0 var(--spacing-l);
+      margin: var(--spacing-s) 0 var(--spacing-m);
       grid-column: 1 / -1;
     }
     &-content {

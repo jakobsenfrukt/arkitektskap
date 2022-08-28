@@ -304,6 +304,28 @@
         d="M17.1 49.1L50 82L82.9 49.1L79 45.2L52.8 71.4V18.6H47.3V71.4L21 45.2L17.1 49.1Z"
       />
     </svg>
+
+    <svg
+      v-if="icon === 'arrow-right'"
+      viewBox="0 0 100 100"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M44.9 79.3L48.8 83.2L81.7 50.3L48.8 17.4L44.9 21.3L71.1 47.5H18.3V53H71.1L44.9 79.3Z"
+      />
+    </svg>
+
+    <svg
+      v-if="icon === 'arrow-left'"
+      viewBox="0 0 100 100"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M18.3 50.3L51.2 83.2L55.1 79.3L28.8 53H81.6V47.5H28.8L55 21.3L51.1 17.4L18.3 50.3Z"
+      />
+    </svg>
   </div>
 </template>
 

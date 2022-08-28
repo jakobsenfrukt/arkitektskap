@@ -42,12 +42,16 @@
         class="lightbox-nav next"
         v-if="currentImage < images.length - 1"
         @click="lightboxNav('next')"
-      ></div>
+      >
+        <Dingbats icon="arrow-right" />
+      </div>
       <div
         class="lightbox-nav prev"
         v-if="currentImage > 0"
         @click="lightboxNav('prev')"
-      ></div>
+      >
+        <Dingbats icon="arrow-left" />
+      </div>
       <div class="lightbox-close" @click="lightboxOpen = false">
         <strong>Lukk bildegalleri</strong> &nbsp; <Dingbats icon="close" />
       </div>
@@ -152,6 +156,7 @@ export default {
   align-items: center;
   justify-content: center;
   padding: 0 calc(var(--spacing-sitepadding) * 0.5) 0;
+  color: var(--color-white);
 
   figure {
     padding: 3.8rem 0;
@@ -188,7 +193,6 @@ export default {
     left: 0;
     z-index: 1002;
     background: #000;
-    color: var(--color-white);
     text-align: right;
     padding: var(--spacing-s) var(--spacing-sitepadding);
     &:hover {
@@ -200,9 +204,44 @@ export default {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    color: var(--color-white);
     text-align: center;
     padding: var(--spacing-s) var(--spacing-sitepadding);
+  }
+}
+
+@media (max-width: 1200px) {
+  .project-gallery {
+    .lightbox {
+      &-nav {
+        position: absolute;
+        top: auto;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        height: 3.6rem;
+        padding: 1rem;
+
+        .dingbat {
+          margin: 0;
+        }
+
+        &.prev {
+          right: 50%;
+          cursor: var(--cursor-arrow-left);
+        }
+        &.next {
+          left: 50%;
+          cursor: var(--cursor-arrow-right);
+          text-align: right;
+        }
+      }
+      &-close {
+        padding-right: 0;
+      }
+      &-number {
+        padding-bottom: 1rem;
+      }
+    }
   }
 }
 </style>
