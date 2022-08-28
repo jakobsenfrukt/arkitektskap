@@ -12,8 +12,7 @@
     ></p>
     <div class="filter">
       <div class="filter-wrapper" :class="{ inview: isInView }">
-        <ul class="filter-menu" :class="{ menuOpen: menuOpen }">
-          <li class="filter-toggle">Filter <Dingbats icon="filter" /></li>
+        <ul class="filter-menu">
           <li class="filter-menu-item filter-submenu">
             {{ filter.category }} <Dingbats icon="filter" />
             <select v-model="filter.category" @change="toAnchor('#projects')">
@@ -56,6 +55,56 @@
             Nullstill <Dingbats icon="close-small" />
           </li>
         </ul>
+
+        <div class="filter-menu-mobile" :class="{ menuOpen: menuOpen }">
+          <div class="filter-toggle" @click="toggleMenu()">
+            <Dingbats icon="filter" /><Dingbats icon="sort" />
+          </div>
+          <ul class="filter-menu-mobile-list">
+            <li class="filter-menu-heading">Prosjektmeny</li>
+            <li class="filter-menu-item filter-submenu">
+              {{ filter.category }} <Dingbats icon="filter" />
+              <select v-model="filter.category" @change="toAnchor('#projects')">
+                <option disabled>Hva</option>
+                <option value="hva">Vis alle</option>
+                <option
+                  v-for="category in $page.categories.edges"
+                  :key="category.node.title"
+                  :value="category.node.title"
+                  :disabled="!categoryHasContent(category.node.title)"
+                  >{{ category.node.title }}</option
+                >
+              </select>
+            </li>
+            <li class="filter-menu-item filter-submenu">
+              {{ filter.location }} <Dingbats icon="filter" />
+              <select v-model="filter.location" @change="toAnchor('#projects')">
+                <option disabled>Hvor</option>
+                <option value="hvor">Vis alle</option>
+                <option
+                  v-for="location in $page.locations.edges"
+                  :key="location.node.title"
+                  :value="location.node.title"
+                  :disabled="!locationHasContent(location.node.title)"
+                  >{{ location.node.title }}</option
+                >
+              </select>
+            </li>
+            <li class="filter-menu-item">
+              {{ sorting }} <Dingbats icon="sort" />
+              <select v-model="sorting" @change="toAnchor('#projects')">
+                <option value="sortering">Standard</option>
+                <option value="a-å">A-Å</option>
+                <option value="å-a">Å-A</option>
+                <option value="eldst-nyest">Eldst-Nyest</option>
+                <option value="nyest-eldst">Nyest-Eldst</option>
+              </select>
+            </li>
+            <li class="filter-menu-item" @click="reset()">
+              Nullstill <Dingbats icon="close-small" />
+            </li>
+          </ul>
+        </div>
       </div>
 
       <IntersectionObserver
@@ -391,13 +440,6 @@ export default {
     }
   }
 }
-.filter-toggle {
-  background: transparent;
-  text-decoration: none;
-  cursor: var(--cursor-pointer);
-
-  display: none;
-}
 button,
 .heading {
   width: 100%;
@@ -425,6 +467,9 @@ select {
   left: 0;
   right: 0;
   cursor: var(--cursor-pointer);
+}
+.filter-menu-mobile {
+  display: none;
 }
 .observer {
   position: absolute;
@@ -456,11 +501,69 @@ select {
 }
 
 @media (max-width: 870px) {
-  .filter-toggle {
-    display: block;
-  }
-  .filter-submenu {
+  .filter-menu {
     display: none;
+  }
+  .filter-wrapper {
+    .filter-menu-mobile {
+      display: none;
+    }
+    &.inview {
+      .filter-menu-mobile {
+        display: block;
+      }
+    }
+  }
+  .filter-menu-mobile {
+    width: 100%;
+    display: block;
+    text-transform: lowercase;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: var(--spacing-xs) var(--spacing-sitepadding);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: var(--color-text);
+      transform: translateY(100%);
+      transition: transform 0.3s linear;
+
+      .filter-menu-item {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 0.3rem 0.6rem;
+        margin-bottom: 0.3rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .filter-menu-heading {
+        padding: 0.3rem 0.6rem;
+        margin-bottom: 0.3rem;
+        text-align: center;
+      }
+    }
+    &.menuOpen {
+      ul {
+        transform: translateY(-2.9rem);
+      }
+    }
+  }
+  .filter-toggle {
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: var(--cursor-pointer);
+
+    .dingbat {
+      margin-right: 0;
+    }
   }
 }
 </style>
