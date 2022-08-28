@@ -4,7 +4,9 @@
       v-if="project.mainImage"
       class="project-image"
       :image="project.mainImage"
-      :alt="project.mainImage.alt"
+      :alt="
+        project.mainImage.alt ? project.mainImage.alt : 'Bilde fra prosjekt'
+      "
       :width="800"
       :lqip="project.mainImage.asset.metadata.lqip"
       :aspectRatio="project.mainImage.asset.metadata.dimensions.aspectRatio"

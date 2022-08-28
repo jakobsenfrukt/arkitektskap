@@ -89,7 +89,11 @@
         v-if="$page.project.mainImage"
         class="project-image"
         :image="$page.project.mainImage"
-        :alt="$page.project.mainImage.alt"
+        :alt="
+          $page.project.mainImage.alt
+            ? $page.project.mainImage.alt
+            : 'Bilde fra prosjekt'
+        "
         :width="1200"
         :lqip="$page.project.mainImage.asset.metadata.lqip"
         :aspectRatio="
