@@ -214,12 +214,13 @@ export default {
     .lightbox {
       &-nav {
         position: absolute;
-        top: auto;
+        top: 3rem;
         right: 0;
         left: 0;
         bottom: 0;
-        height: 3.6rem;
         padding: 1rem;
+        display: flex;
+        align-items: flex-end;
 
         .dingbat {
           margin: 0;
@@ -232,7 +233,7 @@ export default {
         &.next {
           left: 50%;
           cursor: var(--cursor-arrow-right);
-          text-align: right;
+          justify-content: flex-end;
         }
       }
       &-close {

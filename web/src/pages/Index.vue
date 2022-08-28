@@ -42,21 +42,6 @@
               >
             </select>
           </li>
-          <!--<li class="filter-menu-item">
-                Når
-                <label>Fra</label>
-                <input
-                  type="number"
-                  placeholder="Årstall"
-                  v-model="filter.minYear"
-                />
-                <label>Til</label>
-                <input
-                  type="number"
-                  placeholder="Årstall"
-                  v-model="filter.maxYear"
-                />
-              </li>-->
           <li class="filter-menu-item">
             {{ sorting }} <Dingbats icon="sort" />
             <select v-model="sorting" @change="toAnchor('#projects')">
@@ -184,14 +169,12 @@ query {
 import ProjectGrid from "~/components/ProjectGrid";
 import IntersectionObserver from "~/components/tools/IntersectionObserver";
 import Dingbats from "~/components/tools/Dingbats";
-import Filtering from "~/components/Filter";
 
 export default {
   components: {
     ProjectGrid,
     IntersectionObserver,
     Dingbats,
-    Filtering,
   },
   data() {
     return {

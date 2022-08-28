@@ -336,10 +336,22 @@ export default {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   .project {
     &.size-1 {
       grid-template-columns: 1fr;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .project {
+    &.size-1,
+    &.size-2,
+    &.size-3 {
+      .project-intro {
+        font-size: var(--font-size-xxl);
+      }
     }
   }
 }

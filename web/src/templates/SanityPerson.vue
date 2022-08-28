@@ -348,9 +348,10 @@ query person ($id: ID!) {
 @media (max-width: 800px) {
   .person {
     grid-template-columns: 1fr;
+    margin-top: 0;
     &-image {
       order: 1;
-      max-width: 300px;
+      margin-bottom: var(--spacing-s);
     }
   }
 }
