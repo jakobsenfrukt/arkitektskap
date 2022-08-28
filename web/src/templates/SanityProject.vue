@@ -415,7 +415,7 @@ query project ($id: ID!) {
     }
     .project-image {
       grid-column: 1 / -1;
-      margin: 0 calc((var(--spacing-m) + var(--spacing-sitepadding)) * -1);
+      margin: 0 calc(var(--spacing-sitepadding) * -1);
       order: 2;
       max-height: 120vh;
     }
@@ -456,7 +456,7 @@ query project ($id: ID!) {
     }
     &-image {
       grid-column: 1 / -1;
-      margin: 0 calc((var(--spacing-m) + var(--spacing-sitepadding)) * -1);
+      margin: 0 calc(var(--spacing-sitepadding) * -1);
       order: 2;
 
       img {
