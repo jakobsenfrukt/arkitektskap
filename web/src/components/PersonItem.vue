@@ -113,4 +113,14 @@ export default {
     z-index: 0;
   }
 }
+@media (max-width: 1000px) {
+  .person {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .person {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 </style>

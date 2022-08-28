@@ -18,9 +18,7 @@
       </nav>
 
       <nav class="site-nav--mobile" :class="{ menuopen: menuOpen }">
-        <div class="logo" @click="toAnchor('#top')">
-          <Logo />
-        </div>
+        <g-link class="nav-link" to="/"><Logo /></g-link>
         <div class="menu-toggle">
           <button class="button" @click="toggleMenu()">
             <Dingbats icon="close" v-if="menuOpen" />
@@ -28,10 +26,16 @@
           </button>
         </div>
         <ul class="main-menu">
-          <li><g-link class="nav-link" to="/om">Om oss</g-link></li>
-          <li><g-link class="nav-link" to="/folk">Folk</g-link></li>
-          <li><g-link class="nav-link" to="/">Prosjekter</g-link></li>
-          <li>
+          <li @click="toggleMenu()">
+            <g-link class="nav-link" to="/om">Om oss</g-link>
+          </li>
+          <li @click="toggleMenu()">
+            <g-link class="nav-link" to="/folk">Folk</g-link>
+          </li>
+          <li @click="toggleMenu()">
+            <g-link class="nav-link" to="/">Prosjekter</g-link>
+          </li>
+          <li @click="toggleMenu()">
             <span class="nav-link anchor" @click="toAnchor('#kontakt')"
               >Kontakt</span
             >

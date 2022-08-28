@@ -37,7 +37,7 @@
           <Dingbats icon="earth" /><strong>Språk:</strong
           ><ul><li
             v-for="(language, index) in $page.person.languages"
-            :key="language"
+            :key="index"
             >{{
               index === 0 ? language.title : language.title.toLowerCase()
             }}</li
@@ -316,7 +316,7 @@ query person ($id: ID!) {
     }
   }
   &-languages {
-    margin-top: 4rem;
+    margin: 4rem 0 var(--spacing-l);
     ul {
       list-style: none;
       margin: 0 0 0 2.9em;
@@ -333,6 +333,15 @@ query person ($id: ID!) {
           }
         }
       }
+    }
+  }
+}
+@media (max-width: 800px) {
+  .person {
+    grid-template-columns: 1fr;
+    &-image {
+      order: 1;
+      max-width: 300px;
     }
   }
 }

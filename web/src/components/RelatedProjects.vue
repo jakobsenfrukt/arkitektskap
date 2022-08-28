@@ -61,4 +61,9 @@ export default {
   gap: var(--spacing-m);
   align-items: flex-start;
 }
+@media (max-width: 1200px) {
+  .project-list {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
 </style>
