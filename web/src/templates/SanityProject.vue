@@ -1,6 +1,10 @@
 <template>
   <Layout :palette="$page.project.mainImage.asset.metadata.palette">
-    <div class="project" :class="{ fullwidth: $page.project.fullwidth }">
+    <div
+      class="project"
+      :class="{ fullwidth: $page.project.fullwidth }"
+      :key="$page.project.id"
+    >
       <div class="intro project-heading">
         <h1 class="project-title" v-if="$page.project.intro">
           {{ $page.project.title }}
@@ -83,7 +87,7 @@
       </ul>
 
       <div v-if="$page.project.mainImage" class="project-image">
-        <img
+        <g-image
           :src="
             $urlForImage($page.project.mainImage, $page.metadata.sanityOptions)
               .width(1200)
@@ -169,6 +173,7 @@ query project ($id: ID!) {
     }
   }
   project: sanityProject (id: $id) {
+    id
     title
     mainImage {
       asset {
