@@ -9,7 +9,7 @@
       "
       :width="400"
       :lqip="project.mainImage.asset.metadata.lqip"
-      :aspectRatio="project.mainImage.asset.metadata.dimensions.aspectRatio"
+      :aspectRatio="1"
     />
     <div class="project-text">
       <h2 class="project-title">{{ project.title }}</h2>
