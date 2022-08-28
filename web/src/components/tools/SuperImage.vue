@@ -14,6 +14,17 @@
       "
       :alt="alt"
     />
+    <img
+      v-if="height"
+      :src="
+        $urlForImage(image, $static.metadata.sanityOptions)
+          .width(width)
+          .height(height)
+          .auto('format')
+          .url()
+      "
+      :alt="alt"
+    />
   </figure>
 </template>
 
@@ -34,6 +45,7 @@ export default {
     image: Object,
     alt: String,
     width: Number,
+    height: String,
     lqip: String,
     aspectRatio: Number,
   },

@@ -6,8 +6,9 @@
       :image="person.image"
       :alt="person.image.alt ? person.image.alt : 'Portrett av ansatt'"
       :width="400"
+      height="400"
       :lqip="person.image.asset.metadata.lqip"
-      :aspectRatio="person.image.asset.metadata.dimensions.aspectRatio"
+      :aspectRatio="0.8"
     />
     <div class="person-text">
       <div>
