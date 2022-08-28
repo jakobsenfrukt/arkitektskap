@@ -469,6 +469,9 @@ query project ($id: ID!) {
       order: 3;
       margin: var(--spacing-s) 0 var(--spacing-m);
       grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: var(--spacing-m);
     }
     &-content {
       margin: var(--spacing-s) 0 var(--spacing-l);
