@@ -56,7 +56,7 @@ export default {
     margin: 0;
     padding: 0;
     background: transparent;
-    cursor: pointer;
+    cursor: var(--cursor-pointer);
     position: fixed;
     bottom: 1rem;
     right: var(--spacing-sitepadding);
