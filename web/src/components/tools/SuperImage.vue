@@ -13,6 +13,7 @@
           .url()
       "
       :alt="alt"
+      loading="lazy"
     />
     <img
       v-if="height"
@@ -24,6 +25,7 @@
           .url()
       "
       :alt="alt"
+      loading="lazy"
     />
   </figure>
 </template>
