@@ -1,15 +1,6 @@
 <template>
   <Layout>
-    <p
-      class="intro"
-      v-html="
-        $replaceLogo(
-          $page.frontpage.intro[
-            Math.floor(Math.random() * $page.frontpage.intro.length)
-          ]
-        )
-      "
-    ></p>
+    <p class="intro" v-html="$replaceLogo(intro)"></p>
     <div class="filter">
       <div class="filter-wrapper" :class="{ inview: isInView }">
         <ul class="filter-menu">
@@ -236,6 +227,7 @@ export default {
         minYear: undefined,
         maxYear: undefined,
       },
+      intro: undefined,
     };
   },
   computed: {
@@ -381,6 +373,12 @@ export default {
         return element.node.projectInfo.location.title === location;
       });
     },
+    pickIntro(intro) {
+      return intro[Math.floor(Math.random() * intro.length)];
+    },
+  },
+  beforeMount() {
+    this.intro = this.pickIntro(this.$page.frontpage.intro);
   },
   metaInfo: {
     title: "Forside",
