@@ -1,6 +1,9 @@
 <template>
   <Layout>
-    <p class="intro" v-html="$replaceLogo(intro)"></p>
+    <p
+      class="intro"
+      v-html="$replaceLogo(intro ? intro : $page.frontpage.intro[0])"
+    ></p>
     <div class="filter">
       <div class="filter-wrapper" :class="{ inview: isInView }">
         <ul class="filter-menu">
