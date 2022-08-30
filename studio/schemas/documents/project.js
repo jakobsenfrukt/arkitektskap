@@ -50,7 +50,8 @@ export default {
     {
       name: 'mainImage',
       title: 'Hovedbilde',
-      type: 'figure'
+      type: 'figure',
+      validation: Rule => Rule.required()
     },
     {
       name: 'fullwidth',
