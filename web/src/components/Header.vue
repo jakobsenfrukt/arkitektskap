@@ -100,7 +100,7 @@ export default {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1001;
+  z-index: 1002;
   font-family: var(--font-mono);
   font-size: var(--font-size-s);
   background: var(--color-background);
