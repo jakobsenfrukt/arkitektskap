@@ -54,7 +54,7 @@ export default {
   },
   data() {
     return {
-      maxHeight: window.innerHeight * 0.9,
+      maxHeight: 800,
     };
   },
   computed: {
@@ -72,6 +72,9 @@ export default {
         return "portrait";
       }
     },
+  },
+  mounted() {
+    this.maxHeight = window.innerHeight * 0.9;
   },
 };
 </script>
