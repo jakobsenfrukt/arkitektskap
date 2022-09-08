@@ -4,6 +4,7 @@
     :style="{
       'background-image': `url(${lqip})`,
       'padding-top': paddingTop,
+      '--padding-top-percent': paddingTopPercent,
       'max-height': `${maxHeight}px`,
     }"
   >
@@ -65,6 +66,9 @@ export default {
         return this.maxHeight + "px";
       }
     },
+    paddingTopPercent() {
+      return 100 / this.aspectRatio + "%";
+    },
     cssClasses() {
       if (this.aspectRatio > 1) {
         return "landscape";
@@ -100,6 +104,18 @@ figure {
     background-size: 100%;
     img {
       width: 100%;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  figure {
+    &.portrait {
+      background-size: 100%;
+      padding-top: var(--padding-top-percent) !important;
+      img {
+        width: 100%;
+      }
     }
   }
 }
