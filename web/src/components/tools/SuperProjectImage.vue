@@ -1,8 +1,10 @@
 <template>
   <figure
+    :class="cssClasses"
     :style="{
       'background-image': `url(${lqip})`,
-      'padding-top': `calc(100% / ${aspectRatio})`,
+      'padding-top': paddingTop,
+      'max-height': `${maxHeight}px`,
     }"
   >
     <img
@@ -50,13 +52,36 @@ export default {
     lqip: String,
     aspectRatio: Number,
   },
+  data() {
+    return {
+      maxHeight: window.innerHeight * 0.9,
+    };
+  },
+  computed: {
+    paddingTop() {
+      if (this.aspectRatio > 1) {
+        return 100 / this.aspectRatio + "%";
+      } else {
+        return this.maxHeight + "px";
+      }
+    },
+    cssClasses() {
+      if (this.aspectRatio > 1) {
+        return "landscape";
+      } else {
+        return "portrait";
+      }
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 figure {
   position: relative;
-  background-size: 100%;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  height: 0;
 
   img {
     position: absolute;
@@ -64,9 +89,15 @@ figure {
     left: 0;
     right: 0;
     bottom: 0;
-    width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  &.landscape {
+    background-size: 100%;
+    img {
+      width: 100%;
+    }
   }
 }
 </style>

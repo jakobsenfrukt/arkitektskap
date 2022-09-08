@@ -85,7 +85,7 @@
           </ul>
         </li>
       </ul>
-      <SuperImage
+      <SuperProjectImage
         v-if="$page.project.mainImage"
         class="project-image"
         :image="$page.project.mainImage"
@@ -139,6 +139,7 @@
 
 <script>
 import BlockContent from "~/components/tools/BlockContent";
+import SuperProjectImage from "~/components/tools/SuperProjectImage";
 import PersonItem from "~/components/PersonItemSmall";
 import RelatedProjects from "~/components/RelatedProjects";
 import ProjectGallery from "@/components/ProjectGallery";
@@ -146,6 +147,7 @@ import ProjectGallery from "@/components/ProjectGallery";
 export default {
   components: {
     BlockContent,
+    SuperProjectImage,
     RelatedProjects,
     PersonItem,
     ProjectGallery,

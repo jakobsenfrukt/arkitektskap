@@ -6,7 +6,7 @@
       :image="person.image"
       :alt="person.image.alt ? person.image.alt : 'Portrett av ansatt'"
       :width="400"
-      height="400"
+      :height="400"
       :lqip="person.image.asset.metadata.lqip"
       :aspectRatio="0.8"
     />
