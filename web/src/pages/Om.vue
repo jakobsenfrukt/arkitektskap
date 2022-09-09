@@ -125,7 +125,7 @@ query {
 <script>
 import BlockContent from "~/components/tools/BlockContent";
 import Dingbats from "~/components/tools/Dingbats";
-import ProjectGallery from "@/components/ProjectGallery";
+import ProjectGallery from "@/components/ProjectGallerySimple";
 
 export default {
   components: {
