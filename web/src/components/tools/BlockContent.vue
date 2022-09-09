@@ -83,5 +83,8 @@ export default {
     content: "—";
     margin-right: 0.5em;
   }
+  figure {
+    margin: var(--spacing-m) 0;
+  }
 }
 </style>

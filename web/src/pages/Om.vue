@@ -40,6 +40,10 @@
         class="block-content"
       />
     </div>
+    <ProjectGallery
+      v-if="$page.about.gallery && $page.about.gallery.images.length"
+      :images="$page.about.gallery.images"
+    />
   </Layout>
 </template>
 
@@ -52,6 +56,26 @@ query {
       sqm
     }
     _rawBody
+    gallery {
+      images {
+        ... on SanityGalleryImage {
+          asset {
+            _id
+            url
+            metadata {
+              lqip
+              dimensions {
+                aspectRatio
+              }
+            }
+          }
+          alt
+          caption
+          columns
+          nocrop
+        }
+      }
+    }
   }
   projects: allSanityProject(sortBy: "year") {
     edges {
@@ -101,11 +125,13 @@ query {
 <script>
 import BlockContent from "~/components/tools/BlockContent";
 import Dingbats from "~/components/tools/Dingbats";
+import ProjectGallery from "@/components/ProjectGallery";
 
 export default {
   components: {
     BlockContent,
     Dingbats,
+    ProjectGallery,
   },
   methods: {
     getActiveYears() {
@@ -134,6 +160,7 @@ export default {
 }
 .about-content {
   grid-column: 5 / span 7;
+  margin-bottom: calc(var(--spacing-m) * 2);
 }
 .about-numbers {
   grid-column: 1 / span 4;

@@ -97,6 +97,13 @@ strong {
   display: inline-block;
 }
 
+blockquote {
+  margin: var(--spacing-m) 0;
+  font-size: var(--font-size-m);
+  font-style: italic;
+  width: 90%;
+}
+
 .logo-in-text {
   font-family: var(--font-mono);
   font-weight: 500;

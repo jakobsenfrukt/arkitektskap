@@ -20,5 +20,10 @@ export default {
       title: 'Brødtekst',
       type: 'body',
     },
+    {
+      title: 'Bildegalleri',
+      name: 'gallery',
+      type: 'gallery'
+    },
   ]
 }
