@@ -253,6 +253,8 @@ export default {
     font-family: var(--font-serif);
     line-height: 1.2;
     margin: 0 0 calc(var(--spacing-s) * 1.2) -0.06em;
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
   &-info {
     font-family: var(--font-mono);

@@ -55,7 +55,11 @@
             <Dingbats icon="filter" /><Dingbats icon="sort" />
           </div>
           <ul class="filter-menu-mobile-list">
-            <li class="filter-menu-heading">Prosjektmeny</li>
+            <li class="filter-menu-heading">
+              <div class="filter-toggle-inner" @click="toggleMenu()">
+                <span>vis prosjekter</span><Dingbats icon="close-small" />
+              </div>
+            </li>
             <li class="filter-menu-item filter-submenu">
               {{ filter.category }} <Dingbats icon="filter" />
               <select v-model="filter.category" @change="toAnchor('#projects')">
@@ -548,7 +552,7 @@ select {
     }
     &.menuOpen {
       ul {
-        transform: translateY(-2.9rem);
+        transform: translateY(0);
       }
     }
   }
@@ -564,6 +568,19 @@ select {
 
     .dingbat {
       margin-right: 0;
+    }
+    &-inner {
+      width: 100%;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: var(--cursor-pointer);
+      .dingbat {
+        margin-right: 0;
+      }
     }
   }
 }

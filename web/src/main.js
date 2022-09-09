@@ -29,4 +29,6 @@ export default function (Vue, { router, head, isClient }) {
 
   // Prepares WCAG compliant color palette
   Vue.prototype.$prepareColors = prepareColors
+
+  head.htmlAttrs = { lang: 'no' }
 }
