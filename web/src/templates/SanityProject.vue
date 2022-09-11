@@ -12,9 +12,9 @@
         <h1 class="project-intro" v-else>
           {{ $page.project.title }}
         </h1>
-        <p class="project-intro" v-if="$page.project.intro">
+        <div class="project-intro" v-if="$page.project.intro">
           {{ $page.project.intro }}
-        </p>
+        </div>
       </div>
 
       <ul class="project-info" v-if="$page.project.projectInfo">
@@ -107,9 +107,9 @@
           v-if="$page.project._rawBody"
           class="block-content"
         />
-        <p v-if="$page.project.credits" class="credits">
+        <div v-if="$page.project.credits" class="credits">
           Foto: {{ $page.project.credits }}
-        </p>
+        </div>
       </div>
 
       <ProjectGallery

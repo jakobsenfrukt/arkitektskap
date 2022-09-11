@@ -5,23 +5,25 @@
         v-if="$page.person.image"
         class="person-image"
         :image="$page.person.image"
-        :alt="$page.person.image.alt ? $page.person.image.alt : 'Portrett av ansatt'"
+        :alt="
+          $page.person.image.alt ? $page.person.image.alt : 'Portrett av ansatt'
+        "
         :width="1000"
         :lqip="$page.person.image.asset.metadata.lqip"
         :aspectRatio="$page.person.image.asset.metadata.dimensions.aspectRatio"
       />
       <div class="person-text">
         <h1 class="person-name">{{ $page.person.name }}</h1>
-        <p class="person-title">{{ $page.person.title }}</p>
+        <div class="person-title">{{ $page.person.title }}</div>
 
-        <p class="person-contact">
+        <div class="person-contact">
           <a :href="$page.person.phone" v-if="$page.person.phone"
             ><Dingbats icon="smiley" /><span>{{ $page.person.phone }}</span></a
           >
           <a :href="$page.person.email" v-if="$page.person.email"
             ><Dingbats icon="email" /><span>{{ $page.person.email }}</span></a
           >
-        </p>
+        </div>
 
         <div class="person-content">
           <BlockContent
@@ -30,16 +32,17 @@
           />
         </div>
 
-        <p class="person-languages" v-if="$page.person.languages.length">
-          <Dingbats icon="earth" /><strong>Språk:</strong
-          ><ul><li
-            v-for="(language, index) in $page.person.languages"
-            :key="index"
-            >{{
-              index === 0 ? language.title : language.title.toLowerCase()
-            }}</li
-          ></ul>
-        </p>
+        <div class="person-languages" v-if="$page.person.languages.length">
+          <Dingbats icon="earth" /><strong>Språk:</strong>
+          <ul>
+            <li
+              v-for="(language, index) in $page.person.languages"
+              :key="index"
+            >
+              {{ index === 0 ? language.title : language.title.toLowerCase() }}
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
     <h2
