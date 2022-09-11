@@ -170,9 +170,9 @@ export default {
         .sort((a, b) => b.rating - a.rating);
     },
     relatedProjectsByCategory() {
-      const mappedNodes = this.$page.projects.edges.map(
-        (project) => project.node
-      );
+      const mappedNodes = this.$page.projects.edges
+        .map((project) => project.node)
+        .filter((project) => project.id != this.$page.project.id);
       const relatedByCategory = mappedNodes.filter((item) => {
         return item.projectInfo.category
           .map((x) => x.id)

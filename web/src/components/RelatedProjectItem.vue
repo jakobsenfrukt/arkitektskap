@@ -51,6 +51,7 @@ export default {
 .project {
   grid-column: span 3;
   position: relative;
+  margin-bottom: var(--spacing-m);
   &-text {
     transition: color 0.6s ease;
   }
