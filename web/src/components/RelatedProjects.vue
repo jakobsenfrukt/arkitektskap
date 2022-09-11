@@ -3,7 +3,7 @@
     <ul class="project-list">
       <ProjectItem
         v-for="(project, index) in projects.slice(0, currentLimit)"
-        :key="index"
+        :key="`relatedproject-${index}`"
         :project="project"
       />
     </ul>

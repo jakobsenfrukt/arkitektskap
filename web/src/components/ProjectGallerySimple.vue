@@ -2,7 +2,7 @@
   <div class="project-gallery">
     <SuperImage
       v-for="(image, index) in images"
-      :key="index"
+      :key="`simplegalleryimage-${index}`"
       :class="`column-${image.columns} ${image.nocrop ? 'nocrop' : ''}`"
       :image="image"
       :alt="image.alt ? image.alt : 'Bilde fra prosjekt'"

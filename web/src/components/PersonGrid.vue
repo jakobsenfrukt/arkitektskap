@@ -2,7 +2,7 @@
   <ul class="person-list">
     <PersonItem
       v-for="(person, index) in people.edges"
-      :key="index"
+      :key="`person-${index}`"
       :person="person.node"
     />
   </ul>

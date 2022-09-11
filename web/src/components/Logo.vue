@@ -2,7 +2,7 @@
   <h1 class="logo">
     <span
       v-for="(block, index) in getLogoBlocks('arkitektskap')"
-      :key="index"
+      :key="`logospan-${index}`"
       class="logo-block"
       :style="`animation-delay: ${10 / index}s`"
       >{{ block }}</span

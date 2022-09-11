@@ -37,7 +37,7 @@
           <ul>
             <li
               v-for="(language, index) in $page.person.languages"
-              :key="index"
+              :key="`language-${index}`"
             >
               {{ index === 0 ? language.title : language.title.toLowerCase() }}
             </li>

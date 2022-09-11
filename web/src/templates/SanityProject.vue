@@ -125,7 +125,10 @@
           Kontaktpersoner
         </h2>
         <h2 v-else class="section-heading">Kontaktperson</h2>
-        <li v-for="(person, index) in $page.project.contactperson" :key="index">
+        <li
+          v-for="(person, index) in $page.project.contactperson"
+          :key="`person-${index}`"
+        >
           <PersonItem :person="person" />
         </li>
       </ul>

@@ -3,7 +3,7 @@
     <ul class="project-list">
       <ProjectItem
         v-for="(project, index) in projects"
-        :key="index"
+        :key="`project-${index}`"
         :project="project.node"
         :usePalette="usePalette(index)"
       />

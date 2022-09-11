@@ -13,9 +13,9 @@
     />
     <div class="project-text">
       <h2 class="project-title">{{ project.title }}</h2>
-      <p class="project-intro">
+      <div class="project-intro">
         {{ project.intro }}
-      </p>
+      </div>
     </div>
     <g-link class="project-link" :to="`/prosjekter/${project.slug.current}`"
       >Link</g-link

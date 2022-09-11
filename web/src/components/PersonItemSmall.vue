@@ -16,10 +16,10 @@
         <p class="person-title">{{ person.title }}</p>
       </div>
 
-      <p class="person-contact">
+      <div class="person-contact">
         <a :href="`tel:${person.phone}`">{{ person.phone }}</a>
         <a :href="`mailto:${person.email}`">{{ person.email }}</a>
-      </p>
+      </div>
     </div>
     <g-link class="person-link" :to="`/folk/${person.slug.current}`"
       >Link</g-link
