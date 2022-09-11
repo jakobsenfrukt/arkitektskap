@@ -177,7 +177,8 @@ export default {
     left: 0;
     right: 0;
     padding: var(--spacing-xs) var(--spacing-sitepadding);
-    background: var(--color-background);
+    background-color: var(--color-background);
+    transition: color 1s ease-in-out, background-color 1s ease-in-out;
     &.inview {
       animation: none;
     }
@@ -217,10 +218,10 @@ export default {
     flex-direction: column;
     justify-content: center;
     text-transform: lowercase;
-    background: var(--color-background);
+    background-color: var(--color-background);
+    transition: background-color 1s ease-in-out, opacity 0.3s linear;
     transform: translateY(-100%);
     opacity: 0;
-    transition: opacity 0.3s linear;
   }
   .nav-link {
     margin: 0;
