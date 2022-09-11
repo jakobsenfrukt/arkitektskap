@@ -12,7 +12,7 @@
       :aspectRatio="project.mainImage.asset.metadata.dimensions.aspectRatio"
     />
     <div class="project-text">
-      <h2 class="project-title">{{ project.title }} {{ usePalette }}</h2>
+      <h2 class="project-title">{{ project.title }}</h2>
       <p class="project-intro">
         {{ project.intro }}
       </p>
@@ -253,8 +253,7 @@ export default {
     font-family: var(--font-serif);
     line-height: 1.2;
     margin: 0 0 calc(var(--spacing-s) * 1.2) -0.06em;
-    overflow-wrap: break-word;
-    hyphens: auto;
+    word-wrap: break-word;
   }
   &-info {
     font-family: var(--font-mono);
