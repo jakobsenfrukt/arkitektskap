@@ -234,10 +234,13 @@ export default {
         minYear: undefined,
         maxYear: undefined,
       },
-      intro: undefined,
     };
   },
   computed: {
+    intro() {
+      const intros = this.$page.frontpage.intro;
+      return intros[Math.floor(Math.random() * intros.length)];
+    },
     sortedProjects() {
       const projects = this.filteredProjects;
       if (this.sorting === "sortering") {
@@ -380,12 +383,6 @@ export default {
         return element.node.projectInfo.location.title === location;
       });
     },
-    pickIntro(intro) {
-      return intro[Math.floor(Math.random() * intro.length)];
-    },
-  },
-  beforeMount() {
-    this.intro = this.pickIntro(this.$page.frontpage.intro);
   },
   metaInfo: {
     title: "Forside",
