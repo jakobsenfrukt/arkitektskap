@@ -86,11 +86,7 @@ export default {
         return r + r + g + g + b + b;
       });
 
-      console.log("hexToRgb hex", hex);
-
       var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-
-      console.log("hexToRgb result", result);
       return result
         ? {
             r: parseInt(result[1], 16),
@@ -108,7 +104,6 @@ export default {
       return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
     },
     contrastRatio(color1hex, color2hex) {
-      console.log(color1hex, color2hex);
       const color1 = this.hexToRgb(color1hex);
       const color2 = this.hexToRgb(color2hex);
       const color1luminance = this.luminance(color1.r, color1.g, color1.b);
@@ -145,8 +140,6 @@ export default {
 
       if (g > 255) g = 255;
       else if (g < 0) g = 0;
-
-      console.log(col, r, g, b);
 
       return (
         (usePound ? "#" : "") +
