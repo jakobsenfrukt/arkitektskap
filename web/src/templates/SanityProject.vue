@@ -132,10 +132,10 @@
         />
       </ul>
     </div>
-    <h2 class="section-heading" v-if="$page.project.relatedProjects.length">
+    <h2 class="section-heading" v-if="combinedRelatedProjects.length">
       Relaterte prosjekter
     </h2>
-    <RelatedProjects :projects="$page.project.relatedProjects" />
+    <RelatedProjects :projects="combinedRelatedProjects" />
   </Layout>
 </template>
 
@@ -153,6 +153,54 @@ export default {
     RelatedProjects,
     PersonItem,
     ProjectGallery,
+  },
+  computed: {
+    otherRelatedProjects() {
+      const mappedNodes = this.$page.projects.edges.map(
+        (project) => project.node
+      );
+      const otherRelated = mappedNodes.filter((item) => {
+        return item.relatedProjects.some(
+          (project) => project.id === this.$page.project.id
+        );
+      });
+      return otherRelated
+        .slice()
+        .sort((a, b) => b.projectInfo.startYear - a.projectInfo.startYear)
+        .sort((a, b) => b.rating - a.rating);
+    },
+    relatedProjectsByCategory() {
+      const mappedNodes = this.$page.projects.edges.map(
+        (project) => project.node
+      );
+      const relatedByCategory = mappedNodes.filter((item) => {
+        return item.projectInfo.category
+          .map((x) => x.id)
+          .some((category) => {
+            return this.$page.project.projectInfo.category
+              .map((x) => x.id)
+              .includes(category);
+          });
+      });
+      return relatedByCategory
+        .slice()
+        .sort((a, b) => b.projectInfo.startYear - a.projectInfo.startYear)
+        .sort((a, b) => b.rating - a.rating);
+    },
+    combinedRelatedProjects() {
+      const related = this.$page.project.relatedProjects;
+      let allRelated = related.concat(
+        this.otherRelatedProjects,
+        this.relatedProjectsByCategory
+      );
+      allRelated = [
+        ...new Set([
+          ...this.otherRelatedProjects,
+          ...this.relatedProjectsByCategory,
+        ]),
+      ];
+      return allRelated.slice(0, 4);
+    },
   },
   metaInfo() {
     return {
@@ -243,6 +291,7 @@ query project ($id: ID!) {
         title
       }
       category {
+        id
         title
       }
     }
@@ -352,6 +401,44 @@ query project ($id: ID!) {
       }
     }
   }
+  projects: allSanityProject(sortBy: "title") {
+    edges {
+      node {
+        id
+        title
+        slug {
+          current
+        }
+        rating
+        intro
+        projectInfo {
+          location {
+            title
+          }
+          startYear
+          endYear
+          size
+          category {
+            id
+            title
+          }
+        }
+        mainImage {
+          asset {
+            url
+            metadata {
+              lqip
+            }
+          }
+          alt
+        }
+        relatedProjects {
+          id
+          title
+        }
+      }
+    }
+  },
 }
 </page-query>
 
@@ -383,6 +470,7 @@ query project ($id: ID!) {
   }
   &-info {
     grid-column: 1 / span 3;
+    grid-row: span 2;
     list-style: none;
     margin: 0 0 var(--spacing-m);
     padding: 0 var(--spacing-m) 0 0;
@@ -426,6 +514,7 @@ query project ($id: ID!) {
     .project-info {
       order: 3;
       margin: var(--spacing-s) 0 var(--spacing-l);
+      grid-row: span 1;
     }
     .project-content {
       margin: var(--spacing-s) 0 var(--spacing-l);
@@ -473,6 +562,7 @@ query project ($id: ID!) {
       order: 3;
       margin: var(--spacing-s) 0 var(--spacing-m);
       grid-column: 1 / -1;
+      grid-row: span 2;
       display: grid;
       grid-template-columns: 1fr 1fr;
       column-gap: var(--spacing-m);

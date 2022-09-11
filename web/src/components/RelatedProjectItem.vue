@@ -83,6 +83,8 @@ export default {
     font-size: var(--font-size-m);
     font-family: var(--font-serif);
     line-height: 1.2;
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
   &-meta {
     display: grid;
