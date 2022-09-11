@@ -448,6 +448,7 @@ query project ($id: ID!) {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: var(--spacing-m);
+  color: var(--color-text);
   &-heading {
     margin-bottom: var(--spacing-m);
   }

@@ -31,6 +31,7 @@ export default {
   grid-template-columns: 1fr 1fr;
   gap: var(--spacing-m);
   row-gap: var(--spacing-l);
+  color: var(--color-text);
 }
 @media (max-width: 1000px) {
   .person-list {

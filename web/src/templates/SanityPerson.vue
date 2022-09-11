@@ -300,6 +300,7 @@ query person ($id: ID!) {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: var(--spacing-m);
+  color: var(--color-text);
   &-image {
     grid-column: span 6;
     order: 2;

@@ -51,6 +51,7 @@ export default {
 <style lang="scss" scoped>
 .projects {
   grid-column: 1 / span 12;
+  color: var(--color-text);
 }
 .project-list {
   list-style: none;
