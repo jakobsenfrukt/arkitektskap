@@ -2,6 +2,7 @@
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--color-text);
 }
 
 html {
@@ -123,6 +124,7 @@ blockquote {
   max-width: 20em;
   margin: calc(var(--spacing-m) * 1.6) 0 var(--spacing-l);
   line-height: 1.2;
+  color: var(--color-text);
 }
 
 .section-heading {

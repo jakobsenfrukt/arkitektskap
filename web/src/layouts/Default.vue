@@ -159,6 +159,8 @@ export default {
 <style lang="scss" scoped>
 .layout {
   padding-top: 3rem;
+  background: var(--color-background);
+  transition: color 1s ease-in-out, background-color 1s ease-in-out;
 }
 
 .site-main {
@@ -170,7 +172,7 @@ export default {
 }
 
 .fade-enter-active {
-  transition: opacity 1.2s;
+  transition: opacity 1s ease-in-out;
 }
 
 .fade-enter {

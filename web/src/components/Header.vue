@@ -103,6 +103,7 @@ export default {
   z-index: 1002;
   font-family: var(--font-mono);
   font-size: var(--font-size-s);
+  color: var(--color-text);
   background: var(--color-background);
   transition: color 1s ease-in-out, background-color 1s ease-in-out;
 

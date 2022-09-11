@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     usePalette(index) {
-      if (index === 0 || index % 5 === 0) {
+      if (index % 5 === 0) {
         return true;
       }
       return false;

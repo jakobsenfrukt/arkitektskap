@@ -84,7 +84,7 @@ export default {
     margin-right: 0.5em;
   }
   figure {
-    margin: var(--spacing-m) 0;
+    margin: calc(var(--spacing-m) * 1.5) 0;
   }
 }
 </style>

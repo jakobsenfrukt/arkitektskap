@@ -12,7 +12,7 @@
       :aspectRatio="project.mainImage.asset.metadata.dimensions.aspectRatio"
     />
     <div class="project-text">
-      <h2 class="project-title">{{ project.title }}</h2>
+      <h2 class="project-title">{{ project.title }} {{ usePalette }}</h2>
       <p class="project-intro">
         {{ project.intro }}
       </p>
