@@ -41,10 +41,10 @@ export default {
       type: 'string',
       title: 'Instagram URL'
     },
-    {
+    /*{
       name: 'linkedin',
       type: 'string',
       title: 'Linkedin URL'
-    }
+    }*/
   ]
 }
