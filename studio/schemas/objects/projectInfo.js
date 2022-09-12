@@ -31,6 +31,12 @@ export default {
       description: 'Skriv inn kun tall. La feltet stå tomt hvis det ikke er relevant for prosjektet.'
     },
     {
+      name: 'sizeDetails',
+      type: 'string',
+      title: 'Størrelse (fritekst; enheter el.l.)',
+      description: 'Hvis annen størrelsesinfo enn kvadratmeter er relevant for prosjektet. La feltet stå tomt hvis ikke.'
+    },
+    {
       title: 'Oppdragsgiver(e)',
       name: 'client',
       type: 'array',

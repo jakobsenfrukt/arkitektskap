@@ -84,11 +84,18 @@
             </li>
           </ul>
         </li>
-        <li v-if="$page.project.projectInfo.size">
-          <strong>Størrelse:</strong><br />{{
-            $page.project.projectInfo.size
-          }}
-          m<sup>2</sup>
+        <li
+          v-if="
+            $page.project.projectInfo.size ||
+              $page.project.projectInfo.sizeDetails
+          "
+        >
+          <strong>Størrelse:</strong><br /><template
+            v-if="$page.project.projectInfo.size"
+            >{{ $page.project.projectInfo.size }}m<sup>2</sup><br /></template
+          ><template v-if="$page.project.projectInfo.sizeDetails">{{
+            $page.project.projectInfo.sizeDetails
+          }}</template>
         </li>
       </ul>
       <SuperProjectImage
@@ -290,6 +297,7 @@ query project ($id: ID!) {
       startYear
       endYear
       size
+      sizeDetails
       client {
         title
       }
