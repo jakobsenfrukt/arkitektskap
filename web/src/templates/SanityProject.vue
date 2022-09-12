@@ -84,6 +84,12 @@
             </li>
           </ul>
         </li>
+        <li v-if="$page.project.projectInfo.size">
+          <strong>Størrelse:</strong><br />{{
+            $page.project.projectInfo.size
+          }}
+          m<sup>2</sup>
+        </li>
       </ul>
       <SuperProjectImage
         v-if="$page.project.mainImage"
