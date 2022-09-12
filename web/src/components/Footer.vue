@@ -133,6 +133,9 @@ export default {
 .address {
   position: relative;
   padding-left: 2.4em;
+  p {
+    line-height: 1.8;
+  }
   .icon {
     position: absolute;
     top: 0;
