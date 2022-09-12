@@ -232,5 +232,9 @@ export default {
       opacity: 1;
     }
   }
+  .theme {
+    position: absolute;
+    bottom: var(--spacing-sitepadding);
+  }
 }
 </style>

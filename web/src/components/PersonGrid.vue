@@ -1,7 +1,7 @@
 <template>
   <ul class="person-list">
     <PersonItem
-      v-for="(person, index) in people.edges"
+      v-for="(person, index) in people"
       :key="`person-${index}`"
       :person="person.node"
     />

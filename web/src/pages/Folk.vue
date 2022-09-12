@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <p class="intro" v-html="$replaceLogo($page.peoplePage.intro)"></p>
-    <PersonGrid :people="$page.people" />
+    <PersonGrid :people="sortedPeople" />
   </Layout>
 </template>
 
@@ -58,6 +58,13 @@ import PersonGrid from "~/components/PersonGrid";
 export default {
   components: {
     PersonGrid,
+  },
+  computed: {
+    sortedPeople() {
+      return this.$page.people.edges
+        .slice()
+        .sort((a, b) => a.node.name.localeCompare(b.node.name));
+    },
   },
   metaInfo: {
     title: "Folka",
