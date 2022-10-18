@@ -63,7 +63,7 @@ export default {
     sortedPeople() {
       return this.$page.people.edges
         .slice()
-        .sort((a, b) => a.node.name.localeCompare(b.node.name));
+        .sort((a, b) => a.node.name.localeCompare(b.node.name, "nb-NO"));
     },
   },
   metaInfo: {
