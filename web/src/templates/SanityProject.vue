@@ -139,8 +139,8 @@
         </h2>
         <h2 v-else class="section-heading">Kontaktperson</h2>
         <PersonItem
-          v-for="(person, index) in $page.project.contactperson"
-          :key="`person-${index}`"
+          v-for="person in $page.project.contactperson"
+          :key="person.id"
           :person="person"
         />
       </ul>
@@ -333,6 +333,7 @@ query project ($id: ID!) {
       }
     }
     contactperson {
+      id
       name
       title
       email

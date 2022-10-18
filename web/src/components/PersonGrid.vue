@@ -1,8 +1,8 @@
 <template>
   <ul class="person-list">
     <PersonItem
-      v-for="(person, index) in people"
-      :key="`person-${index}`"
+      v-for="person in people"
+      :key="person.node.id"
       :person="person.node"
     />
   </ul>
