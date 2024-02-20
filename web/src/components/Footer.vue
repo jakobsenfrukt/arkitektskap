@@ -73,7 +73,6 @@ query {
     phone
     facebook
     instagram
-    linkedin
     _rawAddress
   }
 }
