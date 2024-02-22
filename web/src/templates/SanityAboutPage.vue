@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <h1>Interiør</h1>
+    <h1 class="aboutPage-title">&mdash;<br />Interiør</h1>
     <p
       class="intro aboutPage-intro"
       v-html="$replaceLogo($page.aboutPage.intro)"
@@ -217,6 +217,17 @@ query aboutPage ($id: ID!) {
 </page-query>
 
 <style lang="scss">
+.aboutPage-title {
+  font-size: 1rem;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  line-height: 1.6;
+  text-transform: lowercase;
+  margin-top: calc(var(--spacing-m) * -1.15);
+  margin-bottom: var(--spacing-m);
+  position: relative;
+  z-index: 9000;
+}
 .aboutPage-intro {
   grid-column: 1 / -1;
 }
@@ -276,6 +287,26 @@ query aboutPage ($id: ID!) {
 
   .section-heading {
     margin-bottom: 0;
+  }
+}
+
+@media (max-width: 1000px) {
+  .aboutPage-title {
+    margin-top: calc(var(--spacing-m) * -1.6);
+  }
+  .featuredPeople {
+    grid-template-columns: 1fr;
+
+    li {
+      margin-bottom: var(--spacing-m);
+    }
+  }
+  .aboutPage-content {
+    blockquote {
+      transform: none;
+      width: 100%;
+      margin: var(--spacing-l) 0;
+    }
   }
 }
 

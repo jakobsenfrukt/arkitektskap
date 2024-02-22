@@ -4,6 +4,10 @@
       class="intro"
       v-html="$replaceLogo(intro ? intro : $page.frontpage.intro[0])"
     ></p>
+    <FeaturedNews
+      v-if="$page.frontpage.featuredNews.show"
+      :content="$page.frontpage.featuredNews"
+    />
     <div class="filter">
       <div class="filter-wrapper" :class="{ inview: isInView }">
         <ul class="filter-menu">
@@ -126,6 +130,52 @@ query {
   }
   frontpage: sanityFrontpage(id: "frontpage") {
     intro
+    featuredNews {
+      show
+      text
+      image {
+        asset {
+          url
+          metadata {
+            lqip
+            dimensions {
+              aspectRatio
+            }
+            palette {
+              darkMuted {
+                background
+                foreground
+              }
+              darkVibrant {
+                background
+                foreground
+              }
+              dominant {
+                background
+                foreground
+              }
+              lightMuted {
+                background
+                foreground
+              }
+              lightVibrant {
+                background
+                foreground
+              }
+              muted {
+                background
+                foreground
+              }
+              vibrant {
+                background
+                foreground
+              }
+            }
+          }
+        }
+        alt
+      }
+    }
   }
   projects: allSanityProject(sortBy: "year") {
     edges {
@@ -216,12 +266,14 @@ query {
 import ProjectGrid from "~/components/ProjectGrid";
 import IntersectionObserver from "~/components/tools/IntersectionObserver";
 import Dingbats from "~/components/tools/Dingbats";
+import FeaturedNews from "~/components/FeaturedNews";
 
 export default {
   components: {
     ProjectGrid,
     IntersectionObserver,
     Dingbats,
+    FeaturedNews,
   },
   data() {
     return {

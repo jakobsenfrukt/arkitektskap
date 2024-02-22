@@ -27,6 +27,7 @@ import projectInfo from './objects/projectInfo'
 import gallery from './objects/gallery'
 import galleryImage from './objects/galleryImage'
 import aboutNumbers from './objects/aboutNumbers'
+import featuredNews from './objects/featuredNews'
 
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -60,6 +61,7 @@ export default createSchema({
     projectInfo,
     gallery,
     galleryImage,
-    aboutNumbers
+    aboutNumbers,
+    featuredNews
   ]),
 })
