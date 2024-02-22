@@ -25,6 +25,11 @@ export default {
       title: 'Intro'
     },
     {
+      name: 'mainImage',
+      title: 'Hovedbilde',
+      type: 'figure'
+    },
+    {
       name: 'body',
       title: 'Brødtekst',
       type: 'body',

@@ -5,13 +5,25 @@
       class="intro aboutPage-intro"
       v-html="$replaceLogo($page.aboutPage.intro)"
     ></p>
-    <div class="featuredPeople">
-      <PersonItem
-        v-for="person in $page.aboutPage.featuredPeople"
-        :key="person.id"
-        :person="person"
-      />
-    </div>
+    <SuperProjectImage
+      v-if="$page.aboutPage.mainImage"
+      class="main-image"
+      :image="$page.aboutPage.mainImage"
+      :alt="
+        $page.aboutPage.mainImage.alt
+          ? $page.aboutPage.mainImage.alt
+          : 'Bilde fra prosjekt'
+      "
+      :width="1200"
+      :lqip="$page.aboutPage.mainImage.asset.metadata.lqip"
+      :aspectRatio="
+        $page.aboutPage.mainImage.asset.metadata.dimensions.aspectRatio
+      "
+    />
+    <h2 class="section-heading" v-if="$page.aboutPage.featuredProjects.length">
+      Utforsk våre interiørprosjekter
+    </h2>
+    <RelatedProjects :projects="$page.aboutPage.featuredProjects" />
     <div class="aboutPage-content">
       <BlockContent
         :blocks="$page.aboutPage._rawBody"
@@ -19,10 +31,13 @@
         class="block-content"
       />
     </div>
-    <h2 class="section-heading" v-if="$page.aboutPage.featuredProjects.length">
-      Noen av våre interiørprosjekter
-    </h2>
-    <RelatedProjects :projects="$page.aboutPage.featuredProjects" :limit="4" />
+    <div class="featuredPeople">
+      <PersonItem
+        v-for="person in $page.aboutPage.featuredPeople"
+        :key="person.id"
+        :person="person"
+      />
+    </div>
   </Layout>
 </template>
 
@@ -31,6 +46,7 @@ import BlockContent from "~/components/tools/BlockContent";
 import RelatedProjects from "~/components/RelatedProjects";
 import Dingbats from "@/components/tools/Dingbats.vue";
 import PersonItem from "@/components/PersonItem.vue";
+import SuperProjectImage from "@/components/tools/SuperProjectImage.vue";
 
 export default {
   components: {
@@ -38,6 +54,7 @@ export default {
     RelatedProjects,
     Dingbats,
     PersonItem,
+    SuperProjectImage,
   },
   metaInfo() {
     return {
@@ -68,6 +85,49 @@ query aboutPage ($id: ID!) {
     title
     intro
     _rawBody
+    mainImage {
+      asset {
+        _id
+        url
+        metadata {
+          lqip
+          dimensions {
+            aspectRatio
+          }
+          palette {
+            darkMuted {
+              background
+              foreground
+            }
+            darkVibrant {
+              background
+              foreground
+            }
+            dominant {
+              background
+              foreground
+            }
+            lightMuted {
+              background
+              foreground
+            }
+            lightVibrant {
+              background
+              foreground
+            }
+            muted {
+              background
+              foreground
+            }
+            vibrant {
+              background
+              foreground
+            }
+          }
+        }
+      }
+      alt
+    }
     featuredProjects {
       title
       intro
@@ -160,14 +220,18 @@ query aboutPage ($id: ID!) {
 .aboutPage-intro {
   grid-column: 1 / -1;
 }
+.main-image {
+  grid-column: 1 / -1;
+  margin-bottom: calc(var(--spacing-m) * 2);
+}
 .aboutPage-content {
   grid-column: 5 / span 7;
-  margin-bottom: calc(var(--spacing-m) * 2);
+  margin-bottom: calc(var(--spacing-m) * 5);
 
   blockquote {
     width: 150%;
     transform: translateX(-25%);
-    margin: 4rem 0;
+    margin: 5rem 0;
   }
 }
 .aboutPage-numbers {
