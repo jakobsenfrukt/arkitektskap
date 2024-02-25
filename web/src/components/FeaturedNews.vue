@@ -88,7 +88,7 @@ export default {
   opacity: 0;
   overflow: hidden;
   text-indent: -9999px;
-  z-index: 0;
+  z-index: 1000;
 }
 
 @media (max-width: 900px) {
