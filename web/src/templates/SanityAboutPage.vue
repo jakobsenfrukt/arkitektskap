@@ -14,7 +14,7 @@
           ? $page.aboutPage.mainImage.alt
           : 'Bilde fra prosjekt'
       "
-      :width="1200"
+      :width="1920"
       :lqip="$page.aboutPage.mainImage.asset.metadata.lqip"
       :aspectRatio="
         $page.aboutPage.mainImage.asset.metadata.dimensions.aspectRatio
