@@ -1,5 +1,5 @@
 <template>
-  <div class="projects">
+  <div class="projects" :class="!limit ? 'limitless' : 'limited'">
     <ul class="project-list">
       <ProjectItem
         v-for="(project, index) in projects.slice(0, currentLimit)"
@@ -67,7 +67,7 @@ export default {
   .project-list {
     grid-template-columns: repeat(9, 1fr);
   }
-  .project-item:last-child {
+  .limited .project-item:last-child {
     display: none;
   }
 }

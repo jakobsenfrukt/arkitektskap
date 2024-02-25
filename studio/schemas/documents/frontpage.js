@@ -16,5 +16,10 @@ export default {
         }
       ]
     },
+    {
+      title: 'Fremhevet nyhet',
+      name: 'featuredNews',
+      type: 'featuredNews'
+    }
   ]
 }

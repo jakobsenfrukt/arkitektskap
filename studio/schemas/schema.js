@@ -8,6 +8,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 import general from './documents/general'
 import frontpage from './documents/frontpage'
 import about from './documents/about'
+import aboutPage from './documents/aboutPage'
 import contact from './documents/contact'
 import project from './documents/project'
 import category from './documents/category'
@@ -26,6 +27,7 @@ import projectInfo from './objects/projectInfo'
 import gallery from './objects/gallery'
 import galleryImage from './objects/galleryImage'
 import aboutNumbers from './objects/aboutNumbers'
+import featuredNews from './objects/featuredNews'
 
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -40,6 +42,7 @@ export default createSchema({
     general,
     frontpage,
     about,
+    aboutPage,
     contact,
     project,
     category,
@@ -58,6 +61,7 @@ export default createSchema({
     projectInfo,
     gallery,
     galleryImage,
-    aboutNumbers
+    aboutNumbers,
+    featuredNews
   ]),
 })
