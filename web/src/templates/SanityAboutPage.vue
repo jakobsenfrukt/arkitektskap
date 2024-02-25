@@ -63,8 +63,8 @@ export default {
         {
           name: "og:image",
           key: "og:image",
-          content: this.$page.aboutPage.image
-            ? this.$page.aboutPage.image.asset.url
+          content: this.$page.aboutPage.mainImage
+            ? this.$page.aboutPage.mainImage.asset.url
             : " ",
         },
       ],
