@@ -20,10 +20,6 @@
         $page.aboutPage.mainImage.asset.metadata.dimensions.aspectRatio
       "
     />
-    <h2 class="section-heading" v-if="$page.aboutPage.featuredProjects.length">
-      Utforsk våre interiørprosjekter
-    </h2>
-    <RelatedProjects :projects="$page.aboutPage.featuredProjects" />
     <div class="aboutPage-content">
       <BlockContent
         :blocks="$page.aboutPage._rawBody"
@@ -31,6 +27,10 @@
         class="block-content"
       />
     </div>
+    <h2 class="section-heading" v-if="$page.aboutPage.featuredProjects.length">
+      Utforsk våre interiørprosjekter
+    </h2>
+    <RelatedProjects :projects="$page.aboutPage.featuredProjects" />
     <div class="featuredPeople">
       <PersonItem
         v-for="person in $page.aboutPage.featuredPeople"
