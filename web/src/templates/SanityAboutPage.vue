@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <h1 class="aboutPage-title">&mdash;<br />Interiør</h1>
+    <h1 class="aboutPage-title">&mdash;<br />{{ $page.aboutPage.title }}</h1>
     <p
       class="intro aboutPage-intro"
       v-html="$replaceLogo($page.aboutPage.intro)"
@@ -28,7 +28,7 @@
       />
     </div>
     <h2 class="section-heading" v-if="$page.aboutPage.featuredProjects.length">
-      Utforsk våre interiørprosjekter
+      Utforsk våre {{ $page.aboutPage.title.toLowerCase() }}prosjekter
     </h2>
     <RelatedProjects :projects="$page.aboutPage.featuredProjects" />
     <div class="featuredPeople">
