@@ -11,7 +11,7 @@
     />
     <p class="text">{{ content.text }}</p>
     <Dingbats icon="arrow-right" />
-    <g-link class="link" to="/om/kulturminne">Link</g-link>
+    <g-link class="link" to="/om/ny-ledelse">Link</g-link>
   </article>
 </template>
 
