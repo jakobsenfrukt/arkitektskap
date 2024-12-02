@@ -28,7 +28,7 @@
       />
     </div>
     <h2 class="section-heading" v-if="$page.aboutPage.featuredProjects.length">
-      Utforsk våre {{ $page.aboutPage.title.toLowerCase() }}prosjekter
+      Utforsk våre prosjekter
     </h2>
     <RelatedProjects :projects="$page.aboutPage.featuredProjects" />
     <div class="featuredPeople">
