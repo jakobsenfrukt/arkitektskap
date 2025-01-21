@@ -10,10 +10,7 @@ export default {
       name: 'alt',
       type: 'string',
       title: 'Alternativ tekst',
-      description: 'Viktig for SEO og tilgjengelighet. Beskriv kort hva man ser i bildet for en person som er blind.',
-      options: {
-        isHighlighted: true
-      }
+      description: 'Viktig for SEO og tilgjengelighet. Beskriv kort hva man ser i bildet for en person som er blind.'
     },
     {
       name: 'columns',
@@ -27,27 +24,20 @@ export default {
           { title: '1/3', value: 'third' },
           { title: '2/3', value: 'twothird' },
         ],
-        layout: 'radio', // <-- defaults to 'dropdown'
-        isHighlighted: true
+        layout: 'radio',
       },
     },
     {
       name: 'nocrop',
       title: 'Unngå beskjæring av bildet',
       description: 'Bildet vil vises i sin opprinnelige høyde, istedenfor å strekkes til samme høyde som andre bilder på samme rad.',
-      type: 'boolean',
-      options: {
-        isHighlighted: true
-      }
+      type: 'boolean'
     },
     {
       name: 'caption',
       type: 'text',
       title: 'Bildetekst',
-      description: 'Valgfritt',
-      options: {
-        isHighlighted: true
-      }
+      description: 'Valgfritt'
     },
   ],
   preview: {

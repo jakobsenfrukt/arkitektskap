@@ -1,11 +1,9 @@
-import S from '@sanity/desk-tool/structure-builder'
-
 import { MdSettings, MdHomeFilled, MdArticle, MdPeople, MdArchitecture, MdEmail, MdInfo, MdGroups, MdLocationPin, MdLocationCity, MdCategory, MdOutlineChat } from 'react-icons/md'
 
 const hiddenDocTypes = listItem =>
   !['general', 'frontpage', 'project', 'person', 'contact', 'about', 'aboutPage', 'location', 'collaborator', 'client', 'category', 'language', 'people'].includes(listItem.getId())
 
-export default () =>
+export const structure = (S, context) =>
   S.list()
     .title('Innhold')
     .items([
