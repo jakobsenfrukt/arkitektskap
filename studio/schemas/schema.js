@@ -11,6 +11,7 @@ import collaborator from './documents/collaborator'
 import client from './documents/client'
 import language from './documents/language'
 import people from './documents/people'
+import newsArticle from './documents/newsArticle'
 
 import body from './objects/body'
 import simpleBody from './objects/simpleBody'
@@ -37,6 +38,7 @@ export const schemaTypes = [
   client,
   language,
   people,
+  newsArticle,
 
   // objects
   body,

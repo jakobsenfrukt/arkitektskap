@@ -1,7 +1,7 @@
 import { MdSettings, MdHomeFilled, MdArticle, MdPeople, MdArchitecture, MdEmail, MdInfo, MdGroups, MdLocationPin, MdLocationCity, MdCategory, MdOutlineChat } from 'react-icons/md'
 
 const hiddenDocTypes = listItem =>
-  !['general', 'frontpage', 'project', 'person', 'contact', 'about', 'aboutPage', 'location', 'collaborator', 'client', 'category', 'language', 'people'].includes(listItem.getId())
+  !['general', 'frontpage', 'project', 'person', 'contact', 'about', 'aboutPage', 'location', 'collaborator', 'client', 'category', 'language', 'people', 'newsArticle'].includes(listItem.getId())
 
 export const structure = (S, context) =>
   S.list()
@@ -27,6 +27,11 @@ export const structure = (S, context) =>
             .schemaType('frontpage')
             .documentId('frontpage')
         ),
+      S.listItem()
+        .title('Nyheter')
+        .icon(MdArticle)
+        .schemaType('newsArticle')
+        .child(S.documentTypeList('newsArticle').title('Nyheter')),
       S.listItem()
         .title('Prosjekter')
         .icon(MdArchitecture)
