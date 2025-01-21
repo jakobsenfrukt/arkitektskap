@@ -20,7 +20,7 @@
         }}</span>
       <h2 class="title">{{ article.title }}</h2>
     </div>
-    <g-link class="article-link" :to="`/folk/${article.slug.current}`"
+    <g-link class="article-link" :to="`/nyheter/${article.slug.current}`"
       >Link</g-link
     >
   </li>
