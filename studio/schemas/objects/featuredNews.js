@@ -9,15 +9,14 @@ export default {
       name: 'show'
     },
     {
-      title: 'Bilde',
-      type: 'figure',
-      name: 'image'
-    },
-    {
-      title: 'Tekst',
-      type: 'text',
-      name: 'text',
-      rows: 3
+      title: 'Nyhetsartikkel',
+      name: 'newsArticle',
+      type: 'reference',
+      to: [
+        {
+          type: 'newsArticle'
+        }
+      ]
     }
   ]
 }

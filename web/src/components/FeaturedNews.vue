@@ -1,17 +1,17 @@
 <template>
   <article class="news">
     <SuperImage
-      v-if="content.image"
+      v-if="content.mainImage"
       class="image"
-      :image="content.image"
-      :alt="content.image.alt ? content.image.alt : 'Nyhetsbilde'"
+      :image="content.mainImage"
+      :alt="content.mainImage.alt ? content.mainImage.alt : 'Nyhetsbilde'"
       :width="800"
-      :lqip="content.image.asset.metadata.lqip"
-      :aspectRatio="content.image.asset.metadata.dimensions.aspectRatio"
+      :lqip="content.mainImage.asset.metadata.lqip"
+      :aspectRatio="content.mainImage.asset.metadata.dimensions.aspectRatio"
     />
-    <p class="text">{{ content.text }}</p>
+    <p class="text">{{ content.title }}</p>
     <Dingbats icon="arrow-right" />
-    <g-link class="link" to="/om/ny-ledelse">Link</g-link>
+    <g-link class="link" :to="`nyheter/${content.slug.current}`">Les artikkelen</g-link>
   </article>
 </template>
 

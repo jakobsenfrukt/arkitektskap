@@ -6,7 +6,7 @@
     ></p>
     <FeaturedNews
       v-if="$page.frontpage.featuredNews.show"
-      :content="$page.frontpage.featuredNews"
+      :content="$page.frontpage.featuredNews.newsArticle"
     />
     <div class="filter">
       <div class="filter-wrapper" :class="{ inview: isInView }">
@@ -132,48 +132,55 @@ query {
     intro
     featuredNews {
       show
-      text
-      image {
-        asset {
-          url
-          metadata {
-            lqip
-            dimensions {
-              aspectRatio
-            }
-            palette {
-              darkMuted {
-                background
-                foreground
+      newsArticle {
+        id
+        title
+        slug {
+          current
+        }
+        intro
+        mainImage {
+          asset {
+            url
+            metadata {
+              lqip
+              dimensions {
+                aspectRatio
               }
-              darkVibrant {
-                background
-                foreground
-              }
-              dominant {
-                background
-                foreground
-              }
-              lightMuted {
-                background
-                foreground
-              }
-              lightVibrant {
-                background
-                foreground
-              }
-              muted {
-                background
-                foreground
-              }
-              vibrant {
-                background
-                foreground
+              palette {
+                darkMuted {
+                  background
+                  foreground
+                }
+                darkVibrant {
+                  background
+                  foreground
+                }
+                dominant {
+                  background
+                  foreground
+                }
+                lightMuted {
+                  background
+                  foreground
+                }
+                lightVibrant {
+                  background
+                  foreground
+                }
+                muted {
+                  background
+                  foreground
+                }
+                vibrant {
+                  background
+                  foreground
+                }
               }
             }
           }
+          alt
         }
-        alt
       }
     }
   }

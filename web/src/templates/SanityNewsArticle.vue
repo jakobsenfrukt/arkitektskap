@@ -1,39 +1,55 @@
 <template>
   <Layout>
-    <h1 class="aboutPage-title">&mdash;<br />{{ $page.aboutPage.title }}</h1>
-    <p
-      class="intro aboutPage-intro"
-      v-html="$replaceLogo($page.aboutPage.intro)"
-    ></p>
+    <h1 class="newsArticle-title">
+      {{ $page.newsArticle.title }}
+    </h1>
+    <div class="meta">
+        <span class="date">
+          {{ 
+            new Date($page.newsArticle.publishDate).toLocaleDateString("no-NB", {
+              month: "long",
+              year: "numeric",
+            })
+          }}</span>
+        <g-link class="link" to="/nyheter">Flere nyheter &rarr;</g-link>
+      </div>
     <SuperProjectImage
-      v-if="$page.aboutPage.mainImage"
+      v-if="$page.newsArticle.mainImage"
       class="main-image"
-      :image="$page.aboutPage.mainImage"
+      :image="$page.newsArticle.mainImage"
       :alt="
-        $page.aboutPage.mainImage.alt
-          ? $page.aboutPage.mainImage.alt
+        $page.newsArticle.mainImage.alt
+          ? $page.newsArticle.mainImage.alt
           : 'Bilde fra prosjekt'
       "
       :width="1920"
-      :lqip="$page.aboutPage.mainImage.asset.metadata.lqip"
+      :lqip="$page.newsArticle.mainImage.asset.metadata.lqip"
       :aspectRatio="
-        $page.aboutPage.mainImage.asset.metadata.dimensions.aspectRatio
+        $page.newsArticle.mainImage.asset.metadata.dimensions.aspectRatio
       "
     />
-    <div class="aboutPage-content">
+    <p
+      v-if="$page.newsArticle.intro"
+      class="intro newsArticle-intro"
+      v-html="$replaceLogo($page.newsArticle.intro)"
+    ></p>
+    <div class="newsArticle-content">
       <BlockContent
-        :blocks="$page.aboutPage._rawBody"
-        v-if="$page.aboutPage._rawBody"
+        :blocks="$page.newsArticle._rawBody"
+        v-if="$page.newsArticle._rawBody"
         class="block-content"
       />
     </div>
-    <h2 class="section-heading" v-if="$page.aboutPage.featuredProjects.length">
-      Utforsk våre prosjekter
+    <h2 class="section-heading" v-if="$page.newsArticle.relatedProjects.length">
+      Relaterte prosjekter
     </h2>
-    <RelatedProjects :projects="$page.aboutPage.featuredProjects" />
-    <div class="featuredPeople">
+    <RelatedProjects :projects="$page.newsArticle.relatedProjects" />
+    <h2 class="section-heading" v-if="$page.newsArticle.relatedPeople.length">
+      Relaterte folk
+    </h2>
+    <div class="relatedPeople">
       <PersonItem
-        v-for="person in $page.aboutPage.featuredPeople"
+        v-for="person in $page.newsArticle.relatedPeople"
         :key="person.id"
         :person="person"
       />
@@ -58,13 +74,13 @@ export default {
   },
   metaInfo() {
     return {
-      title: this.$page.aboutPage.title,
+      title: this.$page.newsArticle.title,
       meta: [
         {
           name: "og:image",
           key: "og:image",
-          content: this.$page.aboutPage.mainImage
-            ? this.$page.aboutPage.mainImage.asset.url
+          content: this.$page.newsArticle.mainImage
+            ? this.$page.newsArticle.mainImage.asset.url
             : " ",
         },
       ],
@@ -74,15 +90,16 @@ export default {
 </script>
 
 <page-query>
-query aboutPage ($id: ID!) {
+query newsArticle ($id: ID!) {
   metadata {
     sanityOptions {
       projectId
       dataset
     }
   }
-  aboutPage: sanityAboutPage (id: $id) {
+  newsArticle: sanityNewsArticle (id: $id) {
     title
+    publishDate
     intro
     _rawBody
     mainImage {
@@ -128,7 +145,7 @@ query aboutPage ($id: ID!) {
       }
       alt
     }
-    featuredProjects {
+    relatedProjects {
       title
       intro
       mainImage {
@@ -178,7 +195,7 @@ query aboutPage ($id: ID!) {
         current
       }
     }
-    featuredPeople {
+    relatedPeople {
       id
       name
       title
@@ -217,25 +234,41 @@ query aboutPage ($id: ID!) {
 </page-query>
 
 <style lang="scss">
-.aboutPage-title {
-  font-size: 1rem;
-  font-family: var(--font-mono);
-  font-weight: 500;
-  line-height: 1.6;
-  text-transform: lowercase;
-  margin-top: calc(var(--spacing-m) * -1.15);
-  margin-bottom: var(--spacing-m);
-  position: relative;
-  z-index: 9000;
-}
-.aboutPage-intro {
+.newsArticle-title {
   grid-column: 1 / -1;
+  font-family: var(--font-serif);
+  font-size: var(--font-size-xxl);
+  max-width: 20em;
+  margin: calc(var(--spacing-m) * 1.6) 0 var(--spacing-l);
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+.meta {
+  grid-column: 1 / -1;
+  font-family: var(--font-mono);
+  text-transform: lowercase;
+  color: var(--color-text);
+  margin: var(--spacing-s) 0;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.link {
+  display: inline-flex;
+}
+
+.newsArticle-intro {
+  grid-column: 1 / -1;
+  font-size: var(--font-size-l);
+  max-width: 24em;
 }
 .main-image {
   grid-column: 1 / -1;
   margin-bottom: calc(var(--spacing-m) * 2);
 }
-.aboutPage-content {
+.newsArticle-content {
   grid-column: 5 / span 7;
   margin-bottom: calc(var(--spacing-m) * 5);
 
@@ -245,38 +278,8 @@ query aboutPage ($id: ID!) {
     margin: 5rem 0;
   }
 }
-.aboutPage-numbers {
-  grid-column: 1 / span 4;
-  list-style: none;
-  margin: 0;
-  padding: 0;
 
-  li {
-    margin-bottom: 2rem;
-    position: relative;
-    padding-left: 2.4em;
-    .dingbat {
-      position: absolute;
-      top: 0.4rem;
-      left: 0;
-    }
-    sup {
-      line-height: 0;
-    }
-  }
-  h2 {
-    grid-column: 1 / -1;
-  }
-  .number {
-    font-family: var(--font-mono);
-    font-size: var(--font-size-l);
-    margin: 0 0.1em 0.2em 0;
-    display: block;
-    line-height: 1;
-  }
-}
-
-.featuredPeople {
+.relatedPeople {
   grid-column: 1 / -1;
   list-style: none;
   padding: 0;
@@ -291,17 +294,14 @@ query aboutPage ($id: ID!) {
 }
 
 @media (max-width: 1000px) {
-  .aboutPage-title {
-    margin-top: calc(var(--spacing-m) * -1.6);
-  }
-  .featuredPeople {
+  .relatedPeople {
     grid-template-columns: 1fr;
 
     li {
       margin-bottom: var(--spacing-m);
     }
   }
-  .aboutPage-content {
+  .newsArticle-content {
     blockquote {
       transform: none;
       width: 100%;
@@ -311,34 +311,8 @@ query aboutPage ($id: ID!) {
 }
 
 @media (max-width: 800px) {
-  .aboutPage-content,
-  .aboutPage-numbers {
+  .newsArticle-content {
     grid-column: 1 / -1;
-  }
-  .aboutPage-numbers {
-    margin-bottom: var(--spacing-l);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-bottom: var(--spacing-m);
-
-    li {
-      .dingbat {
-        top: 0;
-      }
-    }
-  }
-}
-
-@media (max-width: 500px) {
-  .aboutPage-numbers {
-    margin-bottom: var(--spacing-m);
-    grid-template-columns: 1fr;
-
-    li {
-      .dingbat {
-        top: 0;
-      }
-    }
   }
 }
 </style>

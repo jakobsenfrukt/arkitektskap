@@ -16,7 +16,7 @@ module.exports = {
   siteName: 'Arkitektskap',
 
   templates: {
-    SanityAboutPage: '/om/:slug__current',
+    SanityNewsArticle: '/nyheter/:slug__current',
     SanityProject: '/prosjekter/:slug__current',
     SanityPerson: '/folk/:slug__current'
   },
