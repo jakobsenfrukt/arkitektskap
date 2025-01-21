@@ -1,7 +1,6 @@
 import general from './documents/general'
 import frontpage from './documents/frontpage'
 import about from './documents/about'
-import aboutPage from './documents/aboutPage'
 import contact from './documents/contact'
 import project from './documents/project'
 import category from './documents/category'
@@ -28,7 +27,6 @@ export const schemaTypes = [
   general,
   frontpage,
   about,
-  aboutPage,
   contact,
   project,
   category,
