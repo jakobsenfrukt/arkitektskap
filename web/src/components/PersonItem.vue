@@ -18,7 +18,7 @@
 
       <p class="person-contact">
         <a :href="`tel:${person.phone}`">{{ person.phone }}</a>
-        <a :href="`mailto:${person.email}`">{{ person.email }}</a>
+        <a :href="`mailto:${person.email}`" target="_blank">{{ person.email }}</a>
       </p>
     </div>
     <g-link class="person-link" :to="`/folk/${person.slug.current}`"
