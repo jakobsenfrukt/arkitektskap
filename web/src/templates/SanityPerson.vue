@@ -17,10 +17,10 @@
         <div class="person-title">{{ $page.person.title }}</div>
 
         <div class="person-contact">
-          <a :href="$page.person.phone" v-if="$page.person.phone"
+          <a :href="`tel:${$page.person.phone}`" v-if="$page.person.phone"
             ><Dingbats icon="smiley" /><span>{{ $page.person.phone }}</span></a
           >
-          <a :href="$page.person.email" v-if="$page.person.email"
+          <a :href="`mailto:${$page.person.email}`" v-if="$page.person.email" target="_blank"
             ><Dingbats icon="email" /><span>{{ $page.person.email }}</span></a
           >
         </div>
