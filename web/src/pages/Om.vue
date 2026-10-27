@@ -10,22 +10,22 @@
         <strong class="number">{{ $page.locations.edges.length }}</strong> ulike
         steder
       </li>-->
-      <li>
+      <li v-if="$page.about.numbers && $page.about.numbers.awards">
         <Dingbats icon="award" />
         <strong class="number">{{ $page.about.numbers.awards }}</strong> priser
         og utmerkelser
       </li>
-      <li>
+      <li v-if="$page.people.edges.length">
         <Dingbats icon="heart" />
         <strong class="number">{{ $page.people.edges.length }}</strong> flinke
         folk
       </li>
-      <li>
+      <!--<li v-if="$page.languages.edges.length">
         <Dingbats icon="earth" />
         <strong class="number">{{ $page.languages.edges.length }}</strong> ulike
         språk
-      </li>
-      <li>
+      </li>-->
+      <li v-if="$page.about.numbers && $page.about.numbers.sqm">
         <Dingbats icon="measuring" />
         <strong class="number"
           >{{ $page.about.numbers.sqm }}m<sup>2</sup></strong
