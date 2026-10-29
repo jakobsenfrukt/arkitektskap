@@ -116,7 +116,11 @@
       ></IntersectionObserver>
     </div>
 
-    <ProjectGrid :projects="sortedProjects" id="projects" />
+    <ProjectGrid
+      :projects="sortedProjects"
+      id="projects"
+      :style="{ visibility: shuffled ? 'visible' : 'hidden' }"
+    />
   </Layout>
 </template>
 
@@ -293,7 +297,21 @@ export default {
         minYear: undefined,
         maxYear: undefined,
       },
+      shuffleOrder: {},
+      shuffled: false,
     };
+  },
+  mounted() {
+    // shuffle 3-star projects in the browser, so the static build doesn't lock the order
+    const shuffleOrder = {};
+    this.$page.projects.edges.forEach((item) => {
+      shuffleOrder[item.node.id] = Math.random();
+    });
+    this.shuffleOrder = shuffleOrder;
+    // hide the grid until shuffled to avoid projects jumping on load
+    this.$nextTick(() => {
+      this.shuffled = true;
+    });
   },
   computed: {
     intro() {
@@ -309,7 +327,18 @@ export default {
             (a, b) =>
               b.node.projectInfo.startYear - a.node.projectInfo.startYear
           )
-          .sort((a, b) => b.node.rating - a.node.rating);
+          .sort((a, b) => {
+            if (a.node.rating !== b.node.rating) {
+              return b.node.rating - a.node.rating;
+            }
+            if (a.node.rating === "3") {
+              return (
+                (this.shuffleOrder[a.node.id] || 0) -
+                (this.shuffleOrder[b.node.id] || 0)
+              );
+            }
+            return 0;
+          });
       }
       if (this.sorting === "a-å") {
         return projects
